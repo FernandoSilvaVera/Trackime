@@ -15,6 +15,8 @@
 <?PHP
 include './tablas.php';
 $cabecera = new CuerpoColumna(array("Anime","Tag","Día capítulo","Capítulo","Nota"),null,null);
+$tabla = new Tabla(array("Anime","Tag","Día capítulo","Capítulo","Nota"),null);
+
 ?>
 
 	<div class="container">
@@ -65,7 +67,7 @@ $cabecera = new CuerpoColumna(array("Anime","Tag","Día capítulo","Capítulo","
 				<table class="table table-striped">
 					<thead align="center">
 						<tr>
-							<?PHP $cabecera->crearFila();?>
+							<?PHP $tabla->crearCabeza();?>
 						</tr>
 					</thead>
 					<tbody align="center">
@@ -89,9 +91,6 @@ $cabecera = new CuerpoColumna(array("Anime","Tag","Día capítulo","Capítulo","
 			</div>
 		</div>
 	</div>
-
-
-
 
 </body>
 </html>

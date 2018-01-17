@@ -1,4 +1,28 @@
 <?PHP
+
+	class Tabla{
+		private $cabeza	= array();
+		private $total;
+
+		public function __construct($nombres ,$total){
+			$this->cabeza = $nombres;
+			$this->total = $total;
+		}
+
+		public function crearCabeza(){
+
+			for($i=0; $i<sizeof($this->cabeza); $i++)
+				if($this->cabeza[$i] == "Anime")
+					echo " <th>". $this->cabeza[$i] . $this->total . " </th> ";
+				else	
+					echo " <th>". $this->cabeza[$i] . "</th> ";
+
+		}
+	
+	
+	
+	}
+
 	class Fecha{
 
 		private $diasSemana = array("Lunes","Martes","Miercoles","Jueves","Viernes","Sabado","Domingo");
