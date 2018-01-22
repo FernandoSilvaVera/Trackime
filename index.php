@@ -13,11 +13,11 @@
 <body>
 
 	<?PHP
-		require ("./modelo/BBDD.php");
-		require ("./modelo/Tablas.php");
+		require ("./php/modelo/BBDD.php");
+		require ("./php/modelo/Tablas.php");
 
 		$a = new BBDD;
-		$b = $a->obtener("ANIMES",$a->columnaAnimes,new Animes);		
+		$b = $a->obtener("select * from ANIMES",$a->columnaAnimes);		
 	?>
 
 	<div class="container">
@@ -29,7 +29,7 @@
 			<div class="collapse navbar-collapse" id="navb">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item">
-						<a class="nav-link" href="./series/series.php">Series</a>
+						<a class="nav-link" href="./php/controlador/front.php?link=series">Series</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="javascript:void(0)">Datos</a>
