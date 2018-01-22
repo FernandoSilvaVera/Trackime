@@ -1,35 +1,37 @@
 <?PHP
 
-include './login.php';
+include './series.php';
 
 class MainController{
 
 	private $controladores;
 
-	public function __construct(){
+	public function __construct($peticion,$url){
 
 		$this->controladores = array();
-		$this->controladores["login.do"] = new Login;
-
-		$this->analizarPeticion();
+		$this->controladores["series"] = new Series;
+		$this->analizarPeticion($peticion,$url);
 
 	}
 	
-	private function analizarPeticion(){
+	private function analizarPeticion($peticion,$url){
 
-		$peticion = "login.do";
+		$vista = $this->controladores[$peticion]->analizar($url);
 
-		$vista = $this->controladores[$peticion]->analizar();
 		$this->redirigir($vista);
 
 	}
 
-	private function redirigir($lugar){
-		header('Location: ' . $lugar);
+	private function redirigir($vista){
+		header('Location: ' . $vista);
 	}
 
 }
 
-new MainController;
+$peticion = $_REQUEST["link"];
+$url = $_SERVER[HTTP_HOST] . $_SERVER[REQUEST_URI];
+
+
+new MainController($peticion,$url);
 
 ?>
