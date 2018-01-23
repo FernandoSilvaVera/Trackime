@@ -13,17 +13,18 @@ class Series{
 
 	public function analizar($url){
 
-		$consulta = "select nombre,tag,dia_nuevo_cap,capitulos,nota from ANIMES join FECHA where ANIMES.nombre = FECHA.nombre_anime";
-		$datosSeries = $this->bbdd->obtener($consulta,$this->bbdd->columnaSeries);
-
-		//echo $datosSeries[0]->dato["nombre"];
-
+		$emision = "select nombre,tag,dia_nuevo_cap,capitulos,nota from ANIMES join FECHA where ANIMES.nombre = FECHA.nombre_anime";
+		$datosEmision = $this->bbdd->obtener($emision,$this->bbdd->columnaSeries);
 
 		if(!isset($_SESSION))
 			session_start();
 		
-		if(!isset($_SESSION["series"]))	
-			$_SESSION["series"] = $datosSeries;						            
+		if(!isset($_SESSION["series"])){
+			$_SESSION["series"] = $datosEmision;						            
+
+
+
+		}
 
 		$vista = "./series.php";
 
