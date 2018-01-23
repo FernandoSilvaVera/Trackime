@@ -1,3 +1,12 @@
+<?PHP
+	include './tablas.php';
+	include '../../modelo/Tablas.php';
+
+	session_start();
+	$emision = $_SESSION["series"];
+	$tabla = new Tabla();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,14 +20,6 @@
      	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-
-<?PHP
-include './tablas.php';
-$cabecera = new CuerpoColumna(array("Anime","Tag","Día capítulo","Capítulo","Nota"),null,null);
-$tabla = new Tabla(array("Anime","Tag","Día capítulo","Capítulo","Nota"),null);
-
-?>
-
 	<div class="container">
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 			<a class="navbar-brand" href="javascript:void(0)">AnimeTracker</a>
@@ -67,31 +68,17 @@ $tabla = new Tabla(array("Anime","Tag","Día capítulo","Capítulo","Nota"),null
 				<table class="table table-striped">
 					<thead align="center">
 						<tr>
-							<?PHP $tabla->crearCabeza();?>
+							<?PHP $tabla->max = sizeof($emision)?>
+							<?PHP $tabla->crearCabeza(array("Anime","Tag","Día capítulo","Capítulo","Nota"));?>
 						</tr>
 					</thead>
 					<tbody align="center">
 						<tr>
-							<?PHP $cabecera->crearCuerpo();?>
+							<?PHP $tabla->crearCuerpo($emision);?>
 						</tr>
 					</tbody>
 				</table>
 			</div>
-
-
-
-		<?PHP
-
-			if(!isset($_SESSION))
-				session_start();
-
-			$prueba = $_SESSION["series"];
-
-		?>
-
-
-		<h1> <?PHP echo $prueba;?> </h1>
-
 
 			<!-- Pendientes-->
 			<div id="menu1" class="container tab-pane fade"><br>
