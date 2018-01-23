@@ -16,6 +16,13 @@
 		require ("./php/modelo/BBDD.php");
 		require ("./php/modelo/Tablas.php");
 
+		if(!isset($_SESSION))
+			session_start();
+
+		if (isset($_SESSION["login"]))
+			echo "Bienvenido";
+
+
 		$a = new BBDD;
 		$b = $a->obtener("select * from ANIMES",$a->columnaAnimes);		
 	?>
@@ -35,6 +42,22 @@
 						<a class="nav-link" href="javascript:void(0)">Datos</a>
 					</li>
 				</ul>
+				<ul class="navbar-nav ml-auto">
+				<?php
+				if (isset($_SESSION["login"])){
+					echo '<li class="nav-item"> <a class="nav-link" href="./php/controlador/front.php?link=panelUsuario">Panel de Usuario</a> </li>';
+					echo '<li class="nav-item"> <a class="nav-link" href="./php/controlador/front.php?link=cerrarSesion">Cerrar Sesion</a> </li>';
+				}else{
+					echo '<li class="nav-item"> <a class="nav-link" href="./php/controlador/front.php?link=registrarse">Registrarse</a> </li>';
+					echo '<li class="nav-item"> <a class="nav-link" href="./php/controlador/front.php?link=logearse">Logearse</a> </li>';
+				}
+				?>
+				</ul>';
+
+
+
+
+
 			</div>
 		</nav>
 	</div>
