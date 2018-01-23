@@ -4,6 +4,7 @@ require("../modelo/BBDD.php");
 
 class Series{
 
+
 	private $bbdd;
 
 	public function __construct(){
@@ -14,6 +15,8 @@ class Series{
 
 		$consulta = "select nombre,tag,dia_nuevo_cap,capitulos,nota from ANIMES join FECHA where ANIMES.nombre = FECHA.nombre_anime";
 		$datosSeries = $this->bbdd->obtener($consulta,$this->bbdd->columnaSeries);
+
+		//echo $datosSeries[0]->dato["nombre"];
 
 
 		if(!isset($_SESSION))
@@ -29,12 +32,12 @@ class Series{
 			$vista = "../vista/series/series.php";
 
 
+
+
 		return $vista;
 		
 	}
 
 }
-
-	
 
 ?>
