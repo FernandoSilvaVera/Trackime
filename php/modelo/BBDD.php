@@ -37,19 +37,6 @@ class BBDD{
 		return $devolver;
 	}
 
-	public function consulta($consulta){
-
-		$devolver = array();
-		$tabla = mysqli_query($this->conexion, $consulta);
-
-		while($fila = mysqli_fetch_array($tabla))
-			array_push($devolver,$fila[0]);
-
-
-		return $devolver;
-		
-	}
-
 }
 
 ?>
