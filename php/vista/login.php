@@ -10,10 +10,24 @@
      	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-
-	<h1>ALGUN DIA ESTO SERA EL LOGIN</h1>
-
-
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-4"></div>
+			<div class="col-sm-4">
+				<form action="../controlador/front.php?link=logearse" method="post">
+					<div class="form-group">
+						<label>Usuario</label>
+						<input class="form-control" id="user" placeholder="Usuario" name="user">
+					</div>
+					<div class="form-group">
+						<label>Password:</label>
+						<input type="password" class="form-control" id="pwd" placeholder="Contraseña" name="pswd">
+					</div>
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</form>
+			</div>
+		</div>
+	</div>
 
 </body>
 </html>
