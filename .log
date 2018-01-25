@@ -8,6 +8,7 @@ Jueves 25
 	Objetivo:
 		Hacer sistema de registro.
 	Obtenido:
+		Parte de registro ==> Funciona, me gusta el codigo, puede que la parte de usuarioDisponible() lo tenga que meter en una clase aparte
 
 Viernes 26
 	Objetivo:
@@ -23,3 +24,9 @@ Domingo 28
 	Objetivo:
 		Seguir con el panel de usuario e intentar que se puedan agregar series
 	Obtenido:
+
+
+CosasPendientes
+		Registro ==> Pensar en la separacion de usuarioDisponible() a una clase aparte	
+		Controladores ==> Poner los necesarios como privados y poner la base de datos como una variable de clase y darle valor en el constructor
+		General ==> Hay algunos ficheros en sitios incorrectos, sobre todo en la vista y codigo que necesita una clase en index
