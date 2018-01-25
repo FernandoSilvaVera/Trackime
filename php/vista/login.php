@@ -23,7 +23,7 @@
 						<label>Password:</label>
 						<input type="password" class="form-control" id="pwd" placeholder="Contraseña" name="pswd">
 					</div>
-					<button type="submit" class="btn btn-primary">Submit</button>
+					<button type="submit" class="btn btn-primary">Log in</button>
 				</form>
 			</div>
 		</div>
