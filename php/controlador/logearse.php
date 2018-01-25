@@ -2,13 +2,15 @@
 
 class Logearse{
 
+	private $bbdd;
+
 	public function __construct(){	
+		$this->bbdd = new BBDD;
 	}
 
 	public function analizar($url){
 
-		$bbdd = new BBDD;
-		$usuarios = $bbdd->obtener("select * from USUARIOS",$bbdd->usuarios);
+		$usuarios = $this->bbdd->obtener("select * from USUARIOS",$this->bbdd->usuarios);
 		$tiene_acceso = false;
 
 		if(!isset($_SESSION))
@@ -17,7 +19,7 @@ class Logearse{
 		if(!isset($_SESSION["login"]))
 			foreach($usuarios as $buscar)
 				if($buscar->dato["usuario"] === $_POST["user"])
-					if($buscar->dato["contrasena"] == $_POST["pswd"]){
+					if($buscar->dato["contrasena"] === $_POST["pswd"]){
 						$_SESSION["login"] = $buscar->dato["usuario"];
 						$tiene_acceso = true;	
 					}
