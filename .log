@@ -14,6 +14,9 @@ Viernes 26
 	Objetivo:
 		Pulir sistema de login y registro
 	Obtenido:
+		Parte de login ==> Sin cambios
+		Parte de registro ==> Ya se guardan los datos en la bbdd, y el codigo ha sido mejorada
+		Parte de bbdd ==> Agregado metodo para meter datos en la bbdd
 
 Sabado 27
 	Objetivo:
