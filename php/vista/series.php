@@ -1,6 +1,6 @@
 <?PHP
-	include './tablas.php';
-	include '../../modelo/Tablas.php';
+	include './series/tablas.php';
+	include '../modelo/Tablas.php';
 
 	session_start();
 	$emision = $_SESSION["series"];

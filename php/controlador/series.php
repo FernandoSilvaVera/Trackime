@@ -15,6 +15,7 @@ class Series{
 
 		$emision = "select nombre,tag,dia_nuevo_cap,capitulos,nota from ANIMES join FECHA where ANIMES.nombre = FECHA.nombre_anime";
 		$datosEmision = $this->bbdd->obtener($emision,$this->bbdd->columnaSeries);
+		$vista = "./series.php";
 
 		if(!isset($_SESSION))
 			session_start();
@@ -26,14 +27,11 @@ class Series{
 
 		}
 
-		$vista = "./series.php";
+
 
 		$distina_pagina = "localhost/Trackime/php/controlador/front.php?link=series";
 		if($url == $distina_pagina)
-			$vista = "../vista/series/series.php";
-
-
-
+			$vista = "../vista/series.php";
 
 		return $vista;
 		
