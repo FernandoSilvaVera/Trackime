@@ -22,6 +22,8 @@ Sabado 27
 	Objetivo:
 		Diseñar el panel de usuario (Algo basico de momento para que los usuarios puedan agregar las series)
 	Obtenido:
+		Vista ==> Creado una vista para poder ver los usuarios que inician sesion
+		Series ==> Agregado apartado para añadir series, falta pulir el sistema de paginacion de momento funciona
 
 Domingo 28
 	Objetivo:
@@ -33,3 +35,4 @@ CosasPendientes
 		Registro ==> Pensar en la separacion de usuarioDisponible() a una clase aparte	
 		Controladores ==> Poner los necesarios como privados y poner la base de datos como una variable de clase y darle valor en el constructor
 		General ==> Hay algunos ficheros en sitios incorrectos, sobre todo en la vista y codigo que necesita una clase en index
+		Paginacion ==> Mejorarla
