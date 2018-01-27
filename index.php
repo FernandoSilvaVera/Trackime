@@ -13,14 +13,8 @@
 <body>
 
 	<?PHP
-		require ("./php/modelo/BBDD.php");
-		require ("./php/modelo/Tablas.php");
-
 		if(!isset($_SESSION))
 			session_start();
-
-		$a = new BBDD;
-		$b = $a->obtener("select * from ANIMES",$a->columnaAnimes);		
 	?>
 
 	<div class="container">
@@ -51,29 +45,6 @@
 				</ul>';
 			</div>
 		</nav>
-	</div>
-
-	<br>
-
-	<div class="container">
-		<form class="form-inline my-2 my-lg-0">
-			<input class="form-control mr-sm-2" type="text" placeholder="Search">
-			<button class="btn btn-success my-2 my-sm-0" type="button">Search</button>
-		</form>
-		<div class="row">
-			<?PHP	
-		for($i=0; $i<count($b); $i++)
-			echo			
-				'<div class="col-sm-6 col-md-4 col-lg-3 mt-4">' .
-					'<div class="card">' .
-						'<img class="card-img-top" src="./images/loli.jpg">' .
-						'<div class="card-block">' .
-							'<h5 align="center" class="text-bold">' . $b[$i]->dato["nombre"] . '</h5> '.
-						'</div>'.
-					'</div>' . 
-				'</div>';
-			?>
-		</div>
 	</div>
 
 </body>
