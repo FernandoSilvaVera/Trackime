@@ -16,15 +16,8 @@ class Paginacion{
 		$this->inicio = $_REQUEST["id"] * $this->max;
 		$this->fin = $this->inicio + $this->max;
 
-		$series= "SELECT nombre,tag,dia_nuevo_cap,capitulos,nota 
-				from 
-				ANIMES join FECHA 
-				where ANIMES.nombre = FECHA.nombre_anime 
-				and 
-				ANIMES.id >= $this->inicio
-				and 
-				ANIMES.id < $this->fin";
-		$obtenerSeries = $this->bbdd->obtener($series,$this->bbdd->columnaSeries);
+		$series= "SELECT nombre,id from ANIMES where id > $this->inicio and id <= $this->fin";
+		$obtenerSeries = $this->bbdd->obtener($series,array("nombre","id"));
 
 		if(!isset($_SESSION))
 			session_start();

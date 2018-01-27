@@ -16,15 +16,8 @@ class Series{
 	}
 
 	private function obtenerIniciales(){
-		$series= "SELECT nombre,tag,dia_nuevo_cap,capitulos,nota 
-				from 
-				ANIMES join FECHA 
-				where ANIMES.nombre = FECHA.nombre_anime 
-				and 
-				ANIMES.id >= 1 
-				and 
-				ANIMES.id <= 12";
-		return $this->bbdd->obtener($series,$this->bbdd->columnaSeries);
+		$series= "SELECT nombre,id from ANIMES where id >= 1 and id <= 12";
+		return $this->bbdd->obtener($series,array("nombre","id"));
 	}
 
 	public function analizar($url){
