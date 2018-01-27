@@ -7,7 +7,6 @@ class Registrarse{
 	private $pswd;
 	private $pswd2;
 
-
 	public function __construct(){	
 		$this->bbdd = new BBDD;
 	}
