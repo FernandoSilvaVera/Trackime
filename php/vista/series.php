@@ -2,8 +2,12 @@
 	include './series/tablas.php';
 	include '../modelo/Tablas.php';
 
-	session_start();
-	$emision = $_SESSION["series"];
+	if(!isset($_SESSION))
+		session_start();
+
+	$emision = $_SESSION["emision"];
+	$series = $_SESSION["series"];
+
 	$tabla = new Tabla();
 ?>
 
@@ -14,10 +18,10 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
-	<link rel="stylesheet" href="./css/style.css">
+	<link rel="stylesheet" href="../../css/style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
-     	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 </head>
 <body>
 	<div class="container">
@@ -57,6 +61,10 @@
 			<li class="nav-item">
 				<a class="nav-link" data-toggle="tab" href="#menu2">Terminados</a>
 			</li>
+			<li class="nav-item">
+				<a class="nav-link" data-toggle="tab" href="#menu3">Agregar series</a>
+			</li>
+
 		</ul>
 
 		<!-- Contenido de las pestañas -->
@@ -90,6 +98,32 @@
 			<div id="menu2" class="container tab-pane fade"><br>
 				<h3>Menu 2</h3>
 				<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+			</div>
+			<!-- Agrear series -->
+			<div id="menu3" class="container tab-pane fade"><br>
+
+				<div class="row">
+				<?PHP	
+
+				for($i=0; $i<count($series); $i++)
+					echo			
+						'<div class="col-sm-6 col-md-4 col-lg-3 mt-4">' .
+							'<div class="card">' .
+								'<img class="card-img-top" src="../../images/'.$i.'.jpg">' .
+								'<div class="card-block">' .
+									'<h5 align="center" class="text-bold">' . $series[$i]->dato["nombre"] . '</h5> '.
+								'</div>'.
+							'</div>' . 
+						'</div>';
+					?>
+				</div>
+				<ul align="center" class="pagination">
+					<li class="page-item disabled"><a class="page-link" href="#">Anterior</a></li>
+					<li class="page-item active"><a class="page-link" href="../controlador/front.php?link=paginacion&id=0">1</a></li>
+					<li class="page-item"><a class="page-link" href="../controlador/front.php?link=paginacion&id=1">2</a></li>
+					<li class="page-item"><a class="page-link" href="../controlador/front.php?link=paginacion&id=2">3</a></li>
+					<li class="page-item"><a class="page-link" href="../controlador/front.php?link=paginacion&id=1">Siguiente</a></li>
+				</ul>
 			</div>
 		</div>
 	</div>

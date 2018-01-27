@@ -9,7 +9,7 @@ class Tabla{
 	public function crearCabeza($nombres){
 
 		for($i=0; $i<sizeof($nombres); $i++)
-			if($nombres[$i] == "Anime")
+			if($nombres[$i] === "Anime")
 				echo " <th>". $nombres[$i] ." " .$this->max . " </th> ";
 			else	
 				echo " <th>". $nombres[$i] . "</th> ";
@@ -27,9 +27,8 @@ class Tabla{
 				echo "<td data-toggle='modal' data-target='#myModal'>" . $series[$i]->dato['nota'] . "</td>";
 			echo "</tr>";
 		}
-	
-	}
 
+	}
 
 }
 
