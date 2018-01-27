@@ -53,12 +53,7 @@
 		</nav>
 	</div>
 
-	<div class="container">
-		<div class="page-header">
-			<h1 align="center">ANIME TRACKER</h1>      
-		</div>
-
-	</div>
+	<br>
 
 	<div class="container">
 		<form class="form-inline my-2 my-lg-0">
