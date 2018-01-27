@@ -101,22 +101,26 @@
 			</div>
 			<!-- Agrear series -->
 			<div id="menu3" class="container tab-pane fade"><br>
-
 				<div class="row">
 				<?PHP	
+				$inicio = $series[0]->dato["id"];
+				$fin = $series[count($series)-1]->dato["id"];
 
-				for($i=0; $i<count($series); $i++)
+				for($i=$inicio; $i<=$fin; $i++)
 					echo			
 						'<div class="col-sm-6 col-md-4 col-lg-3 mt-4">' .
 							'<div class="card">' .
 								'<img class="card-img-top" src="../../images/'.$i.'.jpg">' .
 								'<div class="card-block">' .
-									'<h5 align="center" class="text-bold">' . $series[$i]->dato["nombre"] . '</h5> '.
+									'<h5 align="center" class="text-bold">' . $series[$i-$inicio]->dato["nombre"] . '</h5> '.
 								'</div>'.
 							'</div>' . 
 						'</div>';
 					?>
 				</div>
+
+				<br>
+				
 				<ul align="center" class="pagination">
 					<li class="page-item disabled"><a class="page-link" href="#">Anterior</a></li>
 					<li class="page-item active"><a class="page-link" href="../controlador/front.php?link=paginacion&id=0">1</a></li>
