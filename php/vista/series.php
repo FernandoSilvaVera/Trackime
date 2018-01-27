@@ -53,16 +53,16 @@
 
 		<ul class="nav nav-tabs" role="tablist">
 			<li class="nav-item">
-				<a class="nav-link active" data-toggle="tab" href="#home">En emision</a>
+				<a class="nav-link active" data-toggle="tab" href="#home">Agregar series</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" data-toggle="tab" href="#menu1">Pendientes</a>
+				<a class="nav-link" data-toggle="tab" href="#menu1">En emisión</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" data-toggle="tab" href="#menu2">Terminados</a>
+				<a class="nav-link" data-toggle="tab" href="#menu2">Pendientes</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" data-toggle="tab" href="#menu3">Agregar series</a>
+				<a class="nav-link" data-toggle="tab" href="#menu3">Terminados</a>
 			</li>
 
 		</ul>
@@ -70,37 +70,7 @@
 		<!-- Contenido de las pestañas -->
 
 		<div class="tab-content">
-
-			<!-- En emision-->
 			<div id="home" class="container tab-pane active"><br>
-				<table class="table table-striped">
-					<thead align="center">
-						<tr>
-							<?PHP $tabla->max = sizeof($emision)?>
-							<?PHP $tabla->crearCabeza(array("Anime","Tag","Día capítulo","Capítulo","Nota"));?>
-						</tr>
-					</thead>
-					<tbody align="center">
-						<tr>
-							<?PHP $tabla->crearCuerpo($emision);?>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-
-			<!-- Pendientes-->
-			<div id="menu1" class="container tab-pane fade"><br>
-				<h3>Menu 1</h3>
-				<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-			</div>
-
-			<!-- Terminados-->
-			<div id="menu2" class="container tab-pane fade"><br>
-				<h3>Menu 2</h3>
-				<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-			</div>
-			<!-- Agrear series -->
-			<div id="menu3" class="container tab-pane fade"><br>
 				<div class="row">
 				<?PHP	
 				$inicio = $series[0]->dato["id"];
@@ -129,6 +99,28 @@
 					<li class="page-item"><a class="page-link" href="../controlador/front.php?link=paginacion&id=1">Siguiente</a></li>
 				</ul>
 			</div>
+			<!-- En emision-->
+			<div id="menu1" class="container tab-pane fade"><br>
+				<table class="table table-striped">
+					<thead align="center">
+						<tr>
+							<?PHP $tabla->max = sizeof($emision)?>
+							<?PHP $tabla->crearCabeza(array("Anime","Tag","Día capítulo","Capítulo","Nota"));?>
+						</tr>
+					</thead>
+					<tbody align="center">
+						<tr>
+							<?PHP $tabla->crearCuerpo($emision);?>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<!-- Pendientes-->
+			<div id="menu2" class="container tab-pane fade"><br></div>
+			<!-- Terminados-->
+			<div id="menu3" class="container tab-pane fade"><br></div>
+			<!-- Agrear series -->
+
 		</div>
 	</div>
 
