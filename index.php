@@ -19,7 +19,6 @@
 		if(!isset($_SESSION))
 			session_start();
 
-		//$c = $_SESSION["login"];
 		$a = new BBDD;
 		$b = $a->obtener("select * from ANIMES",$a->columnaAnimes);		
 	?>
@@ -42,7 +41,7 @@
 				<ul class="navbar-nav ml-auto">
 				<?php
 				if (isset($_SESSION["login"])){
-					echo '<li class="nav-item"> <a class="nav-link" href="./php/controlador/front.php?link=panelUsuario">Panel de Usuario</a> </li>';
+					echo '<li class="nav-item"> <a class="nav-link" href="./php/vista/panel.php">Panel de Usuario</a> </li>';
 					echo '<li class="nav-item"> <a class="nav-link" href="./php/controlador/front.php?link=cerrarSesion">Cerrar Sesion</a> </li>';
 				}else{
 					echo '<li class="nav-item"> <a class="nav-link" href="./php/vista/registro.php">Registrarse</a> </li>';
