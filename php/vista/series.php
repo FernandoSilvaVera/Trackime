@@ -92,11 +92,11 @@
 				<br>
 				
 				<ul align="center" class="pagination">
-					<li class="page-item disabled"><a class="page-link" href="#">Anterior</a></li>
-					<li class="page-item active"><a class="page-link" href="../controlador/front.php?link=paginacion&id=0">1</a></li>
-					<li class="page-item"><a class="page-link" href="../controlador/front.php?link=paginacion&id=1">2</a></li>
-					<li class="page-item"><a class="page-link" href="../controlador/front.php?link=paginacion&id=2">3</a></li>
-					<li class="page-item"><a class="page-link" href="../controlador/front.php?link=paginacion&id=1">Siguiente</a></li>
+					<?PHP
+					$paginacion = $_SESSION["paginacion"];
+					for($i=0; $i<count($paginacion); $i++)
+						echo $paginacion[$i];
+					?>
 				</ul>
 			</div>
 			<!-- En emision-->
