@@ -20,6 +20,17 @@ class Series{
 		return $this->bbdd->obtener($series,array("nombre","id"));
 	}
 
+	private function obtenerPaginacionInicial(){
+		$devolver = array();
+			array_push($devolver,'<li class="page-item disabled"><a class="page-link" href="#">Anterior</a></li>');
+			array_push($devolver,'<li class="page-item active"><a class="page-link" href="../controlador/front.php?link=paginacion&id=0">1</a></li>');
+			array_push($devolver,'<li class="page-item"><a class="page-link" href="../controlador/front.php?link=paginacion&id=1">2</a></li>');
+			array_push($devolver,'<li class="page-item"><a class="page-link" href="../controlador/front.php?link=paginacion&id=2">3</a></li>');
+			array_push($devolver,'<li class="page-item"><a class="page-link" href="../controlador/front.php?link=paginacion&id=1">Siguiente</a></li>');
+		return $devolver;
+
+	}
+
 	public function analizar($url){
 
 		if(!isset($_SESSION))
@@ -30,6 +41,10 @@ class Series{
 
 		if(!isset($_SESSION["series"]))
 			$_SESSION["series"] = $this->obtenerIniciales();
+
+		if(!isset($_SESSION["paginacion"]))
+			$_SESSION["paginacion"] = $this->obtenerPaginacionInicial();
+
 
 		return "../vista/series.php";
 
