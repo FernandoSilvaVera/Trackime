@@ -1,3 +1,7 @@
+<?PHP
+	if(!isset($_SESSION))
+		session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,12 +15,6 @@
      	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-
-	<?PHP
-		if(!isset($_SESSION))
-			session_start();
-	?>
-
 	<div class="container">
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 			<a class="navbar-brand" href="javascript:void(0)">AnimeTracker</a>
@@ -26,26 +24,22 @@
 			<div class="collapse navbar-collapse" id="navb">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item">
-						<a class="nav-link" href="./php/controlador/front.php?link=series">Series</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="javascript:void(0)">Datos</a>
+						<a class="nav-link" href="./vista/series.php">Series</a>
 					</li>
 				</ul>
 				<ul class="navbar-nav ml-auto">
 				<?php
 				if (isset($_SESSION["login"])){
-					echo '<li class="nav-item"> <a class="nav-link" href="./php/vista/panel.php">Panel de Usuario</a> </li>';
-					echo '<li class="nav-item"> <a class="nav-link" href="./php/controlador/front.php?link=cerrarSesion">Cerrar Sesion</a> </li>';
+					echo '<li class="nav-item"> <a class="nav-link" href="./vista/panel.php">Panel de Usuario</a> </li>';
+					echo '<li class="nav-item"> <a class="nav-link" href="./vista/logout.php">Cerrar Sesion</a> </li>';
 				}else{
-					echo '<li class="nav-item"> <a class="nav-link" href="./php/vista/registro.php">Registrarse</a> </li>';
-					echo '<li class="nav-item"> <a class="nav-link" href="./php/vista/login.php">Logearse</a> </li>';
+					echo '<li class="nav-item"> <a class="nav-link" href="./vista/registro.php">Registrarse</a> </li>';
+					echo '<li class="nav-item"> <a class="nav-link" href="./vista/login.php">Logearse</a> </li>';
 				}
 				?>
 				</ul>';
 			</div>
 		</nav>
 	</div>
-
 </body>
 </html>
