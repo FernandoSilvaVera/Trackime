@@ -1,35 +1,43 @@
-Miercoles 24
-	Objetivo:
-		Hacer sistema de login.
+Lunes 29
+	Objetivo:	
+		Reorganizar el codigo
 	Obtenido:
-		Parte de login ==> Funciona, pero el codigo es mejorable
+		Se separa de una forma mas eficiente el mvc
 
-Jueves 25
-	Objetivo:
-		Hacer sistema de registro.
+Martes 30
+	Objetivo:	
+		Agregar Vista para visualizar las series
 	Obtenido:
-		Parte de registro ==> Funciona, me gusta el codigo, puede que la parte de usuarioDisponible() lo tenga que meter en una clase aparte
 
-Viernes 26
-	Objetivo:
-		Pulir sistema de login y registro
+Miercoles 31
+	Objetivo:	
+		Contiunar con la Vista para visualizar series
 	Obtenido:
-		Parte de login ==> Sin cambios
-		Parte de registro ==> Ya se guardan los datos en la bbdd, y el codigo ha sido mejorada
-		Parte de bbdd ==> Agregado metodo para meter datos en la bbdd
 
-Sabado 27
+Jueves 1
 	Objetivo:
-		Diseñar el panel de usuario (Algo basico de momento para que los usuarios puedan agregar las series)
-	Obtenido:
-		Vista ==> Creado una vista para poder ver los usuarios que inician sesion
-		Series ==> Agregado apartado para añadir series, falta pulir el sistema de paginacion de momento funciona
+		Contiunar con la Vista para visualizar series
 
-Domingo 28
-	Objetivo:
-		Seguir con el panel de usuario e intentar que se puedan agregar series
 	Obtenido:
-		El sistema de paginacion funciona casi perfecto
+
+
+Viernes 2
+	Objetivo:
+		
+
+	Obtenido:
+
+Sabado 3
+	Objetivo:
+
+	Obtenido:
+
+
+
+Domingo 4
+	Objetivo:
+
+	Obtenido:
 
 
 CosasPendientes
@@ -37,3 +45,4 @@ CosasPendientes
 		Controladores ==> Poner los necesarios como privados y poner la base de datos como una variable de clase y darle valor en el constructor
 		General ==> Hay algunos ficheros en sitios incorrectos, sobre todo en la vista y codigo que necesita una clase en index
 		Paginacion ==> Mejorarla
+		Login ==> Considerar mejorar el codigo
