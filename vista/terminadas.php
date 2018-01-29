@@ -1,6 +1,6 @@
 <?PHP
 
-	require_once("../controlador/series.php");
+	require_once("../controlador/terminadas.php");
 
 	if(!isset($_SESSION))
 		session_start();
@@ -57,7 +57,7 @@
 		<!-- Pestañas superiores -->
 		<ul class="nav nav-tabs">
 			<li class="nav-item">
-				<a class="nav-link active" data-toggle="tab" href="#seleccionado">Subidas recientes</a>
+				<a class="nav-link"  href="./series.php">Subidas recientes</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="./emision.php">En emisión</a>
@@ -66,7 +66,7 @@
 				<a class="nav-link" href="./pendientes.php">Pendientes</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="./terminadas.php">Terminadas</a>
+				<a class="nav-link active" data-toggle="tab" href="#seleccionado">Terminadas</a>
 			</li>
 
 		</ul>
