@@ -52,31 +52,31 @@
 
 	<div class="container">
  		<div class="row">
-    		<div class="col-sm-7">
-				<h3 align="center">Listado de capítulos</h3>
-				<table class="table table-hover">
-					<tbody>
-					<?PHP
-						for($i=$capitulos; $i>0; $i--){
-							echo "<tr>";
-								echo "<td><a href='./visor.php?anime=$nombre&cap=$i'>$nombre</a></td>";
-								echo "<td>$i</td>";
-							echo "</tr>";
-						}
-					?>
-					</tbody>
-				</table>
+			<div class="col-sm-7">
+					<h3 align="center">Listado de capítulos</h3>
+					<table class="table table-hover">
+						<tbody>
+						<?PHP
+							for($i=$capitulos; $i>0; $i--){
+								echo "<tr>";
+									echo "<td><a href='./visor.php?anime=$nombre&cap=$i'>$nombre</a></td>";
+									echo "<td>$i</td>";
+								echo "</tr>";
+							}
+						?>
+						</tbody>
+					</table>
 			</div>
-		<div align="center" class="col-sm-5">
-				<?PHP
-				echo '<img src="../images/'.$id.'.jpg" class="img-thumbnail" width="304" height="236">';	
-				echo "<h5>$nombre</h5>"
-				?>
+			<div align="center" class="col-sm-5">
+					<?PHP
+					echo '<img src="../images/'.$id.'.jpg" class="img-thumbnail" width="304" height="236">';	
+					echo "<h5>$nombre</h5>"
+					?>
 
-				<p align="left">	
-					Lorem Ipsum is simply dummy text of the printing and typesetting industry.			
-					Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-				</p>
+					<p align="left">	
+						Lorem Ipsum is simply dummy text of the printing and typesetting industry.			
+						Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+					</p>
 			</div>
 		</div>
 	</div>
