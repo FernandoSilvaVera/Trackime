@@ -39,8 +39,8 @@ class BBDD{
 		return $devolver;
 	}
 
-	public function meter($consulta){
-		mysqli_query($this->conexion, $consulta);
+	public function meter($datos){
+		mysqli_query($this->conexion, $datos);
 	}
 
 }
