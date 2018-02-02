@@ -8,6 +8,24 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+	<script>
+
+	$.urlParam = function(parametro){
+		var results = new RegExp('[\?&]' + parametro + '=([^&#]*)').exec(window.location.href)
+		return decodeURI(results[1])
+	}
+
+	$(document).ready(function(){
+	    $("#agregar").click(function(){
+		$.get("../controlador/agregar.php",{serie:$.urlParam('anime')}, function(respuesta){
+			alert(respuesta)
+		})
+	    })
+	})
+
+	</script>
+
 </head>
 <body>
 	<div class="container">
@@ -38,7 +56,7 @@
 	</div>
 	
 	<!-- Parte de visualización -->
-	
+
 	<br>	
 	<div class="container">
 		<h3 align="center"><?PHP echo $_REQUEST["anime"];?>: Capitulo <?PHP echo $_REQUEST["cap"];?></h3>
@@ -54,6 +72,20 @@
   	</div>
 
 	<!-- Barra de compartir -->
+
+	<div class="container">
+		<div align="center" class="row">
+			<div class="col-sm-3"></div>
+			<div class="col-sm-3"></div>
+			<div class="col-sm-1"></div>
+			<div class="col-sm-1"></div>
+			<div id="agregar" class="col-sm-1">
+				<img src="../images/agregar.png">
+				<nav>Añadir</nav>
+			</div>
+			<div class="col-sm-3"></div>
+		</div>
+	</div>
 
 </body>
 </html>
