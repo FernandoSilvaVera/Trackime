@@ -1,30 +1,27 @@
+<?PHP
+	if(!isset($_SESSION))
+		session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Bootstrap Example</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<!-- Librerias externas -->
+
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 
-	<script>
+	<!--Propias -->
 
-	$.urlParam = function(parametro){
-		var results = new RegExp('[\?&]' + parametro + '=([^&#]*)').exec(window.location.href)
-		return decodeURI(results[1])
-	}
-
-	$(document).ready(function(){
-	    $("#agregar").click(function(){
-		$.get("../controlador/agregar.php",{serie:$.urlParam('anime')}, function(respuesta){
-			alert(respuesta)
-		})
-	    })
-	})
-
-	</script>
+	<script src="../javascript/ajax.js"></script>
+	<script src="../javascript/visor.js"></script>
 
 </head>
 <body>
@@ -61,31 +58,29 @@
 	<div class="container">
 		<h3 align="center"><?PHP echo $_REQUEST["anime"];?>: Capitulo <?PHP echo $_REQUEST["cap"];?></h3>
  		<div class="row">
-    		<div class="col-sm-2"></div>
-    			<div class="col-sm-8">
-			 		<div class="embed-responsive embed-responsive-16by9">
-	  					<iframe class="embed-responsive-item" src="#"></iframe>
-					</div>
+			<div class="col-sm-2"></div>
+			<div class="col-sm-8">
+				<div class="embed-responsive embed-responsive-16by9">
+					<iframe class="embed-responsive-item" src="#"></iframe>
 				</div>
+				<?php
+				if (isset($_SESSION["login"]))
+				echo '
+				<div class="container text-right">
+					<div class="btn-group">
+						<button type="button" class="btn btn-dark">Recomendar</button>
+						<button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">Agregar</button>
+						<div class="dropdown-menu">
+							<a class="dropdown-item" id="agregar" href="#">como pendiente</a>
+							<a class="dropdown-item" href="#">como terminada</a>
+						</div>
+					</div>
+				</div>';
+				?>
+			</div>
 			<div class="col-sm-2"></div>
 		</div>
   	</div>
-
-	<!-- Barra de compartir -->
-
-	<div class="container">
-		<div align="center" class="row">
-			<div class="col-sm-3"></div>
-			<div class="col-sm-3"></div>
-			<div class="col-sm-1"></div>
-			<div class="col-sm-1"></div>
-			<div id="agregar" class="col-sm-1">
-				<img src="../images/agregar.png">
-				<nav>Añadir</nav>
-			</div>
-			<div class="col-sm-3"></div>
-		</div>
-	</div>
 
 </body>
 </html>
