@@ -11,7 +11,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
 	<!-- Librerias externas -->
-
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
@@ -19,12 +18,13 @@
 	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 
 	<!--Propias -->
-
 	<script src="../javascript/ajax.js"></script>
-	<script src="../javascript/visor.js"></script>
 
 </head>
 <body>
+
+	<!-- Barra de navegación-->
+		
 	<div class="container">
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 			<a class="navbar-brand" href="../index.php">AnimeTracker</a>
@@ -38,6 +38,9 @@
 					</li>
 				</ul>
 				<ul class="navbar-nav ml-auto">
+				
+				<!--Parte derecha-->
+
 				<?php
 				if (isset($_SESSION["login"])){
 					echo '<li class="nav-item"> <a class="nav-link" href="./panel.php">Panel de Usuario</a> </li>';
@@ -61,8 +64,9 @@
 			<div class="col-sm-2"></div>
 			<div class="col-sm-8">
 				<div class="embed-responsive embed-responsive-16by9">
-					<iframe class="embed-responsive-item" src="#"></iframe>
+					<iframe scrolling="no" class="embed-responsive-item" src="../images/1.jpg"></iframe>
 				</div>
+				<br>
 				<?php
 				if (isset($_SESSION["login"]))
 				echo '
@@ -71,8 +75,8 @@
 						<button type="button" class="btn btn-dark">Recomendar</button>
 						<button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">Agregar</button>
 						<div class="dropdown-menu">
-							<a class="dropdown-item" id="agregar" href="#">como pendiente</a>
-							<a class="dropdown-item" href="#">como terminada</a>
+							<a class="dropdown-item" id="pendiente">como pendiente</a>
+							<a class="dropdown-item" id="terminada">como terminada</a>
 						</div>
 					</div>
 				</div>';
