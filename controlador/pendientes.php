@@ -42,8 +42,10 @@ class Paginacion{
 	}
 
 	private function obtenerSeries(){
-		$series= "SELECT nombre,id from ANIMES where id > $this->inicio and id <= $this->fin";
-		return $this->bbdd->obtener($series,array("nombre","id"));
+
+		$series = "select ANIMES.id,ANIMES.nombre from CUSTOM join ANIMES where CUSTOM.nombre_anime = ANIMES.nombre and CUSTOM.estado='pendiente'";
+		//$series= "SELECT ANIMES.nombre,id from ANIMES where id > $this->inicio and id <= $this->fin";
+		return $this->bbdd->obtener($series,array("id","nombre"));
 	}
 
 	public function analizar(){
