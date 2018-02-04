@@ -18,7 +18,8 @@ class Agregar{
 
 		$usuario = $_SESSION["login"];
 		$serie = $_GET["serie"];
-		$datos = 'insert into CUSTOM (usuario,nombre_anime) values("'.$usuario.'","'.$serie.'")';
+		$estado = $_GET["estado"];
+		$datos = 'insert into CUSTOM (usuario,nombre_anime,estado) values("'.$usuario.'","'.$serie.'","'.$estado.'")';
 		$this->bbdd->meter($datos);
 
 	}
