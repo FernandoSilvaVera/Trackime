@@ -5,7 +5,7 @@
 	if(!isset($_SESSION))
 		session_start();
 
-	$emision = $_SESSION["emision"];
+	$paginacion = $_SESSION["paginacion"];
 	$series = $_SESSION["series"];
 
 ?>
@@ -97,7 +97,6 @@
 			
 				<ul align="center" class="pagination">
 					<?PHP
-					$paginacion = $_SESSION["paginacion"];
 					for($i=0; $i<count($paginacion); $i++)
 						echo $paginacion[$i];
 					?>
