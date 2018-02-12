@@ -31,7 +31,6 @@ class Paginacion{
 
 	private function obtenerSerie(){
 		$comienzo = $this->paginaActual * $this::TAM_PAGINAS;
-		//$series = "select ANIMES.id,ANIMES.nombre from CUSTOM join ANIMES where CUSTOM.nombre_anime = ANIMES.nombre and CUSTOM.estado='pendiente'";
 		$rango = "SELECT nombre,id from ANIMES limit $comienzo," . $this::TAM_PAGINAS;
 		return $this->bbdd->obtener($rango,array("nombre","id"));
 	}
