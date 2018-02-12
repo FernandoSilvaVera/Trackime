@@ -77,7 +77,6 @@
 			<div id="seleccionado" class="container tab-pane active"><br>
 				<div class="row">
 				<?PHP	
-
 				for($i=0; $i<count($series); $i++)
 					echo			
 						'<div class="col-sm-6 col-md-4 col-lg-3 mt-4">' .
