@@ -15,7 +15,7 @@ class Paginacion{
 
 	private function totalPaginas(){
 		$this->paginaActual = empty($_REQUEST["id"]) ?0 :$_REQUEST["id"];
-		$numFilas = $this->bbdd->obtener("SELECT count(*) as max from ANIMES",array("max"));
+		$numFilas = $this->bbdd->obtener("SELECT count(*) as max from ANIMES join FECHA where ANIMES.nombre = FECHA.nombre_anime and anio = 2017",array("max"));
 		return ceil($numFilas[0]->dato["max"] / $this::TAM_PAGINAS);
 	}
 
@@ -23,15 +23,15 @@ class Paginacion{
 		$devolver = array();
 		for($i=0; $i<$this->totalPaginas(); $i++)
 			if($i == $this->paginaActual)
-				array_push($devolver,'<li class="page-item active"><a class="page-link" href="./series.php?id='.$i.'">'.($i+1).'</a></li>');
+				array_push($devolver,'<li class="page-item active"><a class="page-link" href="./emision.php?id='.$i.'">'.($i+1).'</a></li>');
 			else
-				array_push($devolver,'<li class="page-item"><a class="page-link" href="./series.php?id='.$i.'">'.($i+1).'</a></li>');
+				array_push($devolver,'<li class="page-item"><a class="page-link" href="./emision.php?id='.$i.'">'.($i+1).'</a></li>');
 		return $devolver;
 	}
 
 	private function obtenerSerie(){
 		$comienzo = $this->paginaActual * $this::TAM_PAGINAS;
-		$rango = "SELECT nombre,id from ANIMES limit $comienzo," . $this::TAM_PAGINAS;
+		$rango = "SELECT nombre,id from ANIMES join FECHA where ANIMES.nombre = FECHA.nombre_anime and anio = 2017 limit $comienzo," . $this::TAM_PAGINAS;
 		return $this->bbdd->obtener($rango,array("nombre","id"));
 	}
 
