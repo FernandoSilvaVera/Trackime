@@ -12,14 +12,14 @@ class Series extends Paginacion{
 
 	public function __construct(){
 		parent::__construct();
-		$this->totalPaginas($this::CONSULTA["from"]);
+		$this->totalPaginas($this::CONSULTA["from"],null);
 		$this->obtenerPaginacion($this::VISTA);
 		$this->analizar();
 	}
 
 	private function analizar(){
 		$_SESSION["paginacion"] = $this->paginas;
-		$_SESSION["series"] = $this->obtenerSerie($this::CONSULTA);
+		$_SESSION["series"] = $this->obtenerSerie($this::CONSULTA, null);
 	}
 
 }
