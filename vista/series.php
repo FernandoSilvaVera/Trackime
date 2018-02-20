@@ -2,9 +2,6 @@
 
 	require_once("../controlador/series.php");
 
-	if(!isset($_SESSION))
-		session_start();
-
 	$paginacion = $_SESSION["paginacion"];
 	$series = $_SESSION["series"];
 
