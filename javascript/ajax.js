@@ -22,3 +22,13 @@ $(document).ready(function(){
 	})
     })
 })
+
+//Escribe el comentario en la bbdd
+$(document).ready(function(){
+    $("#comentar").click(function(){
+	$.get("../controlador/comentar.php",{serie:$.request('anime'),capitulo:$.request('cap'),comentario:$('#comentario').val()}, function(respuesta){
+		//TODO
+	})
+    })
+})
+
