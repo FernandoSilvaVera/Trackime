@@ -1,8 +1,7 @@
 <?PHP
 	if(!isset($_SESSION))
 		session_start();
-				
-
+			
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,16 +29,17 @@
 					</li>
 				</ul>
 				<ul class="navbar-nav ml-auto">
-				<?php
-				if (isset($_SESSION["login"])){
-					echo '<li class="nav-item"> <a class="nav-link" href="./vista/panel.php">Panel de Usuario</a> </li>';
-					echo '<li class="nav-item"> <a class="nav-link" href="./vista/logout.php">Cerrar Sesion</a> </li>';
-				}else{
-					echo '<li class="nav-item"> <a class="nav-link" href="./vista/registro.php">Registrarse</a> </li>';
-					echo '<li class="nav-item"> <a class="nav-link" href="./vista/login.php">Logearse</a> </li>';
-				}
-				?>
-				</ul>';
+				
+				<!--Parte derecha-->
+
+				<?php if (isset($_SESSION["login"])): ?>
+					<li class="nav-item"> <a class="nav-link" href="./vista/panel.php">Panel de Usuario</a> </li>
+					<li class="nav-item"> <a class="nav-link" href="./vista/logout.php">Cerrar Sesion</a> </li>
+				<?php else: ?>
+					<li class="nav-item"> <a class="nav-link" href="./vista/registro.php">Registrarse</a> </li>
+					<li class="nav-item"> <a class="nav-link" href="./vista/login.php">Logearse</a> </li>
+				<?php endif; ?>
+				</ul>
 			</div>
 		</nav>
 	</div>
