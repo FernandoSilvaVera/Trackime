@@ -40,15 +40,13 @@
 				
 				<!--Parte derecha-->
 
-				<?php
-				if (isset($_SESSION["login"])){
-					echo '<li class="nav-item"> <a class="nav-link" href="./panel.php">Panel de Usuario</a> </li>';
-					echo '<li class="nav-item"> <a class="nav-link" href="./logout.php">Cerrar Sesion</a> </li>';
-				}else{
-					echo '<li class="nav-item"> <a class="nav-link" href="./registro.php">Registrarse</a> </li>';
-					echo '<li class="nav-item"> <a class="nav-link" href="./login.php">Logearse</a> </li>';
-				}
-				?>
+				<?php if (isset($_SESSION["login"])): ?>
+					<li class="nav-item"> <a class="nav-link" href="./panel.php">Panel de Usuario</a> </li>
+					<li class="nav-item"> <a class="nav-link" href="./logout.php">Cerrar Sesion</a> </li>
+				<?php else: ?>
+					<li class="nav-item"> <a class="nav-link" href="./registro.php">Registrarse</a> </li>
+					<li class="nav-item"> <a class="nav-link" href="./login.php">Logearse</a> </li>
+				<?php endif; ?>
 				</ul>
 			</div>
 		</nav>
@@ -69,9 +67,7 @@
 			
 				<!-- Guardar la serie -->
 
-				<?php
-				if (isset($_SESSION["login"]))
-				echo '
+				<?php if (isset($_SESSION["login"])): ?>
 				<div class="container text-right">
 					<div class="btn-group">
 						<button type="button" class="btn btn-dark">Recomendar</button>
@@ -81,8 +77,8 @@
 							<a class="dropdown-item" id="terminada">como terminada</a>
 						</div>
 					</div>
-				</div>';
-				?>
+				</div>
+				<?php endif; ?>
 			</div>
 			<div class="col-sm-2"></div>
 		</div>

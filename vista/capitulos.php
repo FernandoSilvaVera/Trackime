@@ -32,15 +32,16 @@
 					</li>
 				</ul>
 				<ul class="navbar-nav ml-auto">
-				<?php
-				if (isset($_SESSION["login"])){
-					echo '<li class="nav-item"> <a class="nav-link" href="./panel.php">Panel de Usuario</a> </li>';
-					echo '<li class="nav-item"> <a class="nav-link" href="./logout.php">Cerrar Sesion</a> </li>';
-				}else{
-					echo '<li class="nav-item"> <a class="nav-link" href="./registro.php">Registrarse</a> </li>';
-					echo '<li class="nav-item"> <a class="nav-link" href="./login.php">Logearse</a> </li>';
-				}
-				?>
+
+				<!--Parte derecha-->
+
+				<?php if (isset($_SESSION["login"])): ?>
+					<li class="nav-item"> <a class="nav-link" href="./panel.php">Panel de Usuario</a> </li>
+					<li class="nav-item"> <a class="nav-link" href="./logout.php">Cerrar Sesion</a> </li>
+				<?php else: ?>
+					<li class="nav-item"> <a class="nav-link" href="./registro.php">Registrarse</a> </li>
+					<li class="nav-item"> <a class="nav-link" href="./login.php">Logearse</a> </li>
+				<?php endif; ?>
 				</ul>
 			</div>
 		</nav>

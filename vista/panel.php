@@ -14,7 +14,7 @@
      	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<div class="container">
+	<div class="container-fluid">
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 			<a class="navbar-brand" href="../index.php">AnimeTracker</a>
 			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb">
@@ -46,9 +46,9 @@
 
 	<br>
 
-	<div class="container text-center">
+	<div class="container-fluid text-center">
 		<div class="row">
-		        <div class="col-sm-3">
+		        <div class="col-sm-2">
 				<div class="card">
 					<img class="card-img-top" src="../images/loli.jpg" alt="Card image" style="width:100%">
 					<div class="card-body">

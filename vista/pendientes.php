@@ -2,9 +2,6 @@
 
 	require_once("../controlador/pendientes.php");
 
-	if(!isset($_SESSION))
-		session_start();
-
 	$paginacion = $_SESSION["paginacion"];
 	$series = $_SESSION["series"];
 
@@ -36,16 +33,17 @@
 					</li>
 				</ul>
 				<ul class="navbar-nav ml-auto">
-				<?php
-				if (isset($_SESSION["login"])){
-					echo '<li class="nav-item"> <a class="nav-link" href="./panel.php">Panel de Usuario</a> </li>';
-					echo '<li class="nav-item"> <a class="nav-link" href="./logout.php">Cerrar Sesion</a> </li>';
-				}else{
-					echo '<li class="nav-item"> <a class="nav-link" href="./registro.php">Registrarse</a> </li>';
-					echo '<li class="nav-item"> <a class="nav-link" href="./login.php">Logearse</a> </li>';
-				}
-				?>
-				</ul>';
+				
+				<!--Parte derecha-->
+
+				<?php if (isset($_SESSION["login"])): ?>
+					<li class="nav-item"> <a class="nav-link" href="./panel.php">Panel de Usuario</a> </li>
+					<li class="nav-item"> <a class="nav-link" href="./logout.php">Cerrar Sesion</a> </li>
+				<?php else: ?>
+					<li class="nav-item"> <a class="nav-link" href="./registro.php">Registrarse</a> </li>
+					<li class="nav-item"> <a class="nav-link" href="./login.php">Logearse</a> </li>
+				<?php endif; ?>
+				</ul>
 			</div>
 		</nav>
 	</div>
@@ -76,27 +74,24 @@
 		<div class="tab-content">
 			<div id="seleccionado" class="container tab-pane active"><br>
 				<div class="row">
-				<?PHP	
-				for($i=0; $i<count($series); $i++)
-					echo			
-						'<div class="col-sm-6 col-md-4 col-lg-3 mt-4">' .
-							'<div class="card">' .
-								'<img class="card-img-top" src="../images/'.$series[$i]->dato["id"].'.jpg">' .
-								'<div class="card-block">' .
-									'<h5 align="center" class="text-bold">' . $series[$i]->dato["nombre"] . '</h5> '.
-								'</div>'.
-							'</div>' . 
-						'</div>';
-					?>
+					<?php foreach ($series as $serie): ?>
+						<div class="col-sm-6 col-md-4 col-lg-3 mt-4">
+							<div class="card">
+								<a href="./capitulos.php?id=<?= $serie->dato["id"] ?>"><img class="card-img-top" src="../images/<?= $serie->dato["id"]?>.jpg"></a>
+								<div class="card-block">
+									<h5 align="center" class="text-bold"><?= $serie->dato["nombre"] ?></h5>
+								</div>
+							</div>
+						</div>
+					<?php endforeach?>
 				</div>
 
 				<br>
 			
 				<ul align="center" class="pagination">
-					<?PHP
-					for($i=0; $i<count($paginacion); $i++)
-						echo $paginacion[$i];
-					?>
+					<?php foreach ($paginacion as $paginas): ?>
+						<?= $paginas?>
+					<?php endforeach?>
 				</ul>
 			</div>
 		</div>
