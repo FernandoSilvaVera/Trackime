@@ -1,6 +1,5 @@
-<?PHP
-	if(!isset($_SESSION))
-		session_start();
+<?php
+	require_once("../controlador/visor.php");
 ?>
 
 <!DOCTYPE html>
@@ -55,9 +54,9 @@
 		</nav>
 	</div>
 	
-	<!-- Parte de visualización -->
+	<!-- Visualización -->
 
-	<br>	
+	<br>
 	<div class="container">
 		<h3 align="center"><?PHP echo $_REQUEST["anime"];?>: Capitulo <?PHP echo $_REQUEST["cap"];?></h3>
  		<div class="row">
@@ -67,6 +66,9 @@
 					<iframe scrolling="no" class="embed-responsive-item" src="../images/1.jpg"></iframe>
 				</div>
 				<br>
+			
+				<!-- Guardar la serie -->
+
 				<?php
 				if (isset($_SESSION["login"]))
 				echo '
@@ -85,6 +87,37 @@
 			<div class="col-sm-2"></div>
 		</div>
   	</div>
+
+	<!-- Comentarios -->
+
+	<br>
+
+	<div class="container">
+		<h2 align="center">Comentarios</h2>
+		
+		<!-- Escribir un comentario -->
+
+		<div class="form-group">
+			<label for="exampleTextarea">Escribe un comentario</label>
+			<textarea class="form-control" id="comentario" maxlength="255" rows="3"></textarea>
+			<br>
+			<button type="submit" id="comentar" class="btn btn-primary float-right">Comentar</button>
+		</div>
+
+		<br>
+
+		<!-- Mostrar comentarios -->
+	
+		<?php foreach($comentario as $comentario): ?>
+		<div class="media">
+			<img class="d-flex mr-3" src="../images/índice.svg"/>
+			<div class="media-body">
+				<h5 class="mt-0"><?=$comentario->dato["usuario"]?></h5>
+				<p><?=$comentario->dato["comentario"] ?></p>
+			</div>
+		</div>
+		<?php endforeach?>
+	</div>
 
 </body>
 </html>
