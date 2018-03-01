@@ -27,7 +27,7 @@ class BBDD{
 
 		$devolver = array();
 		$objeto = new Informacion;
-		$tabla = mysqli_query($this->conexion,$consulta );
+		$tabla = mysqli_query($this->conexion,$consulta);
 
 		while($fila = mysqli_fetch_array($tabla)){
 			$objeto = new Informacion;
