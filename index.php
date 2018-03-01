@@ -10,7 +10,6 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
-	<link rel="stylesheet" href="./css/style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
      	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
@@ -29,16 +28,22 @@
 					</li>
 				</ul>
 				<ul class="navbar-nav ml-auto">
-				
-				<!--Parte derecha-->
-
-				<?php if (isset($_SESSION["login"])): ?>
-					<li class="nav-item"> <a class="nav-link" href="./vista/panel.php">Panel de Usuario</a> </li>
-					<li class="nav-item"> <a class="nav-link" href="./vista/logout.php">Cerrar Sesion</a> </li>
-				<?php else: ?>
+					<form class="form-inline" action="/action_page.php">
+						<input class="form-control" type="text" placeholder="Buscar usuarios o series">
+					</form>
+					<?php if (isset($_SESSION["login"])): ?>
+					<li class="nav-item dropdown">
+						<div style="cursor:pointer" class="nav-link dropdown-toggle" data-toggle="dropdown"><img src="./images/índice.svg" style="width:32px;"></div>
+						<div class="dropdown-menu dropdown-menu-right">
+							<a class="dropdown-item" href="./vista/perfil.php">Perfil</a>
+							<a class="dropdown-item" href="./vista/administrar.php">Administrar Series</a>
+							<a class="dropdown-item" href="./vista/logout.php">Cerrar Sesión</a>
+						</div>
+					</li>
+					<?php else: ?>
 					<li class="nav-item"> <a class="nav-link" href="./vista/registro.php">Registrarse</a> </li>
 					<li class="nav-item"> <a class="nav-link" href="./vista/login.php">Logearse</a> </li>
-				<?php endif; ?>
+					<?php endif; ?>
 				</ul>
 			</div>
 		</nav>
