@@ -12,7 +12,7 @@ class Informacion{
 
 class BBDD{
 
-	private $conexion = null;
+	private $conexion;
 
 	public $columnaPersonajes = array("nombre_anime","sexo","nombre","color_pelo","loli");
 	public $columnaAnimes = array("id","nombre","temporada","tag","nota","capitulos","web");
