@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Bootstrap Example</title>
+	<title>Trackime</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -32,7 +32,7 @@
 					</li>
 				</ul>
 				<ul class="navbar-nav ml-auto">
-					<form class="form-inline" action="/action_page.php">
+					<form class="form-inline" action="./busqueda.php">
 						<input class="form-control" type="text" placeholder="Buscar usuarios o series">
 					</form>
 					<?php if (isset($_SESSION["login"])): ?>
@@ -40,7 +40,6 @@
 						<div style="cursor:pointer" class="nav-link dropdown-toggle" data-toggle="dropdown"><img src="../images/índice.svg" style="width:32px;"></div>
 						<div class="dropdown-menu dropdown-menu-right">
 							<a class="dropdown-item" href="./perfil.php">Perfil</a>
-							<a class="dropdown-item" href="./logout.php">Administrar Series</a>
 							<a class="dropdown-item" href="./logout.php">Cerrar Sesión</a>
 						</div>
 					</li>
@@ -63,7 +62,7 @@
 					<h3 align="center">Listado de capítulos</h3>
 					<table class="table table-hover">
 						<tbody>
-						<?PHP
+						<?php
 							for($i=$capitulos; $i>0; $i--){
 								echo "<tr>";
 									echo "<td><a href='./visor.php?anime=$nombre&cap=$i'>$nombre</a></td>";

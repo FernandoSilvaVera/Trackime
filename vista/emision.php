@@ -33,7 +33,7 @@
 					</li>
 				</ul>
 				<ul class="navbar-nav ml-auto">
-					<form class="form-inline" action="/action_page.php">
+					<form class="form-inline" action="./busqueda.php">
 						<input class="form-control" type="text" placeholder="Buscar usuarios o series">
 					</form>
 					<?php if (isset($_SESSION["login"])): ?>
@@ -41,7 +41,6 @@
 						<div style="cursor:pointer" class="nav-link dropdown-toggle" data-toggle="dropdown"><img src="../images/índice.svg" style="width:32px;"></div>
 						<div class="dropdown-menu dropdown-menu-right">
 							<a class="dropdown-item" href="./perfil.php">Perfil</a>
-							<a class="dropdown-item" href="./logout.php">Administrar Series</a>
 							<a class="dropdown-item" href="./logout.php">Cerrar Sesión</a>
 						</div>
 					</li>
@@ -66,13 +65,14 @@
 			<li class="nav-item">
 				<a class="nav-link active" data-toggle="tab" href="#seleccionado">En emisión</a>
 			</li>
+			<?php if (isset($_SESSION["login"])): ?>
 			<li class="nav-item">
 				<a class="nav-link" href="./pendientes.php">Pendientes</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="./terminadas.php">Terminadas</a>
 			</li>
-
+			<?php endif; ?>
 		</ul>
 
 		<!-- Contenido de las pestañas -->
