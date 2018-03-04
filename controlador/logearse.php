@@ -19,7 +19,7 @@ class Logearse{
 		if(!isset($_SESSION))
 			session_start();
 
-		if(!isset($_SESSION["login"]))
+		if(!isset($_SESSION["login"]) && isset($_POST["user"]))
 			foreach($usuarios as $buscar)
 				if($buscar->dato["usuario"] === $_POST["user"])
 					if($buscar->dato["contrasena"] === $_POST["pswd"]){

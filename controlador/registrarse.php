@@ -31,9 +31,11 @@ class Registrarse{
 
 	public function analizar(){
 
-		$this->user = $_POST["user"];
-		$this->pswd = $_POST["pswd"];
-		$this->pswd2 = $_POST["pswd2"];
+		if(isset($_POST["user"])){
+			   $this->user = $_POST["user"];
+			   $this->pswd = $_POST["pswd"];
+			   $this->pswd2 = $_POST["pswd2"];
+		}
 
 		$cuentaCreada = false;
 
