@@ -1,4 +1,5 @@
 <?PHP
+
 	if(!isset($_SESSION))
 		session_start();
 			
@@ -28,7 +29,7 @@
 					</li>
 				</ul>
 				<ul class="navbar-nav ml-auto">
-					<form class="form-inline" action="/action_page.php">
+					<form class="form-inline" action="./vista/busqueda.php">
 						<input class="form-control" type="text" placeholder="Buscar usuarios o series">
 					</form>
 					<?php if (isset($_SESSION["login"])): ?>
@@ -36,7 +37,6 @@
 						<div style="cursor:pointer" class="nav-link dropdown-toggle" data-toggle="dropdown"><img src="./images/índice.svg" style="width:32px;"></div>
 						<div class="dropdown-menu dropdown-menu-right">
 							<a class="dropdown-item" href="./vista/perfil.php">Perfil</a>
-							<a class="dropdown-item" href="./vista/administrar.php">Administrar Series</a>
 							<a class="dropdown-item" href="./vista/logout.php">Cerrar Sesión</a>
 						</div>
 					</li>
