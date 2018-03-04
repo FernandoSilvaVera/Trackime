@@ -12,14 +12,14 @@ class Pendientes extends Paginacion{
 
 	public function __construct(){
 		parent::__construct();
-		$this->totalPaginas($this::CONSULTA["from"],$_SESSION["login"]);
+		$this->totalPaginas($this::CONSULTA["from"], $_SESSION["login"]);
 		$this->obtenerPaginacion($this::VISTA);
 		$this->analizar();
 	}
 
 	public function analizar(){
-		$_SESSION["paginacion"] = $this->paginas;
-		$_SESSION["series"] = $this->obtenerSerie($this::CONSULTA, $_SESSION["login"]);
+			$_SESSION["paginacion"] = $this->paginas;
+			$_SESSION["series"] = $this->obtenerSerie($this::CONSULTA, $_SESSION["login"]);
 	}
 }
 
