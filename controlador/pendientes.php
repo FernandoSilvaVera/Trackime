@@ -18,8 +18,8 @@ class Pendientes extends Paginacion{
 	}
 
 	public function analizar(){
-			$_SESSION["paginacion"] = $this->paginas;
-			$_SESSION["series"] = $this->obtenerSerie($this::CONSULTA, $_SESSION["login"]);
+		$_SESSION["paginacion"] = $this->paginas;
+		$_SESSION["series"] = $this->obtenerSerie($this::CONSULTA, $_SESSION["login"]);
 	}
 }
 
