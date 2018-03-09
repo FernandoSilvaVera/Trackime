@@ -14,11 +14,6 @@ class BBDD{
 
 	private $conexion;
 
-	public $columnaPersonajes = array("nombre_anime","sexo","nombre","color_pelo","loli");
-	public $columnaAnimes = array("id","nombre","temporada","tag","nota","capitulos","web");
-	public $columnaSeries = array("nombre","tag","dia_nuevo_cap","capitulos","nota");
-	public $usuarios = array("usuario","contrasena");
-
 	public function __construct(){
 		$this->conexion = mysqli_connect(HOST,USUARIO,CONTRA,NOMBRE);
 	}
