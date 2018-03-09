@@ -15,7 +15,7 @@ class Registrarse{
 	}
 
 	private function usuarioDisponible(){
-		$usuarios = $this->bbdd->obtener("select * from USUARIOS where usuario='$this->user'",$this->bbdd->usuarios);
+		$usuarios = $this->bbdd->obtener("select * from USUARIOS where usuario='$this->user'",array("usuario","contrasena"));
 		return !count($usuarios);
 	}
 
