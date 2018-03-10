@@ -11,7 +11,14 @@
 </head>
 <body>
 
-	<p>Error 404</p>
+	<!-- Barra de navegacion -->
+	<?php require "./utils/navegacion.php"?>
+	
+	<div class="container">
+		<h1 align="center">Pendiente poner algo</h1>	
+	</div>
+
+
 
 </body>
 </html>
