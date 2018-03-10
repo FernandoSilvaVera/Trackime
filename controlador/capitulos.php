@@ -18,7 +18,7 @@ class Capitulos{
 
 		$id = $_REQUEST["id"];
 		$capitulos= "SELECT nombre,capitulos,id from ANIMES where id=$id";
-		$_SESSION["capitulos"] = $this->bbdd->obtener($capitulos,array("nombre","capitulos","id"));
+		$_SESSION["capitulos"] = $this->bbdd->obtener($capitulos,["nombre","capitulos","id"]);
 		
 	}
 

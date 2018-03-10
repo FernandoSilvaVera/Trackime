@@ -5,10 +5,10 @@ require_once("../clases/Paginacion.php");
 class Pendientes extends Paginacion{
 
 	private const VISTA = "pendientes.php";
-	private const CONSULTA = array(
+	private const CONSULTA = [
 		"select" => "select nombre,id ",
 		"from" => "from CUSTOM join ANIMES where CUSTOM.nombre_anime = ANIMES.nombre and CUSTOM.estado = 'pendiente' and CUSTOM.usuario= "
-	); 
+	]; 
 
 	public function __construct(){
 		parent::__construct();

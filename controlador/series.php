@@ -5,10 +5,10 @@ require_once("../clases/Paginacion.php");
 class Series extends Paginacion{
 
 	private const VISTA = "series.php";
-	private const CONSULTA = array(
+	private const CONSULTA = [
 		"select" => "select nombre,id ",
 		"from" => "from ANIMES"
-	); 
+	]; 
 
 	public function __construct(){
 		parent::__construct();

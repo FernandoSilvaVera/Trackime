@@ -7,28 +7,22 @@ class Logearse{
 	private $bbdd;
 
 	public function __construct(){	
+		session_start();
 		$this->bbdd = new BBDD;
 		$this->analizar();
 	}
 
 	public function analizar(){
 
-		$usuarios = $this->bbdd->obtener("select * from USUARIOS",$this->bbdd->usuarios);
-		$tiene_acceso = false;
-
-		if(!isset($_SESSION))
-			session_start();
+		$usuarios = $this->bbdd->obtener("select usuario,contrasena from USUARIOS",["usuario","contrasena"]);
 
 		if(!isset($_SESSION["login"]) && isset($_POST["user"]))
 			foreach($usuarios as $buscar)
-				if($buscar->dato["usuario"] === $_POST["user"])
-					if($buscar->dato["contrasena"] === $_POST["pswd"]){
-						$_SESSION["login"] = $buscar->dato["usuario"];
-						$tiene_acceso = true;	
-					}
+				if($buscar->dato["usuario"] === $_POST["user"] && $buscar->dato["contrasena"] === $_POST["pswd"]){
+					$_SESSION["login"] = $buscar->dato["usuario"];
+					header('Location: /Trackime/');
+				}
 
-		if($tiene_acceso)
-			header('Location: /Trackime/');
 	}
 
 }
