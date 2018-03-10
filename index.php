@@ -1,8 +1,6 @@
 <?PHP
-
 	if(!isset($_SESSION))
-		session_start();
-			
+		session_start();		
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,10 +8,10 @@
 	<title>ANIME TRACKER</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"/>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
-     	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 </head>
 <body>
 	<div class="container">
@@ -29,8 +27,8 @@
 					</li>
 				</ul>
 				<ul class="navbar-nav ml-auto">
-					<form class="form-inline" action="./vista/busqueda.php">
-						<input class="form-control" type="text" placeholder="Buscar usuarios o series">
+					<form class="form-inline" action="./vista/busqueda.php" method="get">
+						<input class="form-control" type="text" name="busqueda" placeholder="Buscar usuarios o series">
 					</form>
 					<?php if (isset($_SESSION["login"])): ?>
 					<li class="nav-item dropdown">
