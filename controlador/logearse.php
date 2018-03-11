@@ -14,12 +14,13 @@ class Logearse{
 
 	public function analizar(){
 
-		$usuarios = $this->bbdd->obtener("select usuario,contrasena from USUARIOS",["usuario","contrasena"]);
+		$usuarios = $this->bbdd->obtener("select usuario,contrasena,imagen from USUARIOS",["usuario","contrasena","imagen"]);
 
 		if(!isset($_SESSION["login"]) && isset($_POST["user"]))
 			foreach($usuarios as $buscar)
 				if($buscar->dato["usuario"] === $_POST["user"] && $buscar->dato["contrasena"] === $_POST["pswd"]){
 					$_SESSION["login"] = $buscar->dato["usuario"];
+					$_SESSION["imagen"] = $buscar->dato["imagen"];
 					header('Location: /Trackime/');
 				}
 
