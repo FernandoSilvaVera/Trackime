@@ -16,7 +16,7 @@
 				</form>
 				<?php if (isset($_SESSION["login"])): ?>
 				<li class="nav-item dropdown">
-					<div style="cursor:pointer" class="nav-link dropdown-toggle" data-toggle="dropdown"><img src="../images/índice.svg" style="width:32px;"></div>
+					<div style="cursor:pointer" class="nav-link dropdown-toggle" data-toggle="dropdown"><img src="../images/usuario/<?= $_SESSION["imagen"] ?>" style="width:32px;"></div>
 					<div class="dropdown-menu dropdown-menu-right">
 						<a class="dropdown-item" href="./perfil.php">Perfil</a>
 						<a class="dropdown-item" href="./logout.php">Cerrar Sesión</a>

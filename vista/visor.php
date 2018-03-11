@@ -82,7 +82,7 @@
 	
 		<?php foreach($comentario as $comentario): ?>
 		<div class="media">
-			<img class="d-flex mr-3" src="../images/índice.svg"/>
+			<img class="d-flex mr-3" style="width:64px" src="../images/usuario/<?= $_SESSION["imagen"]?>"/>
 			<div class="media-body">
 				<h5 class="mt-0"><?=$comentario->dato["usuario"]?></h5>
 				<p><?=$comentario->dato["comentario"] ?></p>
