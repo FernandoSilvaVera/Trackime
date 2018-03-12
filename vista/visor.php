@@ -30,7 +30,7 @@
 
 	<br>
 	<div class="container">
-		<h3 align="center"><?PHP echo $_REQUEST["anime"];?>: Capitulo <?PHP echo $_REQUEST["cap"];?></h3>
+		<h3 align="center"><?=$_REQUEST["anime"]?>: Capitulo <?=$_REQUEST["cap"]?></h3>
  		<div class="row">
 			<div class="col-sm-2"></div>
 			<div class="col-sm-8">

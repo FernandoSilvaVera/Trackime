@@ -34,8 +34,8 @@
 
 			<div class="col-sm-8">
 				<ul class="nav nav-tabs">
-					<li class="nav-item"> <a class="nav-link active" href="./perfil.php">Seguidores</a> </li>
-					<li class="nav-item"> <a class="nav-link" href="./seguidores.php">Siguiendo</a> </li>
+					<li class="nav-item"> <a class="nav-link" href="./perfil.php">Seguidores</a> </li>
+					<li class="nav-item"> <a class="nav-link active" href="./seguidores.php">Siguiendo</a> </li>
 					<li class="nav-item"> <a class="nav-link" href="./usuarioPendientes.php">Pendientes</a> </li>
 					<li class="nav-item"> <a class="nav-link" href="./usuarioTerminadas.php">Terminadas</a> </li>
 				</ul>		
