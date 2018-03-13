@@ -4,25 +4,31 @@ require_once("../clases/Paginacion.php");
 
 class Pendientes extends Paginacion{
 
+	private $usuario;
 	private const VISTA = "pendientes.php";
 	private const CONSULTA = [
 		"select" => "select nombre,id ",
 		"from" => "from CUSTOM join ANIMES where CUSTOM.nombre_anime = ANIMES.nombre and CUSTOM.estado = 'pendiente' and CUSTOM.usuario= "
 	]; 
 
-	public function __construct(){
+	public function __construct($usuario){
 		parent::__construct();
-		$this->totalPaginas($this::CONSULTA["from"], $_SESSION["login"]);
+		$this->usuario = $usuario;
+		$this->totalPaginas($this::CONSULTA["from"], $this->usuario);
 		$this->obtenerPaginacion($this::VISTA);
-		$this->analizar();
 	}
 
-	public function analizar(){
-		$_SESSION["paginacion"] = $this->paginas;
-		$_SESSION["series"] = $this->obtenerSerie($this::CONSULTA, $_SESSION["login"]);
+	public function getPaginacion(){
+		return $this->paginas;
 	}
+	
+	public function getSeries(){
+		return $this->obtenerSerie($this::CONSULTA, $this->usuario);
+	}
+
 }
 
-new Pendientes;
+if(!isset($_SESSION))
+	session_start();
 
 ?>
