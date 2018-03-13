@@ -1,10 +1,8 @@
 <?PHP
-
 	require_once("../controlador/pendientes.php");
-
-	$paginacion = $_SESSION["paginacion"];
-	$series = $_SESSION["series"];
-
+	$pendientes = new Pendientes($_SESSION["login"]);
+	$paginacion = $pendientes->getPaginacion();
+	$series = $pendientes->getSeries();
 ?>
 
 <!DOCTYPE html>

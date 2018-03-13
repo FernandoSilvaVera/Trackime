@@ -1,5 +1,6 @@
-<?PHP
-	session_start();
+<?php
+	require_once("../controlador/perfil.php");
+	$usuario = $_SESSION["usuario"];
 ?>
 	
 <!DOCTYPE html>
@@ -26,18 +27,19 @@
 			<!-- Imágen del usuario -->
 
 			<div class="col-sm-4">
-				<img style="height:200px;width:200px" src="../images/usuario/<?= $_SESSION["imagen"]?>.png" class="rounded mx-auto d-block" data-toggle="modal" data-target="#cambiarImagen">
-				<h2 align="center"><?=$_SESSION["login"] ?></h2>
+				<img style="height:200px;width:200px" src="../images/usuario/<?= $usuario[0]->dato["imagen"]?>.png" class="rounded mx-auto d-block" data-toggle="modal" data-target="#cambiarImagen">
+				<h2 align="center"><?=$usuario[0]->dato["usuario"]?></h2>
 			</div>
 
 			<!-- Seguidores...etc -->
 
 			<div class="col-sm-8">
 				<ul class="nav nav-tabs">
-					<li class="nav-item"> <a class="nav-link active" href="./perfil.php">Seguidores</a> </li>
-					<li class="nav-item"> <a class="nav-link" href="./seguidores.php">Siguiendo</a> </li>
-					<li class="nav-item"> <a class="nav-link" href="./usuarioPendientes.php">Pendientes</a> </li>
-					<li class="nav-item"> <a class="nav-link" href="./usuarioTerminadas.php">Terminadas</a> </li>
+					<li class="nav-item"> <a class="nav-link active" href="./perfil.php?usuario=<?=$usuario[0]->dato["usuario"]?>">Perfil</a> </li>
+					<li class="nav-item"> <a class="nav-link" href="./siguiendo.php?usuario=<?=$usuario[0]->dato["usuario"]?>">Siguiendo</a> </li>
+					<li class="nav-item"> <a class="nav-link" href="./seguidores.php?usuario=<?=$usuario[0]->dato["usuario"]?>">Seguidores</a> </li>
+					<li class="nav-item"> <a class="nav-link" href="./usuarioPendientes.php?usuario=<?=$usuario[0]->dato["usuario"]?>">Pendientes</a> </li>
+					<li class="nav-item"> <a class="nav-link" href="./usuarioTerminadas.php?usuario=<?=$usuario[0]->dato["usuario"]?>">Terminadas</a> </li>
 				</ul>		
 			</div>
 

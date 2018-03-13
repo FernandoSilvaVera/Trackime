@@ -18,7 +18,7 @@
 				<li class="nav-item dropdown">
 					<div style="cursor:pointer" class="nav-link dropdown-toggle" data-toggle="dropdown"><img src="../images/usuario/<?= $_SESSION["imagen"] ?>" style="width:32px;"></div>
 					<div class="dropdown-menu dropdown-menu-right">
-						<a class="dropdown-item" href="./perfil.php">Perfil</a>
+						<a class="dropdown-item" href="./perfil.php?usuario=<?=$_SESSION["login"]?>">Perfil</a>
 						<a class="dropdown-item" href="./logout.php">Cerrar Sesión</a>
 					</div>
 				</li>

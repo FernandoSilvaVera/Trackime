@@ -1,10 +1,8 @@
 <?PHP
-
 	require_once("../controlador/terminadas.php");
-
-	$paginacion = $_SESSION["paginacion"];
-	$series = $_SESSION["series"];
-
+	$terminadas = new Terminadas($_SESSION["login"]);
+	$paginacion = $terminadas->getPaginacion();
+	$series = $terminadas->getSeries();
 ?>
 
 <!DOCTYPE html>
