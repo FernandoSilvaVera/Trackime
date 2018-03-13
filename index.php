@@ -35,7 +35,7 @@
 					<li class="nav-item dropdown">
 						<div style="cursor:pointer" class="nav-link dropdown-toggle" data-toggle="dropdown"><img src="./images/usuario/<?=$_SESSION["imagen"]?>.png" style="width:32px;"></div>
 						<div class="dropdown-menu dropdown-menu-right">
-							<a class="dropdown-item" href="./vista/perfil.php">Perfil</a>
+							<a class="dropdown-item" href="./vista/perfil.php?usuario=<?=$_SESSION["login"]?>">Perfil</a>
 							<a class="dropdown-item" href="./vista/logout.php">Cerrar Sesión</a>
 						</div>
 					</li>
