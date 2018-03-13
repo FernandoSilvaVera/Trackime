@@ -11,7 +11,8 @@ class Paginacion{
 	protected $bbdd;
 
 	protected function __construct(){
-		session_start();
+		if(!isset($_SESSION))
+			session_start();
 		$this->paginaActual = empty($_REQUEST["id"]) ?0 :$_REQUEST["id"];
 		$this->paginas = array();
 		$this->bbdd = new BBDD;
