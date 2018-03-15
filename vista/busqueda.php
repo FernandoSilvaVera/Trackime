@@ -23,26 +23,25 @@
 	<?php require "./utils/navegacion.php"?>
 
 	<div class="container">
-		<?php foreach ($datos as $serie): ?>
+		<?php foreach($datos as $anime):?>
 		<div class="row justify-content-center align-items-center mt-4">
 			<div class="col-sm-3">
 				<div class="card">
-					<a href="./capitulos.php?id=<?=$serie->dato["id"]?>"><img class="card-img-top rounded" src="../images/<?=$serie->dato["id"] ?>.jpg"></a>
+					<a href="./capitulos.php?id=<?=$anime->dato["id"]?>"><img class="card-img-top rounded" src="../images/<?=$anime->dato["id"] ?>.jpg"></a>
 				</div>
 			</div>
-			<div id="<?=$serie->dato["id"]?>" style="cursor:pointer" class="col-sm-7 descripcion">
-				<h1><?= $serie->dato["nombre"]?></h1>
+			<div id="<?=$anime->dato["id"]?>" style="cursor:pointer" class="col-sm-7 descripcion">
+				<h1><?= $anime->dato["nombre"]?></h1>
 				<p>Descripcion del anime</p>
-				<span class="badge badge-dark">Mecha</span>
-				<span class="badge badge-dark">shonnen</span>
-				<span class="badge badge-dark">Recuerdon de la vida</span>
-				<span class="badge badge-dark">Comedia</span>
+				<?php foreach($genero[$anime->dato["nombre"]] as $aux):?>
+				<span class="badge badge-dark"><?=$aux->dato["genero"]?></span>
+				<?php endforeach;?>
 			</div>
 			<div class="col-sm-2 text-center">
 				<button type="button" class="btn btn-dark">Seguir</button>
 			</div>
 		</div> 
-		<?php endforeach?>
+		<?php endforeach;?>
 	</div>
 
 </body>
