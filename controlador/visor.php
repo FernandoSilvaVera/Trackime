@@ -19,7 +19,6 @@ class Comentarios {
 
 }
 
-
 $comentarios = new Comentarios;
 $comentario = $comentarios->obtenerComentarios();
 

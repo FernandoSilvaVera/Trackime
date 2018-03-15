@@ -2,7 +2,7 @@
 	require_once("../controlador/pendientes.php");
 	$pendientes = new Pendientes($_SESSION["login"]);
 	$paginacion = $pendientes->getPaginacion();
-	$series = $pendientes->getSeries();
+	$series		= $pendientes->getSeries();
 ?>
 
 <!DOCTYPE html>

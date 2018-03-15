@@ -26,6 +26,7 @@ class Registrarse{
 	private function crearCuenta(){
 		$this->bbdd->meter("insert into USUARIOS (usuario,contrasena) values('$this->user','$this->pswd')");
 		$_SESSION["login"] = $this->user;
+		$_SESSION["imagen"] = "sagiri";
 		return true;
 	}
 
