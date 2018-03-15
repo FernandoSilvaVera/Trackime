@@ -1,6 +1,7 @@
 <?PHP
 	require_once("../controlador/capitulos.php");
-	$serie = $_SESSION["capitulos"];
+	$capitulos = new Capitulos;
+	$serie = $capitulos->getCapitulos();
 	$nombre = $serie[0]->dato["nombre"];
 	$capitulos = $serie[0]->dato["capitulos"];
 	$id = $serie[0]->dato["id"];
@@ -43,11 +44,8 @@
 					</table>
 			</div>
 			<div align="center" class="col-sm-5">
-					<?PHP
-					echo '<img src="../images/'.$id.'.jpg" class="img-thumbnail" width="304" height="236">';	
-					echo "<h5>$nombre</h5>"
-					?>
-
+					<img src="../images/<?=$serie[0]->dato["id"]?>.jpg" class="img-thumbnail" width="304" height="236">	
+					<h5><?=$nombre?></h5>
 					<p align="left">	
 						Lorem Ipsum is simply dummy text of the printing and typesetting industry.			
 						Lorem Ipsum is simply dummy text of the printing and typesetting industry.
