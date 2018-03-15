@@ -7,7 +7,7 @@
 		<div class="collapse navbar-collapse" id="navb">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item">
-					<a class="nav-link" href="./series.php">Series</a>
+					<a class="nav-link" href="./series.php">Animes</a>
 				</li>
 			</ul>
 			<ul class="navbar-nav ml-auto">
