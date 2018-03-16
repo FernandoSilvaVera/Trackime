@@ -30,11 +30,9 @@
 		<div class="row justify-content-center mt-5">
 
 			<!-- Imágen del usuario -->
+			<?php require "./utils/usuario.php"?>
 
-			<div class="col-sm-4">
-				<img style="height:200px;width:200px" src="../images/usuario/<?=$usuario[0]->dato["imagen"]?>.png" class="rounded mx-auto d-block" data-toggle="modal" data-target="#cambiarImagen">
-				<h2 align="center"><?=$usuario[0]->dato["usuario"]?></h2>
-			</div>
+
 
 			<!-- Seguidores...etc -->
 
