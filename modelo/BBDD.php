@@ -2,7 +2,7 @@
 
 define ("HOST","localhost");
 define ("USUARIO","root");
-define ("CONTRA","y");
+define ("CONTRA","1996");
 define ("NOMBRE","ANIME");
 define ("CHARSET","utf8");
 
