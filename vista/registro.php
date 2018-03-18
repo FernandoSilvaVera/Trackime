@@ -17,7 +17,7 @@
 		<div class="row">
 			<div class="col-sm-4"></div>
 			<div class="col-sm-4">
-				<form action="./registro.php" method="post">
+				<form action="./registro" method="post">
 					<div class="form-group">
 						<input class="form-control" id="user" placeholder="Usuario" name="user">
 					</div>

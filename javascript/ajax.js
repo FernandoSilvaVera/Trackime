@@ -5,36 +5,45 @@ $.request = function(parametro){
 	return decodeURI(results[1])
 }
 
-//Marca la serie como pendiente
+
 $(document).ready(function(){
+
+	//Marca la serie como pendiente
     $("#pendiente").click(function(){
 		$.get("../controlador/agregar.php",{serie:$.request('anime'),estado:"pendiente"}, function(respuesta){
 			//TODO -->Cambiar icono de agregar
 		})
     })
-})
 
-//Marca la serie como terminada
-$(document).ready(function(){
+	//Marca la serie como terminada
     $("#terminada").click(function(){
 		$.get("../controlador/agregar.php",{serie:$.request('anime'),estado:"terminada"}, function(respuesta){
 			//TODO -->Cambiar icono de agregar
 		})
     })
-})
 
-//Escribe el comentario en la bbdd
-$(document).ready(function(){
+	//Escribe el comentario en la bbdd
     $("#comentar").click(function(){
 		$.get("../controlador/comentar.php",{serie:$.request('anime'),capitulo:$.request('cap'),comentario:$('#comentario').val()}, function(respuesta){
 			//TODO
 		})
     })
-})
 
-//Redirige a la vista de capitulos desde la página de busqueda
-$(document).ready(function(){
+	//Redirige a la vista de capitulos desde la página de busqueda
     $(".descripcion").click(function(){
 		window.location.href = '/Trackime/vista/capitulos.php?id=' + this.id;
     })
+
+	//Sigue a un usuario
+    $(".seguir").click(function(){
+		$.get("../controlador/seguir.php",{usuario:$.request('usuario')}, function(respuesta){
+			//TODO
+		})
+    })
+
+
+
+
 })
+
+

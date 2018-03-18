@@ -32,14 +32,12 @@
 					<h3 align="center">Listado de capítulos</h3>
 					<table class="table table-hover">
 						<tbody>
-						<?php
-							for($i=$capitulos; $i>0; $i--){
-								echo "<tr>";
-									echo "<td><a href='./visor.php?anime=$nombre&cap=$i'>$nombre</a></td>";
-									echo "<td>$i</td>";
-								echo "</tr>";
-							}
-						?>
+							<?php for($i=$capitulos; $i>0; $i--) :?>
+									<tr>
+										<td><a href='./visor.php?anime=<?=$nombre?>&cap=<?=$i?>'><?=$nombre?></a></td>
+										<td><?=$i?></td>
+									</tr>
+							<?php endfor?>
 						</tbody>
 					</table>
 			</div>

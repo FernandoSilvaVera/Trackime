@@ -29,19 +29,10 @@
 		<br>
 		<!-- Pestañas superiores -->
 		<ul class="nav nav-tabs">
-			<li class="nav-item">
-				<a class="nav-link" href="./series.php">Subidas recientes</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="./emision.php">En emisión</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link active" data-toggle="tab" href="#seleccionado">Pendientes</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="./terminadas.php">Terminadas</a>
-			</li>
-
+			<li class="nav-item"><a class="nav-link" href="./series.php">Subidas recientes</a></li>
+			<li class="nav-item"><a class="nav-link" href="./emision.php">En emisión</a></li>
+			<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#seleccionado">Pendientes</a></li>
+			<li class="nav-item"><a class="nav-link" href="./terminadas.php">Terminadas</a></li>
 		</ul>
 
 		<!-- Contenido de las pestañas -->

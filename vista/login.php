@@ -17,16 +17,16 @@
 		<div class="row">
 			<div class="col-sm-4"></div>
 			<div class="col-sm-4">
-				<form action="./login.php" method="post">
+				<form action="./login" method="post">
 					<div class="form-group">
 						<label>Usuario</label>
 						<input class="form-control" id="user" placeholder="Usuario" name="user">
 					</div>
 					<div class="form-group">
-						<label>Password:</label>
+						<label>Contraseña:</label>
 						<input type="password" class="form-control" id="pwd" placeholder="Contraseña" name="pswd">
 					</div>
-					<button type="submit" class="btn btn-primary">Log in</button>
+					<button type="submit" class="btn btn-primary">Iniciar Sesion</button>
 				</form>
 			</div>
 		</div>
