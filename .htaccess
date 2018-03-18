@@ -4,4 +4,10 @@ ErrorDocument 404 http://localhost/Trackime/vista/404.php
 ErrorDocument 500 http://localhost/Trackime/vista/404.php  
 ErrorDocument 403 http://localhost/Trackime/vista/404.php  
 ErrorDocument 400 http://localhost/Trackime/vista/404.php  
-ErrorDocument 401 http://localhost/Trackime/vista/404.php
+ErrorDocument 401 http://localhost/Trackime/vista/404.php 
+
+<IfModule mod_rewrite.c>
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.*)$ $1.php
+</IfModule>
