@@ -6,9 +6,8 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navb">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item">
-					<a class="nav-link" href="./series">Animes</a>
-				</li>
+				<li class="nav-item"><a class="nav-link" href="./series">Animes</a></li>
+				<li class="nav-item"><a class="nav-link" href="./aleatorio">Aleatorio</a></li>
 			</ul>
 			<ul class="navbar-nav ml-auto">
 				<form class="form-inline" action="./busqueda" method="get">
