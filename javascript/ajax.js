@@ -34,6 +34,11 @@ $(document).ready(function(){
 		window.location.href = '/Trackime/vista/capitulos.php?id=' + this.id;
     })
 
+	//Redirige a la vista de perfil desde la página de busqueda
+    $(".perfil").click(function(){
+		window.location.href = '/Trackime/vista/perfil?usuario=' + this.id;
+    })
+
 	//Sigue a un usuario
     $(".seguir").click(function(){
 		$.get("../controlador/seguir.php",{usuario:$.request('usuario')}, function(respuesta){
