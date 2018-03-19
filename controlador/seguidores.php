@@ -2,10 +2,10 @@
 
 require_once("../clases/Paginacion.php");
 
-class Siguiendo extends Paginacion{
+class Seguidores extends Paginacion{
 
 	private $usuario;
-	private const VISTA = "siguiendo.php";
+	private const VISTA = "seguidores.php";
 	private const CONSULTA = [
 		"select" => "select usuario ",
 		"from" => "from SOCIAL where usuario= "
@@ -19,17 +19,7 @@ class Siguiendo extends Paginacion{
 	}
 
 	public function obtenerDatos(){
-
-		$usuarios = $this->bbdd->obtener("select siguiendo from SOCIAL where usuario='$this->usuario'", ["siguiendo"]);
-
-		foreach($usuarios as $usuario){
-			$imagenUsuario = $usuario->dato["siguiendo"];
-			$img = $this->bbdd->obtener("select imagen from USUARIOS where usuario='$imagenUsuario'", ["imagen"]);
-			$usuario->dato["imagen"] = $img[0]->dato["imagen"];
-		}
-		
-		return $usuarios;
-
+		return $this->bbdd->obtener("select usuario as seguidores,imagen from SOCIAL natural join USUARIOS where siguiendo='$this->usuario'", ["seguidores","imagen"]);
 	}
 
 }
