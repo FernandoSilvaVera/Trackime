@@ -19,6 +19,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 	<script src="../javascript/imagenes.js"></script>
+	<script src="../javascript/ajax.js"></script>
 	<link rel="stylesheet" href="../css/images.css">
 </head>
 <body>

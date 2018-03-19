@@ -30,19 +30,11 @@
 		<br>
 		<!-- Pestañas superiores -->
 		<ul class="nav nav-tabs">
-			<li class="nav-item">
-				<a class="nav-link active" data-toggle="tab" href="#seleccionado">Subidas recientes</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="./emision.php">En emisión</a>
-			</li>
+			<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#seleccionado">Subidas recientes</a></li>
+			<li class="nav-item"><a class="nav-link" href="./emision.php">En emisión</a></li>
 			<?php if (isset($_SESSION["login"])): ?>
-			<li class="nav-item">
-				<a class="nav-link" href="./pendientes.php">Pendientes</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="./terminadas.php">Terminadas</a>
-			</li>
+			<li class="nav-item"><a class="nav-link" href="./pendientes.php">Pendientes</a></li>
+			<li class="nav-item"><a class="nav-link" href="./terminadas.php">Terminadas</a></li>
 			<?php endif; ?>
 		</ul>
 
