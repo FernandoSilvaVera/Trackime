@@ -10,19 +10,8 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-	
-	<div class="container">
-		@yield("cabecera")
-	</div>
 
-	<div class="container">
-		@yield("cuerpo")
-	</div>
-
-	<div class="container">
-		@yield("pie")
-	</div>
-
+	@include("layouts.cabecera")
 
 </body>
 </html>
