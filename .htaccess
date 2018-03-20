@@ -9,5 +9,6 @@ ErrorDocument 401 http://localhost/Trackime/vista/404
 <IfModule mod_rewrite.c>
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}.php -f
-RewriteRule ^(.*)$ $1.php
+RewriteRule ^(.*)$ $1.php  
+RewriteRule ^hola/(.*) vista/$1
 </IfModule>
