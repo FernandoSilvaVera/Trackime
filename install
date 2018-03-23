@@ -1,0 +1,4 @@
+composer install
+cp -r .env.example .env
+php artisan key:generate
+sudo chmod -R 777 storage/
