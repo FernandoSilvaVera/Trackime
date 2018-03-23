@@ -10,8 +10,10 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </head>
 <body>
+	<div class="container">
+			
+		@yield('contenido')
 
-	@include("layouts.cabecera")
-
+	</div>
 </body>
 </html>
