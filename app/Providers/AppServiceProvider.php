@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Trackime\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
