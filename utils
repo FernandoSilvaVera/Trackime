@@ -1,3 +1,0 @@
-php artisan migrate:refresh ==> migration down/up
-php artisan make:migration name_data
-
