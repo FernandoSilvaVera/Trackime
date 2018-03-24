@@ -15,13 +15,8 @@ Route::get('/', function(){
 	return view("home");
 });
 
-Route::get('/animes', function(){
-	return view("animes.animes");
-});
-
-Route::get('/animes/{animeName}', function($animeName){
-	return view("animes.list",['animeName' => $animeName]);
-})->where('animeName','[A-Za-z]+');
+Route::get('/animes', 'AnimeController@index'); 
+Route::get('/animes/{animeName}', 'ListController@index');
 
 Route::get('/user/{userName}',function($userName){
 	return view("user.user",['userName' => $userName]);
