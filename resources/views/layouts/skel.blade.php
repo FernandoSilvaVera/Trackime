@@ -34,16 +34,27 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                            <li><a class="nav-link" href="{{ url('/animes') }}">{{ __('Animes') }}</a></li>
-                    </ul>
+						<li><a class="nav-link" href="{{ url('/animes') }}">{{ __('Animes') }}</a></li>
+						<li><a class="nav-link" href="{{ url('/emision') }}">{{ __('Emision') }}</a></li>
+						<li><a class="nav-link" href="{{ url('/personaje') }}">{{ __('Personajes') }}</a></li>
+						<li><a class="nav-link" href="{{ url('/aleatorio') }}">{{ __('Aleatorio') }}</a></li>
+						@guest
+						@else
+						@endguest
+
+					</ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
+						<form class="form-inline" action="{{ url('/busqueda') }}" method="get">
+							<input class="form-control" type="text" name="busqueda" placeholder="Buscar usuarios o series">
+						</form>
                         @guest
                             <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
                             <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
                         @else
+
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -53,6 +64,8 @@
 
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ url('/user') . '/' . Auth::user()->name }} ">{{ __('Perfil') }}</a>
+									<a class="dropdown-item" href="{{ url('/pendientes') }}">{{ __('Pendientes') }}</a>
+									<a class="dropdown-item" href="{{ url('/terminadas') }}">{{ __('Terminadas') }}</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
                                 </div>
@@ -66,6 +79,8 @@
         <main class="py-5">
             @yield('content')
         </main>
+
     </div>
+
 </body>
 </html>
