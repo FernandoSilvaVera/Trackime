@@ -6,6 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Anime extends Model
 {
-	public $timestamps = false;
-	public $table = 'animes';
+	public $timestamps		= false;
+	public $incrementing	= false;
+
+	protected $primaryKey	= "anime";
+	protected $keyType		= "string";
+
+	public function genre()
+	{
+		return $this->belongsToMany('Trackime\GenreAnime','animes','anime','anime','anime','anime');
+	}
 }
