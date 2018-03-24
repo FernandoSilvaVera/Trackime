@@ -14,10 +14,7 @@ class CreateGenresTable extends Migration
     public function up()
     {
         Schema::create('genres', function (Blueprint $table) {
-            $table->string('anime');
-            $table->string('genre');
-			$table->primary(['anime','genre']);
-            $table->foreign('anime')->references('anime')->on('animes');
+            $table->string('genre')->primary();
         });
     }
 

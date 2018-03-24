@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Trackime\Anime;
 
-class DatabaseSeeder extends Seeder
+class AnimesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +13,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-		$this->call(AnimesSeeder::class);
+
     }
 }
