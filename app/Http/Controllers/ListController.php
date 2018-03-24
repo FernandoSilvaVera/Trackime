@@ -3,17 +3,18 @@
 namespace Trackime\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Trackime\Anime;
 
-class UserController extends Controller
+class ListController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($anime)
     {
-		
+        return view('animes.list', ['anime' => Anime::where('anime', $anime)->first()]);
     }
 
     /**
@@ -23,7 +24,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -34,7 +35,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-		print_r($request->input('name'));
+        //
     }
 
     /**

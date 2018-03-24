@@ -2,9 +2,10 @@
 
 namespace Trackime\Http\Controllers;
 
+use Trackime\Anime;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class AnimeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-		
+        return view('animes.animes',["animes" => Anime::paginate(12)]);
     }
 
     /**
@@ -34,7 +35,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-		print_r($request->input('name'));
+        //
     }
 
     /**
