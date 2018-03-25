@@ -62,13 +62,9 @@ class CustomController extends Controller
     public function show($id)
     {
         if($id == "pendientes")
-			return view('user.pending',["animes" => Custom	::where('state','pendiente')->paginate(12)]);
+			return view('user.pending',["animes" => Custom::where('state', 'pendiente')->where('user', Auth::user()->name)->paginate(12)]);
 		else if($id == "terminadas")	
-			return view('user.finished',["animes" => Custom	::where('state','terminada')->paginate(12)]);
-		else
-			return view('animes.animes',["animes" => Custom	::where('state')->paginate(12)]);
-
-
+			return view('user.finished',["animes" => Custom	::where('state', 'terminada')->where('user', Auth::user()->name)->paginate(12)]);
     }
 
     /**
