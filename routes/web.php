@@ -16,6 +16,8 @@ Route::get('/', function(){
 });
 
 Route::get('/animes', 'AnimeController@index'); 
+Route::get('/pendientes', 'CustomController@pendientes');
+Route::get('/terminadas', 'CustomController@terminadas');
 
 Route::get('/personaje', function(){
 	return view('animes.character');
@@ -29,21 +31,11 @@ Route::get('/emision', function(){
 });
 
 Route::get('/busqueda', function(){
-	return view('busqueda');
+	return view('search');
 });
 
 
-
-
-
-Route::get('/pendientes', function(){
-	return view('user.pending');	
-});
-
-Route::get('/terminadas', function(){
-	return view('user.finished');
-});
-
+Route::post('/agregarSerie', 'CustomController@store'); 
 
 
 Route::get('/animes/{animeName}', 'ListController@index');

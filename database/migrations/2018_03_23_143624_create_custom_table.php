@@ -16,8 +16,8 @@ class CreateCustomTable extends Migration
         Schema::create('custom', function (Blueprint $table) {
             $table->string('user');
             $table->string('anime');
-            $table->string('tag');
-            $table->string('note');
+            $table->string('tag')->nullable();
+            $table->string('note')->nullable();
             $table->string('state');
 			$table->primary(['user','anime']);
 			$table->foreign('user')->references('name')->on('users');
