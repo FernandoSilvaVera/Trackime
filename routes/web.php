@@ -19,16 +19,13 @@ Route::get('/animes', 'AnimeController@index');
 Route::get('/pendientes', 'CustomController@pendientes');
 Route::get('/terminadas', 'CustomController@terminadas');
 Route::get('/animes/{animeName}', 'ListController@index');
+Route::get('/emision', 'EmissionController@index');
 
 Route::get('/personaje', function(){
 	return view('animes.character');
 });
 Route::get('/aleatorio', function(){
 	return view('animes.random');
-});
-
-Route::get('/emision', function(){
-	return view('animes.emission');
 });
 
 Route::get('/busqueda', function(){

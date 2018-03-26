@@ -19,6 +19,7 @@ class CreateAnimesTables extends Migration
             $table->string('tag');
             $table->tinyInteger('note');
             $table->smallInteger('chapters');
+			$table->string('web');
             $table->string('animeYT')->nullable();
         });
     }

@@ -20,7 +20,7 @@
 		<!-- Parte derecha de la pagina-->
 
         <div class="col-6 text-center">
-			<img class="card-img-top col-md-10 mb-1" src="{{ asset('images/5.jpg') }}"/>
+			<img class="card-img-top col-md-8 mb-1" src="{{ asset('images/' . $anime['web']) }}.jpg">
 			<h3 id="name_anime">{{ $anime['anime'] }}</h3>
 			@foreach($anime->genre as $genre)
 				<span class="badge badge-dark">{{ $genre['genre']}}</span>

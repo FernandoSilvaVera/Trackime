@@ -1,1 +1,1 @@
-@extends('layouts.skel')
+@extends('layouts.series')

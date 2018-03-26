@@ -3,21 +3,18 @@
 namespace Trackime\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Trackime\Anime;
+use Trackime\Date;
 
-class ListController extends Controller
+class EmissionController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($anime)
+    public function index()
     {
-		if(is_null(Anime::where('anime', $anime)->first()))
-			abort(404);
-		else
-			return view('animes.list', ['anime' => Anime::where('anime', $anime)->first()]);
+        return view('user.animes',["animes" => Date::where('state','emision')->paginate(12)]);
     }
 
     /**
@@ -27,7 +24,7 @@ class ListController extends Controller
      */
     public function create()
     {
-
+        //
     }
 
     /**
