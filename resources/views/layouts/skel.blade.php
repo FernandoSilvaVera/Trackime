@@ -45,7 +45,7 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
 						<form class="form-inline" action="{{ url('/busqueda') }}" method="get">
-							<input class="form-control" type="text" name="busqueda" placeholder="Buscar usuarios o series">
+							<input class="form-control" type="text" name="search" placeholder="Buscar usuarios o series">
 						</form>
                         @guest
                             <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
