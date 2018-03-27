@@ -15,15 +15,13 @@ Route::get('/animes', 'AnimeController@index');
 Route::get('/pendientes', 'CustomController@pendientes');
 Route::get('/terminadas', 'CustomController@terminadas');
 Route::get('/animes/{animeName}', 'ListController@index');
+Route::get('/personajes', 'CharacterController@index');
+Route::get('/personajes/{characterName}', 'CharacterController@character');
 Route::get('/emision', 'EmissionController@index');
 Route::get('/busqueda', 'SearchController@index');
 
 Route::get('/', function(){
 	return view("home");
-});
-
-Route::get('/personaje', function(){
-	return view('animes.character');
 });
 
 Route::get('/aleatorio', function(){

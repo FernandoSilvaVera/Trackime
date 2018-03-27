@@ -22,8 +22,9 @@
 		<!-- Parte derecha de la pagina-->
 
         <div class="col-6 text-center">
-			<img class="card-img-top col-md-8 mb-1" src="{{ asset('images/' . $anime['web']) }}.jpg">
 			<h3 id="name_anime">{{ $anime->anime }}</h3>
+			<img class="card-img-top col-md-8 mb-1" src="{{ asset('images/' . $anime['web']) }}.jpg">
+			<br>
 			@foreach($anime->genre as $genre)
 				<span class="badge badge-dark">{{ $genre->genre}}</span>
 			@endforeach
@@ -45,9 +46,27 @@
     </div>
 </div>
 
-
 <div class="container mt-5">
 	<h3 class="text-center">Personajes</h3>
+	<div class="row">
+	@foreach($anime->character as $character)
+        <div class="col-md-3 col-6">
+			<div class="card mb-5">
+				<a href="{{ url('/personajes/') . '/' . $character->name }}">
+					<img class="card-img-top" src="https://static.zerochan.net/Izumi.Sagiri.full.2140480.jpg">
+				</a>
+				<div class="card-footer text-center" style="background-color:#ffffff">
+					{{$character->name}}<br>
+					<div class="text-left">
+					@foreach($anime->genre as $genre)
+						<span class="badge badge-dark">{{ $genre['genre'] }}</span>
+					@endforeach
+					</div>
+				</div>
+			</div>
+		</div>
+	@endforeach
+	</div>
 </div>
 
 <div class="container mt-5">

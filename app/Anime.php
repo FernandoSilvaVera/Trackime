@@ -16,4 +16,9 @@ class Anime extends Model
 	{
 		return $this->belongsToMany('Trackime\GenreAnime','animes','anime','anime','anime','anime');
 	}
+
+	public function character()
+	{
+		return $this->belongsToMany('Trackime\Character','animes','anime','anime','anime','anime');
+	}
 }

@@ -21,7 +21,6 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/animes.css') }}" rel="stylesheet">
-
 </head>
 <body>
     <div id="app">
@@ -37,7 +36,7 @@
                     <ul class="navbar-nav mr-auto">
 						<li><a class="nav-link" href="{{ url('/animes') }}">{{ __('Animes') }}</a></li>
 						<li><a class="nav-link" href="{{ url('/emision') }}">{{ __('Emision') }}</a></li>
-						<li><a class="nav-link" href="{{ url('/personaje') }}">{{ __('Personajes') }}</a></li>
+						<li><a class="nav-link" href="{{ url('/personajes') }}">{{ __('Personajes') }}</a></li>
 						<li><a class="nav-link" href="{{ url('/aleatorio') }}">{{ __('Aleatorio') }}</a></li>
 					</ul>
 
