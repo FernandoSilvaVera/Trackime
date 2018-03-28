@@ -3,6 +3,8 @@
 namespace Trackime\Http\Controllers;
 
 use Trackime\Anime;
+use Trackime\Date;
+use Trackime\Genre;
 use Illuminate\Http\Request;
 
 class AnimeController extends Controller
@@ -14,7 +16,12 @@ class AnimeController extends Controller
      */
     public function index()
     {
-        return view('animes.animes',["animes" => Anime::paginate(12)]);
+        return view('animes.animes',[
+				"animes"	=> Anime::paginate(12),
+				"dates"		=> Date::all(),
+				"genres"	=> Genre::all()
+			]
+		);
     }
 
     /**

@@ -4,6 +4,7 @@ namespace Trackime\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Trackime\Date;
+use Trackime\Genre;
 
 class EmissionController extends Controller
 {
@@ -14,7 +15,12 @@ class EmissionController extends Controller
      */
     public function index()
     {
-        return view('user.animes',["animes" => Date::where('state','emision')->paginate(12)]);
+        return view('user.animes',[
+				"animes"	=> Date::where('state','emision')->paginate(12),
+				"dates"		=> Date::all(),
+				"genres"	=> Genre::all()
+			]
+		);
     }
 
     /**
