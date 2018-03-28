@@ -18,7 +18,7 @@ class AnimeController extends Controller
     {
         return view('animes.animes',[
 				"animes"	=> Anime::paginate(12),
-				"dates"		=> Date::all(),
+				"dates"		=> Date::orderBy('year','desc')->get(),
 				"genres"	=> Genre::all()
 			]
 		);
