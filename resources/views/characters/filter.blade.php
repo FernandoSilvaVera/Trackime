@@ -6,7 +6,7 @@
 		@foreach($characters as $character)
         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-6 mb-5">
 			<div class="card">
-				<a href="{{ url('/characters/') . '/' . $character->name }}">
+				<a href="{{ url('/personajes/') . '/' . $character->name }}">
 					<img class="card-img-top" src="{{ asset('images/' . $character->name) }}.jpg">
 				</a>
 				<div class="card-footer" style="background-color:#ffffff">
