@@ -14,12 +14,12 @@ class CharacterController extends Controller
      */
     public function index()
     {
-		return view('animes.characters', ['characters' => Character::paginate(12)]);   	
+		return view('characters.characters', ['characters' => Character::paginate(12)]);   	
     }
 
     public function character($character)
     {
-		return view('animes.listCharacter', ['character' => Character::where('name', $character)->first()]);   	
+		return view('characters.list', ['character' => Character::where('name', $character)->first()]);   	
     }
 
     /**

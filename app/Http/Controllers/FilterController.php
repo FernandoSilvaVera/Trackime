@@ -58,7 +58,12 @@ class FilterController extends Controller
 					->whereIn('dates.season', $request->input('season'))
 					->get();
 
-		return view('animes.filter',['animes' => $animes]);
+		return view('animes.filter',[
+				'animes'	=> $animes,
+				"dates"		=> Date::orderBy('year','desc')->get(),
+				"genres"	=> Genre::all()
+			]
+		);
     }
 
     /**

@@ -63,15 +63,15 @@ class CustomController extends Controller
      */
     public function show($id)
     {
-        if($id == "pendientes")
-			return view('user.animes',[
+        if($id === "pendientes")
+			return view('animes.animes',[
 					"animes"	=> Custom::where('state', 'pendiente')->where('user', Auth::user()->name)->paginate(12),
 					"dates"		=> Date::all(),
 					"genres"	=> Genre::all()
 				]
 			);
-		else if($id == "terminadas")	
-			return view('user.animes',[
+		else if($id === "terminadas")	
+			return view('animes.animes',[
 					"animes"	=> Custom::where('state', 'terminada')->where('user', Auth::user()->name)->paginate(12),
 					"dates"		=> Date::all(),
 					"genres"	=> Genre::all()

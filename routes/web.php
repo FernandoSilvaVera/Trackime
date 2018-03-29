@@ -26,7 +26,7 @@ Route::get('/', function(){
 });
 
 Route::get('/aleatorio', function(){
-	return view('animes.random');
+	return view('random');
 });
 
 Route::post('/agregarSerie', 'CustomController@store'); 

@@ -15,7 +15,7 @@ class EmissionController extends Controller
      */
     public function index()
     {
-        return view('user.animes',[
+        return view('animes.animes',[
 				"animes"	=> Date::where('state','emision')->paginate(12),
 				"dates"		=> Date::all(),
 				"genres"	=> Genre::all()

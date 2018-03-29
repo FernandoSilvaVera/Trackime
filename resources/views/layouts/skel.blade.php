@@ -73,6 +73,7 @@
         </nav>
 
         <main class="py-3">
+            @yield('filter')
             @yield('content')
         </main>
 
