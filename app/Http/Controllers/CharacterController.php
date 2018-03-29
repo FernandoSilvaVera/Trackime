@@ -14,7 +14,12 @@ class CharacterController extends Controller
      */
     public function index()
     {
-		return view('characters.characters', ['characters' => Character::paginate(12)]);   	
+		return view('characters.characters', [
+				'characters'	=> Character::paginate(12),
+				'hairs'			=> Character::all()->unique('hair'),
+				'personalities'	=> Character::all()->unique('personality')
+			]
+		);   	
     }
 
     public function character($character)

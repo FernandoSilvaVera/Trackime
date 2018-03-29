@@ -19,7 +19,8 @@ Route::get('/personajes', 'CharacterController@index');
 Route::get('/personajes/{characterName}', 'CharacterController@character');
 Route::get('/emision', 'EmissionController@index');
 Route::get('/busqueda', 'SearchController@index');
-Route::get('/filtro', 'FilterController@index');
+Route::get('/filtro/anime', 'FilterController@anime');
+Route::get('/filtro/personaje', 'FilterController@character');
 
 Route::get('/', function(){
 	return view("home");

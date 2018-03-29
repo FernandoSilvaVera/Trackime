@@ -19,6 +19,7 @@ class CreateCharactersTable extends Migration
             $table->string('name')->primary();
             $table->string('hair');
             $table->string('loli');
+			$table->string('personality')->nullable();
 			$table->foreign('anime')->references('anime')->on('animes');
         });
     }

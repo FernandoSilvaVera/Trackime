@@ -2,7 +2,7 @@
 @section('filter')
 <div class="container text-right">
 	<button type="button" class="btn btn-dark" data-toggle="collapse" data-target="#demo">Filtro</button>
-	<form id="demo" action="{{ url('/filtro')}} " class="collapse mt-3">
+	<form id="demo" action="{{ url('/filtro/anime')}} " class="collapse mt-3">
 		<button type="button" class="btn btn-dark" data-toggle="collapse" data-target="#demo">Limpiar</button>
 		<button type="submit" class="btn btn-dark" data-toggle="collapse" data-target="#demo">Buscar</button>
 		<div class="row text-center">

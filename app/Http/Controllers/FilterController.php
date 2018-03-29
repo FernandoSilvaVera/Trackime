@@ -4,6 +4,7 @@ namespace Trackime\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Trackime\Character;
 use Trackime\Anime;
 use Trackime\Date;
 use Trackime\Genre;
@@ -15,7 +16,7 @@ class FilterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function anime(Request $request)
     {
 		$conexion = DB::table('genre_animes')
 				->select(['animes.anime','animes.web'])->distinct()
@@ -65,6 +66,64 @@ class FilterController extends Controller
 			]
 		);
     }
+
+	public function character(Request $request)
+	{
+		$conexion = DB::table('characters')->select(['name'])->distinct();
+		$loli = is_null($request->input('loli')) ? "" : "si";
+		
+		if(is_null($request->input('personality')) and is_null($request->input('hair')) and is_null($request->input('sex')))
+			$characters = $conexion	
+						->where('loli','like', '%'.$loli.'%')
+						->get();
+		else if(is_null($request->input('personality')) and is_null($request->input('hair')))
+			$characters = $conexion	
+						->where('loli','like', '%'.$loli.'%')
+						->whereIn('sex', $request->input('sex'))
+						->get();
+		else if(is_null($request->input('personality')) and is_null($request->input('sex')))
+			$characters = $conexion	
+						->where('loli','like', '%'.$loli.'%')
+						->whereIn('hair', $request->input('hair'))
+						->get();
+		else if(is_null($request->input('hair')) and is_null($request->input('sex')))
+			$characters = $conexion	
+						->where('loli','like', '%'.$loli.'%')
+						->whereIn('personality', $request->input('personality'))
+						->get();
+		else if(is_null($request->input('hair')))
+			$characters = $conexion	
+						->where('loli','like', '%'.$loli.'%')
+						->whereIn('personality', $request->input('personality'))
+						->whereIn('sex', $request->input('sex'))
+						->get();
+		else if(is_null($request->input('sex')))
+			$characters = $conexion	
+						->where('loli','like', '%'.$loli.'%')
+						->whereIn('personality', $request->input('personality'))
+						->whereIn('hair', $request->input('hair'))
+						->get();
+		else if(is_null($request->input('personality')))
+			$characters = $conexion	
+						->where('loli','like', '%'.$loli.'%')
+						->whereIn('sex', $request->input('sex'))
+						->whereIn('hair', $request->input('hair'))
+						->get();
+		else
+			$characters = $conexion	
+						->where('loli','like', '%'.$loli.'%')
+						->whereIn('personality', $request->input('personality'))
+						->whereIn('sex', $request->input('sex'))
+						->whereIn('hair', $request->input('hair'))
+						->get();
+
+		return view('characters.filter',[
+				'characters'	=> $characters,
+				'hairs'			=> Character::all()->unique('hair'),
+				'personalities'	=> Character::all()->unique('personality')
+			]
+		);
+	}
 
     /**
      * Show the form for creating a new resource.
