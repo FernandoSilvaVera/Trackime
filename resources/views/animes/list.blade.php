@@ -2,17 +2,48 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
-        <div class="col-6">
+
+	<div class="row">
+
+		<div class="col-6">
 			<h3 class="text-center">Listado de capitulos</h3>
 			<div class="col-12" style="overflow:auto;height:300px">
 				<table class="table table-hover" >
 					<tbody>
 						@for($chapter=$anime->chapters; $chapter>0; $chapter--)
-						<tr>
-							<td>{{ $anime->anime }}</td>
-							<td>{{ $chapter }}</td>
-						</tr>
+							<tr style="cursor:pointer;">
+								<td data-toggle="modal" data-target="#{{ $chapter }}">{{ $anime->anime }}</td>
+								<td data-toggle="modal" data-target="#{{ $chapter }}">{{ $chapter }}</td>
+								<div class="modal fade" id="{{ $chapter }}">
+									<div class="modal-dialog modal-lg">
+										<div class="modal-content">
+
+											<div class="modal-header">
+												<h3 class="modal-title">{{ $anime->anime . __(' - Capitulo - ') . $chapter }}</h3>
+												<button type="button" class="close" data-dismiss="modal">&times;</button>
+											</div>
+
+											<div class="modal-body">
+												<div class="embed-responsive embed-responsive-16by9">
+													@if($video[$chapter-1]->video !== 'pending')
+													<video controls="controls" type="video/mp4" preload="none">
+														<source src="{{url('/video/') . '/' . $video[$chapter-1]->anime . '/' . $video[$chapter-1]->chapter}}"  autostart="false">
+													</video>
+													@else
+														<h3>Video no disponible</h3>
+													@endif
+												</div>
+											</div>
+
+											<div class="modal-footer">
+												<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+											</div>
+
+										</div>
+									</div>
+								</div>
+
+							</tr>
 						@endfor
 					</tbody>
 				</table>

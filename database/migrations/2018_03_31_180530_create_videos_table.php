@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCharactersTable extends Migration
+class CreateVideosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CreateCharactersTable extends Migration
      */
     public function up()
     {
-        Schema::create('characters', function (Blueprint $table) {
-            $table->string('sex');
+        Schema::create('videos', function (Blueprint $table) {
             $table->string('anime');
-            $table->string('name')->primary();
-            $table->string('hair');
-            $table->string('loli');
-			$table->string('personality')->nullable();
-			$table->string('web')->nullable();
+			$table->integer('chapter');
+			$table->string('video');
+			$table->primary(['anime','chapter']);
 			$table->foreign('anime')->references('anime')->on('animes');
         });
     }
@@ -32,6 +29,6 @@ class CreateCharactersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('characters');
+        Schema::dropIfExists('videos');
     }
 }

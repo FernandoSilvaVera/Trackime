@@ -3,26 +3,19 @@
 namespace Trackime\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Trackime\Anime;
 use Trackime\Video;
+use Illuminate\Support\Facades\Redirect;
 
-class ListController extends Controller
+class VideoController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($anime)
+    public function index($anime, $chapter)
     {
-		if(is_null(Anime::where('anime', $anime)->first()))
-			abort(404);
-		else
-			return view('animes.list', [
-					'anime' => Anime::where('anime', $anime)->first(),
-					'video'	=> Video::where('anime', $anime)->get()
-				]
-			);
+   		return Redirect::to(Video::where('anime', $anime)->where('chapter', $chapter)->first()->video);
     }
 
     /**
@@ -32,7 +25,7 @@ class ListController extends Controller
      */
     public function create()
     {
-
+        //
     }
 
     /**

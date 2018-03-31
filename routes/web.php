@@ -11,6 +11,8 @@
 |
 */
 
+//return Redirect::to('https://download2194.mediafire.com/9n6njvj571cg/o4jysxti2f2f7mi/2890_12.mp4');
+Route::get('/video/{anime}/{chapter}', 'VideoController@index');
 Route::get('/animes', 'AnimeController@index'); 
 Route::get('/pendientes', 'CustomController@pendientes');
 Route::get('/terminadas', 'CustomController@terminadas');
@@ -21,6 +23,13 @@ Route::get('/emision', 'EmissionController@index');
 Route::get('/busqueda', 'SearchController@index');
 Route::get('/filtro/anime', 'FilterController@anime');
 Route::get('/filtro/personaje', 'FilterController@character');
+Route::get('/administrar', 'AdminController@index');
+
+
+Route::post('updateChapters', 'AdminController@updateChapters');
+Route::post('saveAnime', 'AdminController@storeAnime');
+Route::post('saveVideo', 'AdminController@storeVideo');
+Route::post('setPendingVideo', 'AdminController@setPendingVideo');
 
 Route::get('/', function(){
 	return view("home");

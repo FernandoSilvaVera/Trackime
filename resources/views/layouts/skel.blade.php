@@ -60,6 +60,9 @@
 
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ url('/user') . '/' . Auth::user()->name }} ">{{ __('Perfil') }}</a>
+									@if(Auth::user()->name === 'ShuviDola')
+                                    <a class="dropdown-item" href="{{ url('/administrar') }}">{{ __('Administrar') }}</a>
+									@endif
 									<a class="dropdown-item" href="{{ url('/pendientes') }}">{{ __('Pendientes') }}</a>
 									<a class="dropdown-item" href="{{ url('/terminadas') }}">{{ __('Terminadas') }}</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>

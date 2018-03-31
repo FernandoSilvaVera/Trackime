@@ -4,10 +4,10 @@
 <div class="container text-right">
 	<div class="row text-center mt-3">
 		@foreach($characters as $character)
-			<div class="col-sm-3 col-6">
+			<div class="col-lg-3 col-4">
 				<div class="card mb-5">
 					<a href="{{ url('/personajes/') . '/' . $character->name }}">
-						<img class="card-img-top" src="{{ asset('images/character/sagiri.jpg') }}">
+						<img class="card-img-top" src="{{ asset('images/character/' . $character->web) }}.jpg">
 					</a>
 					<div class="card-footer text-center" style="background-color:#ffffff">
 						{{$character->name}}<br>
