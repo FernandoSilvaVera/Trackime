@@ -24,6 +24,7 @@ Route::get('/busqueda', 'SearchController@index');
 Route::get('/filtro/anime', 'FilterController@anime');
 Route::get('/filtro/personaje', 'FilterController@character');
 Route::get('/administrar', 'AdminController@index');
+Route::get('/test', 'AdminController@updateVideoAmazon');
 
 
 Route::post('updateChapters', 'AdminController@updateChapters');

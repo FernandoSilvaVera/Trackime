@@ -2,6 +2,8 @@
 
 namespace Trackime\Utils;
 
+
+
 class AnimeYT{
 
 	/**
@@ -23,6 +25,25 @@ class AnimeYT{
 
 	}
 
+	public static function videoAmazon($anime, $capitulo)
+	{	
+		$uri = "http://www.animeyt.tv/ver/$anime-$capitulo-sub-espanol";
+
+		$codeHTML = null;
+		$html = null;
+		try{
+			$html = file($uri);
+		}catch(\Symfony\Component\Debug\Exception\FatalErrorException $e){
+			return "fallo";
+		}
+		foreach($html as $line)
+			$codeHTML .= htmlspecialchars($line);
+
+		$arrayUtil = explode ("http://s3.animeyt.tv/amz.php?v=", $codeHTML);
+
+		return isset($arrayUtil[1]) ? explode ('&', $arrayUtil[1])[0] : "fallo";
+
+	}
 }
 
 ?>

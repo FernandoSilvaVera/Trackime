@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Database\QueryException;
 use Trackime\Utils\AnimeYT;
+use Trackime\Utils\AnimeFLV;
 use Trackime\Genre;
 use Trackime\Anime;
 use Trackime\Video;
@@ -42,7 +43,7 @@ class AdminController extends Controller
 				try{
 					$update->save();
 				}catch(QueryException $e){
-					$update->chapters = 0;
+					$update->chapters = 1;
 					$update->save();
 				}
 			}
@@ -54,6 +55,26 @@ class AdminController extends Controller
 		);
     }
 	
+	public function updateVideoAmazon()
+	{
+		$animes = Video::all();
+		foreach($animes as $anime){
+			if($anime->video === 'pending'){
+				$video = new Video;
+				$video->anime	= $anime->anime;
+				$video->chapter = $anime->chapter;
+				$video->video	= AnimeFLV::videoRapiVideo($anime->web(), $anime->chapter);
+				try{
+					$video->save();
+				}catch(QueryException $e){
+					Video::where('chapter', $anime->chapter)
+						->where('anime', $anime->anime)
+						->update(['video' => AnimeFLV::videoRapiVideo($anime->web(), $anime->chapter)]);
+				}
+			}
+		}
+	}
+
     /**
      * Show the form for creating a new resource.
      *

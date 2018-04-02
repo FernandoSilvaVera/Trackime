@@ -12,7 +12,7 @@
 					<div class="card-footer text-center" style="background-color:#ffffff">
 						{{$character->name}}<br>
 						<div class="text-left">
-							<span class="badge badge-dark">Yundere</span>
+							<span class="badge badge-dark">{{ $character->personality }}</span>
 						</div>
 					</div>
 				</div>
