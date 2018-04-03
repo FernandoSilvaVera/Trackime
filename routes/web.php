@@ -26,7 +26,6 @@ Route::get('/filtro/personaje', 'FilterController@character');
 Route::get('/administrar', 'AdminController@index');
 Route::get('/test', 'AdminController@updateVideoAmazon');
 
-
 Route::post('updateChapters', 'AdminController@updateChapters');
 Route::post('saveAnime', 'AdminController@storeAnime');
 Route::post('saveVideo', 'AdminController@storeVideo');
