@@ -4,14 +4,19 @@
 
 	<div class="container">
 		<div class="row">
-			<div class="col-6 text-center">
+			<div class="col-4 text-center">
 				<form action="{{ url(('updateChapters')) }}" method="post">
 					@csrf <button type="submit" class="btn btn-success">Update Chapters AnimeYT</button>
 				</form>
 			</div>
-			<div class="col-6 text-center">
+			<div class="col-4 text-center">
 				<form action="{{ url(('setPendingVideo')) }}" method="post">
 					@csrf <button type="submit" class="btn btn-danger">Set pending all videos</button>
+				</form>
+			</div>
+			<div class="col-4 text-center">
+				<form action="{{ url(('updateEmission')) }}" method="post">
+					@csrf <button type="submit" class="btn btn-danger">Update Emission</button>
 				</form>
 			</div>
 		</div>
@@ -55,9 +60,5 @@
 				<div class="col-12 mt-4"> <button type="submit" class="btn btn-success">Save</button> </div>
 			</form>
 	</div>
-
-
-		
-
 
 @endsection

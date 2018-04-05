@@ -28,8 +28,9 @@ Route::get('/test', 'AdminController@updateVideoAmazon');
 
 Route::post('updateChapters', 'AdminController@updateChapters');
 Route::post('saveAnime', 'AdminController@storeAnime');
-Route::post('saveVideo', 'AdminController@storeVideo');
 Route::post('setPendingVideo', 'AdminController@setPendingVideo');
+Route::post('updateEmission', 'AdminController@updateEmission');
+Route::post('saveVideo', 'AdminController@storeVideo');
 
 Route::get('/', function(){
 	return view("home");

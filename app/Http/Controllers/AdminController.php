@@ -10,6 +10,7 @@ use Trackime\Utils\AnimeFLV;
 use Trackime\Genre;
 use Trackime\Anime;
 use Trackime\Video;
+use Trackime\Date;
 use Trackime\GenreAnime;
 
 class AdminController extends Controller
@@ -31,6 +32,10 @@ class AdminController extends Controller
 		);
 	}
 
+	public function updateEmission()
+	{
+	
+	}
 
     public function updateChapters()
     {
