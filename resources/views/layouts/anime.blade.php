@@ -3,7 +3,6 @@
 <div class="container text-right">
 	<button type="button" class="btn btn-dark" data-toggle="collapse" data-target="#demo">Filtro</button>
 	<form id="demo" action="{{ url('/filtro/anime')}} " class="collapse mt-3">
-		<button type="button" class="btn btn-dark" data-toggle="collapse" data-target="#demo">Limpiar</button>
 		<button type="submit" class="btn btn-dark" data-toggle="collapse" data-target="#demo">Buscar</button>
 		<div class="row text-center">
 			<div class="col-lg-4 col-6 mt-3">
@@ -36,7 +35,21 @@
 					@foreach($dates->groupBy('season') as $season => $content)
 					<div class="form-check col-3">
 						<label class="form-check-label ml-3">
-							<input type="checkbox" class="form-check-input" name="season[]" value="{{$season}}">{{$season}}
+							<input type="checkbox" class="form-check-input" name="season[]" value="{{$season}}">
+							@switch($season)
+								@case('Winter')
+									Invierno
+									@break
+								@case('Spring')
+									Primavera
+									@break
+								@case('Summer')
+									Verano
+									@break
+								@case('Fall')
+									Otoño
+									@break
+							@endswitch
 						</label>
 					</div>
 					@endforeach
