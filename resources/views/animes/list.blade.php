@@ -10,7 +10,7 @@
 			<div class="col-12" style="overflow:auto;height:300px">
 				<table class="table table-hover" >
 					<tbody>
-						@for($chapter=$anime->chapters; $chapter>0; $chapter--)
+						@for($chapter=count($video); $chapter>0; $chapter--)
 							<tr style="cursor:pointer;">
 								<td data-toggle="modal" data-target="#{{ $chapter }}">{{ $anime->anime }}</td>
 								<td data-toggle="modal" data-target="#{{ $chapter }}">{{ $chapter }}</td>
