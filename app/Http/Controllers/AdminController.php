@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Database\QueryException;
 use Trackime\Utils\AnimeYT;
 use Trackime\Utils\AnimeFLV;
+use Trackime\Utils\MyAnimeList;
 use Trackime\Genre;
 use Trackime\Anime;
 use Trackime\Video;
@@ -34,33 +35,21 @@ class AdminController extends Controller
 
 	public function updateEmission()
 	{
-	
-	}
-
-    public function updateChapters()
-    {
-		$animeYT = new AnimeYT;
 		$animes = Anime::all();
 		foreach($animes as $anime)
-			if($anime->animeYT !== null){
-				$update = Anime::where('animeYT', $anime->animeYT)->first();
-				$update->chapters = $animeYT->chapter($anime->animeYT);
-				try{
-					$update->save();
-				}catch(QueryException $e){
-					$update->chapters = 1;
-					$update->save();
-				}
+			if(!is_null($anime->pending($anime->anime))){
+				$info = MyAnimeList::information($anime->myAnimeList);
+				Date::where('anime', $anime->anime)
+					->update([
+						'season' => $info['season'],
+						'state'	 => $info['state'],
+						'year'	 => $info['year']
+						]
+					);
 			}
+	}
 
-		return view('user.admin',[
-				"genres" => Genre::all(),
-				"animes" => Anime::all()
-			]
-		);
-    }
-	
-	public function updateVideoAmazon()
+	public function updateVideoAnimeFLV()
 	{
 		$animes = Video::all();
 		foreach($animes as $anime){
@@ -106,6 +95,8 @@ class AdminController extends Controller
 			$anime->note		= $request->input('note');
 			$anime->chapters	= $request->input('chapters');
 			$anime->animeYT		= $request->input('animeYT');
+			$anime->animeFLV	= $request->input('animeFLV');
+			$anime->myAnimeList	= $request->input('myAnimeList');
 		$anime->save();
 
 		foreach($request->input('genre') as $gen){
@@ -121,48 +112,6 @@ class AdminController extends Controller
 			]
 		);
     }
-
-	public function setPendingVideo(Request $request)
-	{
-		$animes = Anime::all();
-		foreach($animes as $anime)
-			for($i=$anime->chapters; $i>0; $i--){
-				$video = new Video;
-				$video->anime = $anime->anime;
-				$video->chapter = $i;
-				$video->video = 'pending';
-				$video->save();
-			}
-			
-		return view('user.admin',[
-				"genres" => Genre::all(),
-				"animes" => Anime::all()
-			]
-		);
-	}
-
-	public function storeVideo(Request $request)
-	{
-		$video = new Video;
-			$video->anime	= $request->input('anime');
-			$video->chapter = $request->input('chapter');
-			$video->video	= $request->input('video');
-		try{
-			$video->save();
-		}catch(QueryException $e){
-			Video::
-						where('chapter', $request->input('chapter'))
-						->where('anime', $request->input('anime'))
-						->update(['video' => $request->input('video')]);
-		}
-
-
-		return view('user.admin',[
-				"genres" => Genre::all(),
-				"animes" => Anime::all()
-			]
-		);
-	}
 
     /**
      * Display the specified resource.
