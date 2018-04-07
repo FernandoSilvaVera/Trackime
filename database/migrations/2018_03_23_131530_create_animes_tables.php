@@ -22,6 +22,7 @@ class CreateAnimesTables extends Migration
 			$table->string('web');
             $table->string('animeYT')->nullable();
 			$table->string('animeFLV')->nullable();
+			$table->mediumInteger('myAnimeList')->nullable();
         });
     }
 
