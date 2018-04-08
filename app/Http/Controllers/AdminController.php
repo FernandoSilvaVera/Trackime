@@ -24,6 +24,7 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
 	{
 		return view('user.admin',[
@@ -31,6 +32,18 @@ class AdminController extends Controller
 				"animes" => Anime::all()
 			]
 		);
+	}
+
+    public function saveImage($url , $name)
+	{
+
+		$save = file_put_contents('images/'.$name.'.jpg', $file = file_get_contents($url));
+		return view('user.admin',[
+				"genres" => Genre::all(),
+				"animes" => Anime::all()
+			]
+		);
+		
 	}
 
 	public function updateEmission()
@@ -87,6 +100,7 @@ class AdminController extends Controller
      */
     public function storeAnime(Request $request)
     {
+		//Anime
 		$anime = new Anime;
 			$anime->anime		= $request->input('anime');
 			$anime->season		= $request->input('season');
@@ -99,12 +113,37 @@ class AdminController extends Controller
 			$anime->myAnimeList	= $request->input('myAnimeList');
 		$anime->save();
 
+		//Image
+		$this->saveImage($request->input('image'), $request->input('web'));
+
+		//Genre
 		foreach($request->input('genre') as $gen){
 			$genre = new GenreAnime;
 			$genre->anime = $request->input('anime');
 			$genre->genre = $gen;
 			$genre->save();
 		}
+	
+		//Video
+		for($i=$request->chapters; $i>0; $i--){
+			$video = new Video;
+			$video->anime	= $request->input('anime');
+			$video->chapter = $request->input('chapters'); 
+			$video->video	= AnimeFLV::videoRapiVideo($request->input('animeFLV'), $i);
+			$video->save();
+		}
+	
+		//Dates
+		$info = MyAnimeList::information($request->input('myAnimeList'));
+		$date = new Date;
+			$date->anime = $request->input('anime');
+			$date->day_new_chapter = 'pending';
+			$date->start = 'pending';
+			$date->end	 = 'pending';
+			$date->season	= $info['season'];
+			$date->year		= $info['year'];
+			$date->state	= $info['state'];
+		$date->save();
 
 		return view('user.admin',[
 				"genres" => Genre::all(),

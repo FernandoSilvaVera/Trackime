@@ -25,8 +25,9 @@
 				<div class="col-6 mb-4"><input class="form-control" type="text" placeholder="Season" 	name='season' ></div>
 				<div class="col-6 mb-4"><input class="form-control" type="text" placeholder="Tag" 		name='tag' ></div>
 				<div class="col-6 mb-4"><input class="form-control" type="text" placeholder="Note" 		name='note' ></div>
-				<div class="col-6 mb-4"><input class="form-control" type="text" placeholder="Chapters" 	name='chapters' ></div>
+				<div class="col-6 mb-4"><input class="form-control" type="text" placeholder="URL Image"	name='image' ></div>
 				<div class="col-6 mb-4"><input class="form-control" type="text" placeholder="Web" 		name='web' ></div>
+				<div class="col-6 mb-4"><input class="form-control" type="text" placeholder="Chapters" 	name='chapters' ></div>
 				<div class="col-6 mb-4"><input class="form-control" type="text" placeholder="AnimeYT"	name='animeYT' ></div>
 				<div class="col-6 mb-4"><input class="form-control" type="text" placeholder="AnimeFLV" 	name='animeFLV' ></div>
 				<div class="col-6 mb-4"><input class="form-control" type="text" placeholder="AnimeList" name='myAnimeList' ></div>
