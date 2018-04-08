@@ -2,9 +2,10 @@
 
 namespace Trackime\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Trackime\Video;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Http\Request;
+use Trackime\Utils\AnimeFLV;
+use Trackime\Video;
 
 class VideoController extends Controller
 {
@@ -34,9 +35,16 @@ class VideoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public static function store(Request $request)
     {
-        //
+		$videos = new Video;
+		for($i=$request->input('chapters'); $i>0; $i--){
+			$video = new Video;
+				$video->anime	= $request->input('anime');
+				$video->chapter = $i; 
+				$video->video	= AnimeFLV::videoRapiVideo($request->input('animeFLV'), $i);
+			$video->save();
+		}
     }
 
     /**

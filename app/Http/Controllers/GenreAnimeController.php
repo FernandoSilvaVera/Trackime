@@ -2,12 +2,11 @@
 
 namespace Trackime\Http\Controllers;
 
-use Trackime\Anime;
-use Trackime\Date;
-use Trackime\Genre;
 use Illuminate\Http\Request;
+use Trackime\GenreAnime;
+use Trackime\Genre;
 
-class AnimeController extends Controller
+class GenreAnimeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,12 +15,7 @@ class AnimeController extends Controller
      */
     public function index()
     {
-        return view('animes.animes',[
-				"animes"	=> Anime::paginate(12),
-				"dates"		=> Date::orderBy('year','desc')->get(),
-				"genres"	=> Genre::all()
-			]
-		);
+        //
     }
 
     /**
@@ -42,17 +36,12 @@ class AnimeController extends Controller
      */
     public static function store(Request $request)
     {
-		$anime = new Anime;
-			$anime->anime		= $request->input('anime');
-			$anime->season		= $request->input('season');
-			$anime->tag			= $request->input('tag');
-			$anime->web			= $request->input('web');
-			$anime->note		= $request->input('note');
-			$anime->chapters	= $request->input('chapters');
-			$anime->animeYT		= $request->input('animeYT');
-			$anime->animeFLV	= $request->input('animeFLV');
-			$anime->myAnimeList	= $request->input('myAnimeList');
-		$anime->save();
+		foreach($request->input('genre') as $gen){
+			$genre = new GenreAnime;
+				$genre->anime = $request->input('anime');
+				$genre->genre = $gen;
+			$genre->save();
+		}
     }
 
     /**

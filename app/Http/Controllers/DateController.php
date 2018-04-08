@@ -3,8 +3,10 @@
 namespace Trackime\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Trackime\Utils\MyAnimeList;
+use Trackime\Date;
 
-class UserController extends Controller
+class DateController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-		
+        //
     }
 
     /**
@@ -32,9 +34,18 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public static function store(Request $request)
     {
-		print_r($request->input('name'));
+		$info = MyAnimeList::information($request->input('myAnimeList'));
+		$date = new Date;
+			$date->anime = $request->input('anime');
+			$date->day_new_chapter = 'pending';
+			$date->start = 'pending';
+			$date->end	 = 'pending';
+			$date->season	= $info['season'];
+			$date->year		= $info['year'];
+			$date->state	= $info['state'];
+		$date->save();
     }
 
     /**

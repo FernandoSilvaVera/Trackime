@@ -11,18 +11,50 @@
 |
 */
 
+//VideoController
 Route::get('/video/{anime}/{chapter}', 'VideoController@index');
+
+
+//AnimeController
 Route::get('/animes', 'AnimeController@index'); 
+
+
+//CustomController
 Route::get('/pendientes', 'CustomController@pendientes');
 Route::get('/terminadas', 'CustomController@terminadas');
+
+
+//ListController
 Route::get('/animes/{animeName}', 'ListController@index');
+
+
+//CharacterController
 Route::get('/personajes', 'CharacterController@index');
-Route::get('/personajes/{characterName}', 'CharacterController@character');
+Route::get('/personajes/{characterName}', 'CharacterController@show');
+
+
+//EmissionController
 Route::get('/emision', 'EmissionController@index');
+
+
+//SearchController
 Route::get('/busqueda', 'SearchController@index');
+
+
+//FilterController
 Route::get('/filtro/anime', 'FilterController@anime');
 Route::get('/filtro/personaje', 'FilterController@character');
+
+
+//AdminController
 Route::get('/administrar', 'AdminController@index');
+Route::post('saveAnime', 'AdminController@storeAnime');
+
+
+//CustomController
+Route::post('/agregarSerie', 'CustomController@store'); 
+
+
 Route::get('/', function(){
 	return view("home");
 });
@@ -32,12 +64,6 @@ Route::get('/aleatorio', function(){
 Route::get('/user/{userName}',function($userName){
 	return view("user.user",['userName' => $userName]);
 })->where('userName', '[A-Za-z]+');
-
-
-Route::post('/updateAnimeFLV', 'AdminController@updateVideoAnimeFLV');
-Route::post('saveAnime', 'AdminController@storeAnime');
-Route::post('updateEmission', 'AdminController@updateEmission');
-Route::post('/agregarSerie', 'CustomController@store'); 
 
 
 Auth::routes();

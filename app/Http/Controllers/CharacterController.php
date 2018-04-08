@@ -22,11 +22,6 @@ class CharacterController extends Controller
 		);   	
     }
 
-    public function character($character)
-    {
-		return view('characters.list', ['character' => Character::where('name', $character)->first()]);   	
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -54,9 +49,9 @@ class CharacterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($character)
     {
-        //
+		return view('characters.list', ['character' => Character::where('name', $character)->first()]);   	
     }
 
     /**
