@@ -19,8 +19,8 @@ class ListController extends Controller
 			abort(404);
 		else
 			return view('animes.list', [
-					'anime' => Anime::where('anime', $anime)->first(),
-					'video'	=> Video::where('anime', $anime)->get()
+					'anime'	  => Anime::where('anime', $anime)->first(),
+					'video'	  => Video::where('anime', $anime)->get()
 				]
 			);
     }
