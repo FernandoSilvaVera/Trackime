@@ -17,7 +17,7 @@ class EmissionController extends Controller
     {
         return view('animes.animes',[
 				"animes"	=> Date::where('state','Currently')->paginate(12),
-				"dates"		=> Date::all(),
+				"dates"		=> Date::orderBy('year','desc')->get(),
 				"genres"	=> Genre::all()
 			]
 		);

@@ -18,7 +18,7 @@ class SearchController extends Controller
     {
         return view('animes.animes',[
 				"animes"	=> Anime::where('anime','LIKE','%'.$request->input('search').'%')->paginate(12),
-				"dates"		=> Date::all(),
+				"dates"		=> Date::orderBy('year','desc')->get(),
 				"genres"	=> Genre::all()
 			]
 		);

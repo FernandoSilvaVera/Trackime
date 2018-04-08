@@ -22,12 +22,7 @@ class Anime extends Model
 	{
 		return DB::table('animes')->where('anime', $data)->first()->web;
 	}
-/*
-	public static function pending($anime)
-	{
-		return DB::table('dates')->where('anime', $anime)->where('state', 'pending')->first();
-	}
-*/
+
 	public function character()
 	{
 		return $this->belongsToMany('Trackime\Character','animes','anime','anime','anime','anime');
