@@ -97,9 +97,9 @@ class CustomController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+		Custom::where('user', Auth::user()->name)->where('anime', $request->anime)->update(['state' => $request->state]);
     }
 
     /**
@@ -108,8 +108,8 @@ class CustomController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+		Custom::where('user', Auth::user()->name)->where('anime', $request->anime)->delete();
     }
 }

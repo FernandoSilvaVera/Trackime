@@ -67,12 +67,27 @@
 			@guest
 			@else
 			 <div class="text-right">
-				<button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">Agregar</button>
+	
+				@if(is_null($custom))
+						<button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">Agregar</button>
+						<div class="dropdown-menu">
+							<a id="newPending" class="dropdown-item">marcar pendiente</a>
+							<a id="newCompleted" class="dropdown-item">marcar terminada</a>
+						</div>
+				@elseif($custom->state === 'pendiente')
+						<button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">Pendiente</button>
+						<div class="dropdown-menu">
+							<a id="destroy" class="dropdown-item">quitar pendiente</a>
+							<a id="updateCompleted" class="dropdown-item">marcar terminada</a>
+						</div>
+				@elseif($custom->state === 'terminada')
+						<button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">Terminada</button>
+						<div class="dropdown-menu">
+							<a id="destroy" class="dropdown-item">quitar terminada</a>
+							<a id="updatePending" class="dropdown-item">marcar pendiente</a>
+						</div>
+				@endif
 
-				<div class="dropdown-menu">
-					<a id="pendiente" class="dropdown-item">como pendiente</a>
-					<a id="terminada" class="dropdown-item">como terminada</a>
-				</div>
 			 </div>
 			@endguest
 		</div>

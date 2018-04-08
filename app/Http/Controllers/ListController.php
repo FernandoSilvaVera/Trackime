@@ -3,8 +3,10 @@
 namespace Trackime\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Trackime\Anime;
 use Trackime\Video;
+use Trackime\Custom;
 
 class ListController extends Controller
 {
@@ -18,11 +20,20 @@ class ListController extends Controller
 		if(is_null(Anime::where('anime', $anime)->first()))
 			abort(404);
 		else
-			return view('animes.list', [
-					'anime'	  => Anime::where('anime', $anime)->first(),
-					'video'	  => Video::where('anime', $anime)->get()
-				]
-			);
+			if(Auth::user())
+				return view('animes.list', [
+						'anime'	  => Anime::where('anime', $anime)->first(),
+						'video'	  => Video::where('anime', $anime)->get(),
+						'custom'  => Custom::where('user', Auth::user()->name)->where('anime', $anime)->first()
+					]
+				);
+			else
+				return view('animes.list', [
+						'anime'	  => Anime::where('anime', $anime)->first(),
+						'video'	  => Video::where('anime', $anime)->get(),
+						'custom'  => null
+					]
+				);
     }
 
     /**

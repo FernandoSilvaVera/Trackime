@@ -53,8 +53,13 @@ Route::post('saveAnime', 'AdminController@storeAnime');
 
 //CustomController
 Route::post('/agregarSerie', 'CustomController@store'); 
+Route::post('/destroyAnime', 'CustomController@destroy'); 
+Route::post('/updateAnime', 'CustomController@update'); 
 
 
+Route::get('/agregarSerie', function(){
+	abort(404);
+});
 Route::get('/', function(){
 	return view("home");
 });

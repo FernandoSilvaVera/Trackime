@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	//Pone la serie como pendiente
-	$("#pendiente").click(function(){
+	$("#newPending").click(function(){
 		$.post('http://' + $(location).attr('host') + '/Trackime/public/agregarSerie',{
 			'_token': $('meta[name=csrf-token]').attr('content'),
 			anime:	$("#name_anime").text(),
@@ -9,12 +9,39 @@ $(document).ready(function(){
 	})
 
 	//Pone la serie como terminada
-	$("#terminada").click(function(){
+	$("#newCompleted").click(function(){
 		$.post('http://' + $(location).attr('host') + '/Trackime/public/agregarSerie',{
 			'_token': $('meta[name=csrf-token]').attr('content'),
 			anime:	$("#name_anime").text(),
 			state:	"terminada"
 		})
 	})
+
+	//borra la serie pendiente/terminada
+	$("#destroy").click(function(){
+		$.post('http://' + $(location).attr('host') + '/Trackime/public/destroyAnime',{
+			'_token': $('meta[name=csrf-token]').attr('content'),
+			anime:	$("#name_anime").text()
+		})
+	})
+
+	//Actualiza la serie a pendiente
+	$("#updatePending").click(function(){
+		$.post('http://' + $(location).attr('host') + '/Trackime/public/updateAnime',{
+			'_token': $('meta[name=csrf-token]').attr('content'),
+			anime:	$("#name_anime").text(),
+			state:	"pendiente"
+		})
+	})
+
+	//Actualiza la serie a completada
+	$("#updateCompleted").click(function(){
+		$.post('http://' + $(location).attr('host') + '/Trackime/public/updateAnime',{
+			'_token': $('meta[name=csrf-token]').attr('content'),
+			anime:	$("#name_anime").text(),
+			state:	"terminada"
+		})
+	})
+
 
 })
