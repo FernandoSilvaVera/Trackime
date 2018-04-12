@@ -21,9 +21,47 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/animes.css') }}" rel="stylesheet">
+
+
+	<style>
+	
+	
+	html, body {
+	  height: 100%;
+	  }
+
+	  #wrap {
+	    min-height: 100%;
+		}
+
+		#main {
+		  overflow:auto;
+		    padding-bottom:150px; /* this needs to be bigger than footer height*/
+			}
+
+			.footer {
+			  position: relative;
+			    margin-top: -150px; /* negative value of footer height */
+				  height: 150px;
+				    clear:both;
+					  padding-top:20px;
+					  } 
+
+	a{
+		color:#aaaaaa;
+
+	}
+	
+	a:hover{
+		color:black;
+		text-decoration:none;
+	}
+	
+	</style>
+
 </head>
 <body>
-    <div id="app">
+    <div id="wrap">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">{{ config('app.name', 'Laravel') }} </a>
@@ -75,12 +113,32 @@
             </div>
         </nav>
 
-        <main class="py-3">
+        <div id="main">
             @yield('filter')
             @yield('content')
-        </main>
+        </div>
 
     </div>
+	
+	<footer class='footer' style='background-color:white'>
+		<div class="container text-center">
+			<div class="row">
+				<div class="col-3">
+					<a href=""><h4><b>{{ __('Animes')}}</b></h4></a>
+				</div>
+				<div class="col-3">
+					<a href=""><h4><b>{{ __('Emision')}}</b></h4></a>
+				</div>
+				<div class="col-3">
+					<a href=""><h4><b>{{ __('Personajes')}}</b></h4></a>
+				</div>
+				<div class="col-3">
+					<a href=""><h4><b>{{ __('Aleatorio')}}</b></h4></a>
+				</div>
+			</div>
+			<h5 class='mt-3' style='color:#aaaaaa'><b>Los videos mostrados en esta página no se encuentran en nuestros servidores</b></h5>
+		</div>
+	</footer>
 
 </body>
 </html>
