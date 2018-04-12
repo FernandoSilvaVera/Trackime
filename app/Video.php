@@ -14,4 +14,8 @@ class Video extends Model
 		return DB::table('animes')->where('anime', $this->anime)->first()->animeFLV;
 	}
 
+	public function image()
+	{
+		return DB::table('animes')->where('anime', $this->anime)->first()->web;
+	}
 }

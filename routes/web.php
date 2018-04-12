@@ -60,9 +60,9 @@ Route::post('/updateAnime', 'CustomController@update');
 Route::get('/agregarSerie', function(){
 	abort(404);
 });
-Route::get('/', function(){
-	return view("home");
-});
+
+Route::get('/', 'HomeController@index'); 
+
 Route::get('/aleatorio', function(){
 	return view('random');
 });
