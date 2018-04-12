@@ -124,19 +124,20 @@
 		<div class="container text-center">
 			<div class="row">
 				<div class="col-3">
-					<a href=""><h4><b>{{ __('Animes')}}</b></h4></a>
+					<h4><b><a href="{{ url('/animes' )}}">{{ __('Animes')}}</a></b></h4>
 				</div>
 				<div class="col-3">
-					<a href=""><h4><b>{{ __('Emision')}}</b></h4></a>
+					<h4><b><a href="{{ url('/emision' )}}">{{ __('Emision')}}</a></b></h4>
 				</div>
 				<div class="col-3">
-					<a href=""><h4><b>{{ __('Personajes')}}</b></h4></a>
+					<h4><b><a href="{{ url('/personajes' )}}">{{ __('Personajes')}}</a></b></h4>
 				</div>
 				<div class="col-3">
-					<a href=""><h4><b>{{ __('Aleatorio')}}</b></h4></a>
+					<h4><b><a href="{{ url('/aleatorio') }}">{{ __('Aleatorio')}}</a></b></h4>
 				</div>
 			</div>
 			<h5 class='mt-3' style='color:#aaaaaa'><b>Los videos mostrados en esta página no se encuentran en nuestros servidores</b></h5>
+			<a href="https://www.github.com/ShuviDola/Trackime" target='_blank'><img src="{{ asset('images/other/github.png')}}" alt=""></a>
 		</div>
 	</footer>
 
