@@ -4,7 +4,7 @@ namespace Trackime\Http\Controllers;
 
 use Trackime\Anime;
 use Trackime\Date;
-use Trackime\Genre;
+use Trackime\GenreAnime;
 use Illuminate\Http\Request;
 
 class AnimeController extends Controller
@@ -19,7 +19,7 @@ class AnimeController extends Controller
         return view('animes.animes',[
 				"animes"	=> Anime::paginate(12),
 				"dates"		=> Date::orderBy('year','desc')->get(),
-				"genres"	=> Genre::all()
+				"genres"	=> GenreAnime::all()->unique('genre')
 			]
 		);
     }
@@ -49,7 +49,6 @@ class AnimeController extends Controller
 			$anime->web			= $request->input('web');
 			$anime->note		= $request->input('note');
 			$anime->chapters	= $request->input('chapters');
-			$anime->animeYT		= $request->input('animeYT');
 			$anime->animeFLV	= $request->input('animeFLV');
 			$anime->myAnimeList	= $request->input('myAnimeList');
 		$anime->save();

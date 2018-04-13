@@ -5,7 +5,7 @@ namespace Trackime\Http\Controllers;
 use Illuminate\Http\Request;
 use Trackime\Anime;
 use Trackime\Date;
-use Trackime\Genre;
+use Trackime\GenreAnime;
 
 class SearchController extends Controller
 {
@@ -19,7 +19,7 @@ class SearchController extends Controller
         return view('animes.animes',[
 				"animes"	=> Anime::where('anime','LIKE','%'.$request->input('search').'%')->paginate(12),
 				"dates"		=> Date::orderBy('year','desc')->get(),
-				"genres"	=> Genre::all()
+				"genres"	=> GenreAnime::all()->unique('genre')
 			]
 		);
     }

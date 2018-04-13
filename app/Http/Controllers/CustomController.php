@@ -4,7 +4,7 @@ namespace Trackime\Http\Controllers;
 
 use Trackime\Custom;
 use Trackime\Date;
-use Trackime\Genre;
+use Trackime\GenreAnime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -67,14 +67,14 @@ class CustomController extends Controller
 			return view('animes.animes',[
 					"animes"	=> Custom::where('state', 'pendiente')->where('user', Auth::user()->name)->paginate(12),
 					"dates"		=> Date::all(),
-					"genres"	=> Genre::all()
+					"genres"	=> GenreAnime::all()->unique('genre')
 				]
 			);
 		else if($id === "terminadas")	
 			return view('animes.animes',[
 					"animes"	=> Custom::where('state', 'terminada')->where('user', Auth::user()->name)->paginate(12),
 					"dates"		=> Date::all(),
-					"genres"	=> Genre::all()
+					"genres"	=> GenreAnime::all()->unique('genre')
 				]
 			);
     }

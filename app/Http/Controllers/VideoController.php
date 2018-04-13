@@ -5,6 +5,7 @@ namespace Trackime\Http\Controllers;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 use Trackime\Utils\AnimeFLV;
+use Trackime\Utils\MyAnimeList;
 use Trackime\Video;
 
 class VideoController extends Controller
@@ -14,6 +15,7 @@ class VideoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index($anime, $chapter)
     {
    		return Redirect::to(Video::where('anime', $anime)->where('chapter', $chapter)->first()->video);

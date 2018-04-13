@@ -19,13 +19,15 @@ class MyAnimeList{
 		$codeHTML = null;
 		foreach(file($uri) as $line)
 			$codeHTML .= htmlspecialchars($line);
-		
+
 		$arrayUtil = explode ('Episodes:', $codeHTML);
 		$information = explode ('&lt;/span&gt;', explode ('Duration', $arrayUtil[1])[0]);
 
-		$genres = [];
-		foreach(explode ('&lt;a href=&quot;/anime/genre/', $information[10]) as $genre)
-			array_push($genres, explode ('&gt;', explode('&lt;/', $genre)[0])[1]);
+		$genres = array();
+		foreach(explode ('&lt;a href=&quot;/anime/genre/', $information[10]) as $genre){
+			foreach(explode('&gt;', explode('&lt;/', $genre)[0]) as $a);
+				array_push($genres, $a);
+		}
 		unset($genres[0]);
 
 		return [
@@ -36,7 +38,10 @@ class MyAnimeList{
 		    "year"	    => explode (' ', explode ('&', explode ('&gt;', $information[4])[1])[0])[1],
 			"genres"	=> $genres
 		];
+
 	}
 }
 
 ?>
+
+

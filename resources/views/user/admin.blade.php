@@ -10,19 +10,11 @@
 				<div class="col-6 mb-4"><input class="form-control" type="text" placeholder="Season" name='season' ></div>
 				<div class="col-6 mb-4"><input class="form-control" type="text" placeholder="Tag" name='tag' ></div>
 				<div class="col-6 mb-4"><input class="form-control" type="text" placeholder="Note" name='note' ></div>
-				<div class="col-6 mb-4"><input class="form-control" type="text" placeholder="URL image 1920/1080" name='image' ></div>
+				<div class="col-6 mb-4"><input class="form-control" type="text" placeholder="URL image 1920/1080 <==>  960/540 <==> 480/270" name='image' ></div>
 				<div class="col-6 mb-4"><input class="form-control" type="text" placeholder="Web" name='web' ></div>
 				<div class="col-6 mb-4"><input class="form-control" type="text" placeholder="Chapters" name='chapters' ></div>
-				<div class="col-6 mb-4"><input class="form-control" type="text" placeholder="AnimeYT" name='animeYT' ></div>
 				<div class="col-6 mb-4"><input class="form-control" type="text" placeholder="AnimeFLV" name='animeFLV' ></div>
 				<div class="col-6 mb-4"><input class="form-control" type="text" placeholder="AnimeList ID" name='myAnimeList' ></div>
-				<div class="col-md-12 col-6 mb-2">
-					<select multiple class="form-control" id="exampleFormControlSelect2" name="genre[]">
-						@foreach($genres as $genre)
-							<option>{{ $genre->genre }}</option>
-						@endforeach
-					</select>
-				</div>
 				<div class="col-12 mb-4"> <button type="submit" class="btn btn-success">Save</button> </div>
 			</form>
 	</div>

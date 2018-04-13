@@ -24,7 +24,6 @@ class AdminController extends Controller
     public function index()
 	{
 		return view('user.admin',[
-				"genres" => Genre::all(),
 				"animes" => Anime::all()
 			]
 		);
@@ -49,7 +48,7 @@ class AdminController extends Controller
     public function storeAnime(Request $request)
     {
 		AnimeController::store($request);
-		GenreAnimeController::store($request);	
+		GenreAnimeController::store($request->input('myAnimeList'), $request->input('anime'));	
 		VideoController::store($request);
 		DateController::store($request);
 		file_put_contents('images/'.$request->input('web').'.jpg', $file = file_get_contents($request->input('image')));

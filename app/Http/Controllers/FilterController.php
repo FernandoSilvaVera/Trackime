@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Trackime\Character;
 use Trackime\Anime;
 use Trackime\Date;
-use Trackime\Genre;
+use Trackime\GenreAnime;
 
 class FilterController extends Controller
 {
@@ -62,7 +62,7 @@ class FilterController extends Controller
 		return view('animes.filter',[
 				'animes'	=> $animes,
 				"dates"		=> Date::orderBy('year','desc')->get(),
-				"genres"	=> Genre::all()
+				"genres"	=> GenreAnime::all()->unique('genre')
 			]
 		);
     }
