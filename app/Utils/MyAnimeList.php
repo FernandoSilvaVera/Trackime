@@ -21,16 +21,21 @@ class MyAnimeList{
 			$codeHTML .= htmlspecialchars($line);
 		
 		$arrayUtil = explode ('Episodes:', $codeHTML);
-		$information = explode ('&lt;/span&gt;', explode ('Broadcast', $arrayUtil[1])[0]);
+		$information = explode ('&lt;/span&gt;', explode ('Duration', $arrayUtil[1])[0]);
+
+		$genres = [];
+		foreach(explode ('&lt;a href=&quot;/anime/genre/', $information[10]) as $genre)
+			array_push($genres, explode ('&gt;', explode('&lt;/', $genre)[0])[1]);
+		unset($genres[0]);
 
 		return [
 			"chapters"	=> explode ('&', $information[1])[0],
 			"state" 	=> explode (' ', explode ('&', $information[2])[0])[2],
 		    "date"		=> explode ('&', $information[3])[0],
 		    "season"    => explode (' ', explode ('&', explode ('&gt;', $information[4])[1])[0])[0],
-		    "year"	    => explode (' ', explode ('&', explode ('&gt;', $information[4])[1])[0])[1]
+		    "year"	    => explode (' ', explode ('&', explode ('&gt;', $information[4])[1])[0])[1],
+			"genres"	=> $genres
 		];
-
 	}
 }
 
