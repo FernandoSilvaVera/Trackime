@@ -113,7 +113,7 @@
             </div>
         </nav>
 
-        <div id="main">
+        <div id="main" class='mt-3'>
             @yield('filter')
             @yield('content')
         </div>
