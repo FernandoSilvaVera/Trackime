@@ -57,6 +57,10 @@ Route::post('/destroyAnime', 'CustomController@destroy');
 Route::post('/updateAnime', 'CustomController@update'); 
 
 
+//UserController
+Route::post('/updateImage', 'UserController@update'); 
+Route::get('/usuario/{user}', 'UserController@index'); 
+
 Route::get('/agregarSerie', function(){
 	abort(404);
 });
@@ -66,10 +70,11 @@ Route::get('/', 'HomeController@index');
 Route::get('/aleatorio', function(){
 	return view('random');
 });
+/*
 Route::get('/user/{userName}',function($userName){
 	return view("user.user",['userName' => $userName]);
 })->where('userName', '[A-Za-z]+');
-
+*/
 
 Auth::routes();
 

@@ -1,3 +1,15 @@
 .pagination {
    justify-content: center;
 }
+
+.new-image{
+	height: 100px;
+	width:	100px;
+	cursor:	pointer;
+}
+
+.imagen-seleccionada{
+	border-style: solid;
+	border-width: 5px;
+}
+

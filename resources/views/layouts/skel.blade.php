@@ -13,6 +13,7 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/ajax.js') }}" defer></script>
+    <script src="{{ asset('js/images.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -97,7 +98,7 @@
 								<!-- Dropdown Menu-->
 
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ url('/user') . '/' . Auth::user()->name }} ">{{ __('Perfil') }}</a>
+                                    <a class="dropdown-item" href="{{ url('/usuario') . '/' . Auth::user()->name }} ">{{ __('Perfil') }}</a>
 									@if(Auth::user()->name === 'ShuviDola')
                                     <a class="dropdown-item" href="{{ url('/administrar') }}">{{ __('Administrar') }}</a>
 									@endif

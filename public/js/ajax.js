@@ -62,5 +62,17 @@ $(document).ready(function(){
 		})
 	})
 
+	//Cambia la imagen en la bbdd
+	$(document).on('click' ,'.cambiar-imagen', function(){
+		$.post('http://' + $(location).attr('host') + '/Trackime/public/updateImage',{
+			'_token': $('meta[name=csrf-token]').attr('content'),
+			image: image
+		}).done(function(){
+			$('#userImage').remove()
+			$('#infoUser').append('<img id="userImage" src="http://' + $(location).attr('host') + '/Trackime/public/images/user/' + image + '.png" class="img-thumbnail mb-2" data-toggle="modal" data-target="#changeImage">')
+		}).fail(function(){
+			alert("No se ha podido cambiar la imagen")
+		})
+	})
 
 })
