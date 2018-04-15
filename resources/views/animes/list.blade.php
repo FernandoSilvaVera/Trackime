@@ -26,7 +26,7 @@
 											<div class="modal-body">
 												<div class="embed-responsive embed-responsive-16by9">
 													@if($video[$chapter-1]->video !== 'pending')
-													<iframe src="https://www.rapidvideo.com/e/{{ $video[$chapter-1]->video }}" allowfullscreen="" scrolling="no" frameborder="0"></iframe>
+													<iframe src="https://www.rapidvideo.com/e/{{ $video[$chapter-1]->video }}" sandbox="allow-forms allow-pointer-lock allow-same-origin allow-scripts allow-top-navigation" scrolling="no" frameborder="0"></iframe>
 													{{--
 													<video controls="controls" type="video/mp4" preload="none">
 														<source src="{{url('/video/') . '/' . $video[$chapter-1]->anime . '/' . $video[$chapter-1]->chapter}}"  autostart="false">
