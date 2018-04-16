@@ -8,7 +8,7 @@
 			<div id="infoUser" class='mt-3'>
 				<img id='userImage' src="{{ asset('images/user/' . $userName->image ) }}.png" class="img-thumbnail mb-2" data-toggle="modal" data-target="#changeImage">
 			</div>
-			<h2 align="center">{{ $userName->name }}</h2>
+			<p align="center">{{ $userName->name }}</p>
 		</div>
 		<div class="col-1"></div>
 		<div class="col-8" style='background-color:white'>
@@ -32,10 +32,10 @@
 
 				<div class="modal-body">
 					<div class="row">
-						<div class="col-sm-3"><img src="{{ asset('images/user/jibril.png') }}" class="rounded new-image" id="jibril"></div>
-						<div class="col-sm-3"><img src="{{ asset('images/user/sagiri.png') }}" class="rounded new-image" id="sagiri"></div>
-						<div class="col-sm-3"><img src="{{ asset('images/user/shuvi.png')  }}" class="rounded new-image" id="shuvi"></div>
-						<div class="col-sm-3"><img src="{{ asset('images/user/luffy.png') }}" class="rounded new-image" id="luffy"></div>
+						<div class="col-sm-3 col-4 mb-2"><img src="{{ asset('images/user/jibril.png') }}" class="rounded new-image" id="jibril"></div>
+						<div class="col-sm-3 col-4 mb-2"><img src="{{ asset('images/user/sagiri.png') }}" class="rounded new-image" id="sagiri"></div>
+						<div class="col-sm-3 col-4 mb-2"><img src="{{ asset('images/user/shuvi.png')  }}" class="rounded new-image" id="shuvi"></div>
+						<div class="col-sm-3 col-4 mb-2"><img src="{{ asset('images/user/luffy.png') }}" class="rounded new-image" id="luffy"></div>
 					</div>
 				</div>
 
