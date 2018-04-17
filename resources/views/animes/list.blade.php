@@ -1,12 +1,14 @@
 @extends('layouts.skel')
 
 @section('content')
+
 <div class="container">
+
+	<h3 class='mb-5 text-center' id="name_anime">{{ $anime->anime }}</h3>
 
 	<div class="row">
 
 		<div class="col-6">
-			<h3 class="text-center">Listado de capitulos</h3>
 			<div class="col-12" style="overflow:auto;height:300px">
 				<table class="table table-hover" >
 					<tbody>
@@ -36,11 +38,9 @@
 													@endif
 												</div>
 											</div>
-
 											<div class="modal-footer">
-												<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+												<button type="button" class="btn btn-secondary" data-dismiss="modal">Salir</button>
 											</div>
-
 										</div>
 									</div>
 								</div>
@@ -54,8 +54,11 @@
 
 		<!-- Parte derecha de la pagina-->
 
+
+
+
         <div class="col-6 text-center">
-			<h3 id="name_anime">{{ $anime->anime }}</h3>
+
 			<img class="card-img-top col-md-8 mb-1" src="{{ asset('images/' . $anime['web']) }}.jpg">
 			<br>
 			@foreach($anime->genre as $genre)
@@ -101,7 +104,7 @@
 </div>
 
 <div class="container mt-5">
-	<h3 class="text-center">Personajes</h3>
+	<h4 class="text-center">Personajes</h4>
 	<div class="row">
 	@foreach($anime->character as $character)
         <div class="col-md-3 col-6">
@@ -124,7 +127,7 @@
 </div>
 
 <div class="container mt-5">
-	<h3 class="text-center">Series Relacionadas</h3>
+	<h4 class="text-center">Series Relacionadas</h4>
 </div>
 
 @endsection
