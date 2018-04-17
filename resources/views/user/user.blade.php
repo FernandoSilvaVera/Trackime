@@ -6,9 +6,9 @@
 	<div class="row text-center justify-content-center">
 		<div class="col-3" style='background-color:white'>
 			<div id="infoUser" class='mt-3'>
-				<img id='userImage' src="{{ asset('images/user/' . $userName->image ) }}.png" class="img-thumbnail mb-2" data-toggle="modal" data-target="#changeImage">
+				<img style='cursor:pointer;' id='userImage' src="{{ asset('images/user/' . $userName->image ) }}.png" class="img-thumbnail mb-2" data-toggle="modal" data-target="#changeImage">
 			</div>
-			<p align="center">{{ $userName->name }}</p>
+			<p align="center"><b>{{ $userName->name }}</b></p>
 		</div>
 		<div class="col-1"></div>
 		<div class="col-8" style='background-color:white'>

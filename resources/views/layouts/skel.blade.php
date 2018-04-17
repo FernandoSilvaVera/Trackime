@@ -121,23 +121,24 @@
 
     </div>
 	
-	<footer class='footer' style='background-color:white'>
+	<footer class="footer" style="background-color:white;">
 		<div class="container text-center">
 			<div class="row">
 				<div class="col-3">
-					<h4><b><a href="{{ url('/animes' )}}">{{ __('Animes')}}</a></b></h4>
+					<p><b><a href="{{ url('/animes' )}}">{{ __('Animes')}}</a></b></p>
 				</div>
 				<div class="col-3">
-					<h4><b><a href="{{ url('/emision' )}}">{{ __('Emision')}}</a></b></h4>
+					<p><b><a href="{{ url('/emision' )}}">{{ __('Emision')}}</a></b></p>
 				</div>
 				<div class="col-3">
-					<h4><b><a href="{{ url('/personajes' )}}">{{ __('Personajes')}}</a></b></h4>
+					<p><b><a href="{{ url('/personajes' )}}">{{ __('Personajes')}}</a></b></p>
 				</div>
 				<div class="col-3">
-					<h4><b><a href="{{ url('/aleatorio') }}">{{ __('Aleatorio')}}</a></b></h4>
+					<p><b><a href="{{ url('/aleatorio') }}">{{ __('Aleatorio')}}</a></b></p>
 				</div>
 			</div>
-			<h5 class='mt-3' style='color:#aaaaaa'><b>Los videos mostrados en esta página no se encuentran en nuestros servidores</b></h5>
+			<span class='mt-3' style='color:#aaaaaa'><b>Los videos mostrados en esta página no se encuentran en nuestros servidores</b></span>
+			<br class='mb-2'>
 			<a href="https://www.github.com/ShuviDola/Trackime" target='_blank'><img src="{{ asset('images/other/github.png')}}" alt=""></a>
 		</div>
 	</footer>
