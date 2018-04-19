@@ -65,10 +65,10 @@
 </head>
 <body>
 
-     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">{{ config('app.name', 'Laravel') }} </a>
+	<div id="wrap">
+		<nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+			<div class="container">
+				<a class="navbar-brand" href="{{ url('/') }}">{{ config('app.name', 'Laravel') }} </a>
 				<ul class="navbar-nav mr-auto"><li><a class="nav-link" href="{{ url('/animes') }}">{{ __('Animes') }}</a></li></ul>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -122,8 +122,8 @@
             @yield('content')
         </div>
 
-    </div>
-	
+	</div>
+
 	<footer class="footer" style="background-color:white;">
 		<div class="container text-center">
 			<div class="row">
