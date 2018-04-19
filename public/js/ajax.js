@@ -1,7 +1,9 @@
+var url = 'http://' + $(location).attr('host') + '/Trackime/public/';
+
 $(document).ready(function(){
 	//Pone la serie como pendiente
 	$(document).on('click','#newPending', function(){
-		$.post('http://' + $(location).attr('host') + '/Trackime/public/agregarSerie',{
+		$.post(url + 'agregarSerie',{
 			'_token': $('meta[name=csrf-token]').attr('content'),
 			anime:	$("#name_anime").text(),
 			state:	"pendiente"
@@ -13,7 +15,7 @@ $(document).ready(function(){
 
 	//Pone la serie como terminada
 	$(document).on('click', '#newCompleted', function(){
-		$.post('http://' + $(location).attr('host') + '/Trackime/public/agregarSerie',{
+		$.post(url + 'agregarSerie',{
 			'_token': $('meta[name=csrf-token]').attr('content'),
 			anime:	$("#name_anime").text(),
 			state:	"terminada"
@@ -25,7 +27,7 @@ $(document).ready(function(){
 
 	//borra la serie pendiente/terminada
 	$(document).on('click', '#destroy', function(){
-		$.post('http://' + $(location).attr('host') + '/Trackime/public/destroyAnime',{
+		$.post(url + 'destroyAnime',{
 			'_token': $('meta[name=csrf-token]').attr('content'),
 			anime:	$("#name_anime").text()
 		}).done(function(){
@@ -38,7 +40,7 @@ $(document).ready(function(){
 
 	//Actualiza la serie a pendiente
 	$(document).on('click', '#updatePending', function(){
-		$.post('http://' + $(location).attr('host') + '/Trackime/public/updateAnime',{
+		$.post(url + 'updateAnime',{
 			'_token': $('meta[name=csrf-token]').attr('content'),
 			anime:	$("#name_anime").text(),
 			state:	"pendiente"
@@ -51,7 +53,7 @@ $(document).ready(function(){
 
 	//Actualiza la serie a completada
 	$(document).on('click', '#updateCompleted', function(){
-		$.post('http://' + $(location).attr('host') + '/Trackime/public/updateAnime',{
+		$.post(url + 'updateAnime',{
 			'_token': $('meta[name=csrf-token]').attr('content'),
 			anime:	$("#name_anime").text(),
 			state:	"terminada"
@@ -64,12 +66,12 @@ $(document).ready(function(){
 
 	//Cambia la imagen en la bbdd
 	$(document).on('click' ,'.cambiar-imagen', function(){
-		$.post('http://' + $(location).attr('host') + '/Trackime/public/updateImage',{
+		$.post(url + 'updateImage',{
 			'_token': $('meta[name=csrf-token]').attr('content'),
 			image: image
 		}).done(function(){
 			$('#userImage').remove()
-			$('#infoUser').append('<img id="userImage" src="http://' + $(location).attr('host') + '/Trackime/public/images/user/' + image + '.png" class="img-thumbnail mb-2" data-toggle="modal" data-target="#changeImage">')
+			$('#infoUser').append('<img id="userImage" src=' + url + 'images/user/' + image + '.png class="img-thumbnail mb-2" data-toggle="modal" data-target="#changeImage">')
 		}).fail(function(){
 			alert("No se ha podido cambiar la imagen")
 		})
