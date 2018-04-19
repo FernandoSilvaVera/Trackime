@@ -4,7 +4,7 @@
 
 <div class="container">
 
-	<h3 class='mb-5 text-center' id="name_anime">{{ $anime->anime }}</h3>
+	<h3 class='mb-3 text-center' id="name_anime">{{ $anime->anime }}</h3>
 
 	<div class="row">
 
@@ -14,8 +14,8 @@
 					<tbody>
 						@for($chapter=count($video); $chapter>0; $chapter--)
 							<tr style="cursor:pointer;">
-								<td data-toggle="modal" data-target="#{{ $chapter }}">{{ $anime->anime }}</td>
-								<td data-toggle="modal" data-target="#{{ $chapter }}">{{ $chapter }}</td>
+								<td onclick="generateChapter({{ $video[$chapter-1] }})" data-toggle="modal" data-target="#{{ $chapter }}">{{ $anime->anime }}</td>
+								<td onclick="generateChapter({{ $video[$chapter-1] }})" data-toggle="modal" data-target="#{{ $chapter }}">{{ $chapter }}</td>
 								<div class="modal fade" id="{{ $chapter }}">
 									<div class="modal-dialog modal-lg">
 										<div class="modal-content">
@@ -26,9 +26,9 @@
 											</div>
 
 											<div class="modal-body">
-												<div class="embed-responsive embed-responsive-16by9">
+												<div id="video{{ $chapter}}" class="embed-responsive embed-responsive-16by9">
 													@if($video[$chapter-1]->video !== 'pending')
-													<iframe src="https://www.rapidvideo.com/e/{{ $video[$chapter-1]->video }}" sandbox="allow-forms allow-pointer-lock allow-same-origin allow-scripts allow-top-navigation" allowfullscreen="" scrolling="no" frameborder="0"></iframe>
+
 													{{--
 													<video controls="controls" type="video/mp4" preload="none">
 														<source src="{{url('/video/') . '/' . $video[$chapter-1]->anime . '/' . $video[$chapter-1]->chapter}}"  autostart="false">
@@ -53,9 +53,6 @@
 		</div>
 
 		<!-- Parte derecha de la pagina-->
-
-
-
 
         <div class="col-6 text-center">
 
