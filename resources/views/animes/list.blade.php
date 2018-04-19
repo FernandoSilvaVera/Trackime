@@ -69,7 +69,7 @@
 			<!-- Marcar como pendiente/terminada-->
 			@guest
 			@else
-			 <div id='options' class="text-right">
+			 <div id='options' class="text-right" style='cursor:pointer'>
 	
 				@if(is_null($custom))
 						<div id="add">
