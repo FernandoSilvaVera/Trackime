@@ -26,7 +26,7 @@
 											</div>
 
 											<div class="modal-body">
-												<div id="video{{ $chapter}}" class="embed-responsive embed-responsive-16by9">
+												<div id="video{{ $chapter}}" class="embed-responsive embed-responsive-16by9 mb-2">
 													@if($video[$chapter-1]->video !== 'pending')
 
 													{{--
@@ -36,6 +36,20 @@
 													@else
 														<h3>Video no disponible</h3>
 													@endif
+												</div>
+												<div class="container mt-5">
+													@guest
+													@else
+													<div class="form-group mb-5">
+														<label for="exampleTextarea">Escribe un comentario</label>
+														<textarea class="form-control" id="commentary{{$chapter}}" maxlength="255" rows="3"></textarea>
+														<br>
+														<button type="submit" name='{{ $chapter }}' class="btn btn-primary float-right comment">Comentar</button>
+													</div>
+													@endguest
+													<div id='comments{{$chapter}}' class="mt-5">
+
+													</div>
 												</div>
 											</div>
 											<div class="modal-footer">

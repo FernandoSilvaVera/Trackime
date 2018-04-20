@@ -11,6 +11,11 @@
 |
 */
 
+//CommentController
+Route::post('addComment', 'CommentController@store');
+Route::post('getComment', 'CommentController@show');
+
+
 //VideoController
 Route::get('/video/{anime}/{chapter}', 'VideoController@index');
 

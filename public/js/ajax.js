@@ -65,7 +65,7 @@ $(document).ready(function(){
 	})
 
 	//Cambia la imagen en la bbdd
-	$(document).on('click' ,'.cambiar-imagen', function(){
+	$(document).on('click', '.cambiar-imagen', function(){
 		$.post(url + 'updateImage',{
 			'_token': $('meta[name=csrf-token]').attr('content'),
 			image: image
@@ -74,6 +74,22 @@ $(document).ready(function(){
 			$('#infoUser').append('<img id="userImage" src=' + url + 'images/user/' + image + '.png class="img-thumbnail mb-2" data-toggle="modal" data-target="#changeImage">')
 		}).fail(function(){
 			alert("No se ha podido cambiar la imagen")
+		})
+	})
+
+	//Agregar el comentario en la bbdd
+	$(document).on('click', '.comment', function(){
+		var comment = $('#commentary' + this.name).val()
+		var chapter = this.name
+		$.post(url + 'addComment',{
+			'_token': $('meta[name=csrf-token]').attr('content'),
+			comment : comment,
+			chapter : chapter,
+			anime	: $("#name_anime").text()
+		}).done(function(user){
+			$('#comments'+chapter).append('<div class="media mt-4"><img class="d-flex mr-3" style="width:64px" src="'+url+ 'images/user/' + user["image"] + '.png' + '"/><div class="media-body"><h5 class="mt-0">'+ user["name"] + '</h5><p>'+comment+'</p></div></div>')
+		}).fail(function(){
+			alert("No se ha podido escribir el comentario")
 		})
 	})
 
