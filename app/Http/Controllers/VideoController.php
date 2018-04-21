@@ -8,6 +8,7 @@ use Trackime\Utils\MyAnimeList;
 use Illuminate\Http\Request;
 use Trackime\Utils\AnimeFLV;
 use Trackime\Video;
+use Trackime\Date;
 
 
 class VideoController extends Controller
@@ -82,9 +83,22 @@ class VideoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update()
     {
-        //
+		$emission = Date::where('state', 'currently')->get();
+		foreach($emission as $anime)
+			if(AnimeFLV::videoRapiVideo($anime->animeFLV(), $anime->chapter()+1)){
+				$video = new Video;
+					$video->anime	= $anime->anime;
+					$video->chapter = $anime->chapter()+1; 
+					$video->video	= AnimeFLV::videoRapiVideo($anime, $anime->chapter()+1);
+					$video->date	= date("Y/m/d h:i:s");
+					$video->admin	= Auth::user()->name;
+				$video->save();
+			}
+		
+		return redirect('/administrar');
+
     }
 
     /**
