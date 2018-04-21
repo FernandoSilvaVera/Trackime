@@ -6,8 +6,13 @@
 	<div class="row text-center justify-content-center">
 		<div class="col-3" style='background-color:white'>
 			<div id="infoUser" class='mt-3'>
+			@if(Auth::user()->name === $userName->name)
 				<img style='cursor:pointer;' id='userImage' src="{{ asset('images/user/' . $userName->image ) }}.png" class="img-thumbnail mb-2" data-toggle="modal" data-target="#changeImage">
+			@else
+				<img id='userImage' src="{{ asset('images/user/' . $userName->image ) }}.png" class="img-thumbnail mb-2">
+			@endif
 			</div>
+
 			<p align="center"><b>{{ $userName->name }}</b></p>
 		</div>
 		<div class="col-1"></div>
