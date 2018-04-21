@@ -3,10 +3,12 @@
 namespace Trackime\Http\Controllers;
 
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Auth;
+use Trackime\Utils\MyAnimeList;
 use Illuminate\Http\Request;
 use Trackime\Utils\AnimeFLV;
-use Trackime\Utils\MyAnimeList;
 use Trackime\Video;
+
 
 class VideoController extends Controller
 {
@@ -40,11 +42,13 @@ class VideoController extends Controller
     public static function store(Request $request)
     {
 		$videos = new Video;
-		for($i=$request->input('chapters'); $i>0; $i--){
+		for($i=1; $i<=$request->input('chapters'); $i++){
 			$video = new Video;
 				$video->anime	= $request->input('anime');
 				$video->chapter = $i; 
 				$video->video	= AnimeFLV::videoRapiVideo($request->input('animeFLV'), $i);
+				$video->date = date("Y/m/d h:i:s");
+				$video->admin = Auth::user()->name;
 			$video->save();
 		}
     }

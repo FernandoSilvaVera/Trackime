@@ -45,9 +45,7 @@ class AnimeController extends Controller
 		$anime = new Anime;
 			$anime->anime		= $request->input('anime');
 			$anime->season		= $request->input('season');
-			$anime->tag			= $request->input('tag');
-			$anime->web			= $request->input('web');
-			$anime->note		= $request->input('note');
+			$anime->web			= $request->input('animeFLV');
 			$anime->chapters	= $request->input('chapters');
 			$anime->animeFLV	= $request->input('animeFLV');
 			$anime->myAnimeList	= $request->input('myAnimeList');

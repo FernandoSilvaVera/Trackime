@@ -102,7 +102,7 @@
 
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ url('/usuario') . '/' . Auth::user()->name }} ">{{ __('Perfil') }}</a>
-									@if(Auth::user()->name === 'ShuviDola')
+									@if(Auth::user()->admin)
                                     <a class="dropdown-item" href="{{ url('/administrar') }}">{{ __('Administrar') }}</a>
 									@endif
 									<a class="dropdown-item" href="{{ url('/pendientes') }}">{{ __('Pendientes') }}</a>

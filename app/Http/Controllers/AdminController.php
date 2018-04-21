@@ -51,7 +51,7 @@ class AdminController extends Controller
 		GenreAnimeController::store($request->input('myAnimeList'), $request->input('anime'));	
 		VideoController::store($request);
 		DateController::store($request);
-		file_put_contents('images/'.$request->input('web').'.jpg', $file = file_get_contents($request->input('image')));
+		file_put_contents('images/'.$request->input('animeFLV').'.jpg', $file = file_get_contents($request->input('image')));
 
 		return redirect('/administrar');
     }
