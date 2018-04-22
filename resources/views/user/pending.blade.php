@@ -6,7 +6,7 @@
 	<div class="row">
 		<div class="col-3 text-center" style='background-color:white'>
 			<div id="infoUser" class='mt-3'>
-			@if(Auth::user()->name === $userName->name)
+			@if(!is_null(Auth::user()) && Auth::user()->name === $userName->name)
 				<img style='cursor:pointer;' id='userImage' src="{{ asset('images/user/' . $userName->image ) }}.png" class="img-thumbnail mb-2" data-toggle="modal" data-target="#changeImage">
 			@else
 				<img id='userImage' src="{{ asset('images/user/' . $userName->image ) }}.png" class="img-thumbnail mb-2">
@@ -16,7 +16,7 @@
 		</div>
 		<div class="col-9">
 			<ul class="nav nav-tabs">
-				@if(Auth::user()->name === $userName->name)
+				@if(!is_null(Auth::user()) && Auth::user()->name === $userName->name)
 				<li class="nav-item"> <a class="nav-link" href="{{ url('/usuario') . '/' . $userName->name }}">Perfil</a> </li>
 				@endif
 				<li class="nav-item"> <a class="nav-link active" href="{{ url('/usuario/') . '/' . $userName->name . '/' . 'pendiente' }}">Pendientes</a> </li>

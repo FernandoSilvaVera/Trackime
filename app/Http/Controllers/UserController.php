@@ -21,7 +21,7 @@ class UserController extends Controller
 		if(is_null($infoUser))	
 			echo "pendiente crear vista no existe el usuario";
 		else if(is_null(Auth::user()))
-			echo "pendiente crear vista tienes que tener cuenta";
+			return $this->pending($user);
 		else
 			return $this->pending($user);
     }
@@ -56,9 +56,6 @@ class UserController extends Controller
 
     public function pending($user)
     {
-		if(is_null(Auth::user()))
-			echo "pendiente crear vista tienes que tener cuenta";
-		else
 		return view ('user.pending',[
 					'animes'	=> Custom::where('user', $user)->where('state', 'pendiente')->paginate(12),
 					'userName'	=> User::where('name', $user)->first()
@@ -68,9 +65,6 @@ class UserController extends Controller
 
     public function finished($user)
     {
-		if(is_null(Auth::user()))
-			echo "pendiente crear vista tienes que tener cuenta";
-		else
 		return view ('user.finished',[
 					'animes'	=> Custom::where('user', $user)->where('state', 'terminada')->paginate(12),
 					'userName'	=> User::where('name', $user)->first()
