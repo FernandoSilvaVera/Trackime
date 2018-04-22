@@ -65,6 +65,9 @@ Route::post('/updateAnime', 'CustomController@update');
 //UserController
 Route::post('/updateImage', 'UserController@update'); 
 Route::get('/usuario/{user}', 'UserController@index'); 
+Route::get('/usuario/{user}/pendiente', 'UserController@pending'); 
+Route::get('/usuario/{user}/terminada', 'UserController@finished'); 
+
 
 Route::get('/agregarSerie', function(){
 	abort(404);

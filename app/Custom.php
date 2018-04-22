@@ -20,6 +20,16 @@ class custom extends Model
 		return DB::table('animes')->where('anime', $data)->first()->web;
 	}
 
+	public function web()
+	{
+		return DB::table('animes')->where('anime', $this->anime)->first()->web;
+	}
+	
+	public function genres()
+	{
+		return DB::table('genre_animes')->where('anime', $this->anime)->get();
+	}
+
 	public function animes()
 	{
 		return $this->belongsToMany('Trackime\Anime','custom','anime','anime','anime','anime');

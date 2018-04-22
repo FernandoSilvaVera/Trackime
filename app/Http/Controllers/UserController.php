@@ -5,6 +5,7 @@ namespace Trackime\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Trackime\User;
+use Trackime\Custom;
 
 class UserController extends Controller
 {
@@ -15,16 +16,14 @@ class UserController extends Controller
      */
     public function index($user)
     {
-
 		$infoUser = User::where('name', $user)->first();
 
 		if(is_null($infoUser))	
 			echo "pendiente crear vista no existe el usuario";
+		else if(is_null(Auth::user()))
+			echo "pendiente crear vista tienes que tener cuenta";
 		else
-			return view('user.user',[
-					'userName' => $infoUser
-				]
-			);
+			return $this->pending($user);
     }
 
     /**
@@ -54,9 +53,30 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+
+    public function pending($user)
     {
-        //
+		if(is_null(Auth::user()))
+			echo "pendiente crear vista tienes que tener cuenta";
+		else
+		return view ('user.pending',[
+					'animes'	=> Custom::where('user', $user)->where('state', 'pendiente')->paginate(12),
+					'userName'	=> User::where('name', $user)->first()
+			]
+		);
+    }
+
+    public function finished($user)
+    {
+		if(is_null(Auth::user()))
+			echo "pendiente crear vista tienes que tener cuenta";
+		else
+		return view ('user.finished',[
+					'animes'	=> Custom::where('user', $user)->where('state', 'terminada')->paginate(12),
+					'userName'	=> User::where('name', $user)->first()
+			]
+		);
+
     }
 
     /**

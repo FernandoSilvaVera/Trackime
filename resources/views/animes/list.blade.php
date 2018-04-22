@@ -86,24 +86,24 @@
 						<div id="add">
 							<button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">Agregar</button>
 							<div class="dropdown-menu">
-								<a id="newPending" class="dropdown-item">marcar pendiente</a>
-								<a id="newCompleted" class="dropdown-item">marcar terminada</a>
+								<a id="newPending" name="{{ $anime->anime }}" class="dropdown-item">marcar pendiente</a>
+								<a id="newCompleted" name="{{ $anime->anime }}" class="dropdown-item">marcar terminada</a>
 							</div>
 						</div>
 				@elseif($custom->state === 'pendiente')
 						<div id="pending">
 							<button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">Pendiente</button>
 							<div class="dropdown-menu">
-								<a id="destroy" class="dropdown-item">quitar pendiente</a>
-								<a id="updateCompleted" class="dropdown-item">marcar terminada</a>
+								<a id="destroy" name="{{ $anime->anime }}"class="dropdown-item">quitar pendiente</a>
+								<a id="updateCompleted" name="{{ $anime->anime }}" class="dropdown-item">marcar terminada</a>
 							</div>
 						</div>
 				@elseif($custom->state === 'terminada')
 						<div id="completed">
 							<button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">Terminada</button>
 							<div class="dropdown-menu">
-								<a id="destroy" class="dropdown-item">quitar terminada</a>
-								<a id="updatePending" class="dropdown-item">marcar pendiente</a>
+								<a id="destroy" name="{{ $anime->anime }}"class="dropdown-item">quitar terminada</a>
+								<a id="updatePending" name="{{ $anime->anime }}"class="dropdown-item">marcar pendiente</a>
 							</div>
 						</div>
 				@endif

@@ -1,8 +1,8 @@
 @extends('layouts.skel')
 @section('filter')
 <div class="container text-right">
-	<button type="button" class="btn btn-dark" data-toggle="collapse" data-target="#demo">Filtro</button>
-	<form id="demo" action="{{ url('/filtro/anime')}} " class="collapse mt-3">
+	<img style='width:32px; cursor:pointer' src="{{ asset('images/icon/controls.png') }}" alt="" data-toggle="collapse" data-target="#filter">
+	<form id="filter" action="{{ url('/filtro/anime')}} " class="collapse mt-3">
 		<button type="submit" class="btn btn-dark" data-toggle="collapse" data-target="#demo">Buscar</button>
 		<div class="row text-center">
 			<div class="col-lg-4 col-6 mt-3">

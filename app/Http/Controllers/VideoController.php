@@ -91,7 +91,7 @@ class VideoController extends Controller
 				$video = new Video;
 					$video->anime	= $anime->anime;
 					$video->chapter = $anime->chapter()+1; 
-					$video->video	= AnimeFLV::videoRapiVideo($anime, $anime->chapter()+1);
+					$video->video	= AnimeFLV::videoRapiVideo($anime->AnimeFLV(), $anime->chapter()+1);
 					$video->date	= date("Y/m/d h:i:s");
 					$video->admin	= Auth::user()->name;
 				$video->save();

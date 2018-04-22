@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container">	
+
 	<div class="row">
 		<div class="col-3 text-center" style='background-color:white'>
 			<div id="infoUser" class='mt-3'>
@@ -16,11 +17,47 @@
 		<div class="col-9">
 			<ul class="nav nav-tabs">
 				@if(Auth::user()->name === $userName->name)
-				<li class="nav-item"> <a class="nav-link active" href="{{ url('/usuario') . '/' . $userName->name }}">Perfil</a> </li>
+				<li class="nav-item"> <a class="nav-link" href="{{ url('/usuario') . '/' . $userName->name }}">Perfil</a> </li>
 				@endif
-				<li class="nav-item"> <a class="nav-link" href="{{ url('/usuario/') . '/' . $userName->name . '/' . 'pendiente' }}">Pendientes</a> </li>
+				<li class="nav-item"> <a class="nav-link active" href="{{ url('/usuario/') . '/' . $userName->name . '/' . 'pendiente' }}">Pendientes</a> </li>
 				<li class="nav-item"> <a class="nav-link" href="{{ url('/usuario/') . '/' . $userName->name . '/' . 'terminada' }}">Terminadas</a> </li>
 			</ul>
+			<div class="container">
+				<?PHP $i=0 ?>
+				@foreach($animes as $anime)
+				<div class="row mt-4" id="{{ $i++ }}">
+					<!-- Imagen del anime-->
+					<div class="col-5">
+						<a href="{{ url('/animes/') . '/' . $anime->anime }} "><img class="card-img-top rounded" src="{{ asset('images/' . $anime->web()) }}.jpg"></a>
+					</div>
+					<!-- Descripcion del anime-->
+					<div class="col-6">
+						<span class="h3">{{ $anime->anime }}</span>
+						<p>
+						Niños con poderes
+						</p>
+						<div class="genre" style="position:absolute;bottom:0">
+							@foreach($anime->genres() as $genre)
+								<a href="#"><span class="badge badge-dark">{{ $genre->genre }}</span></a>
+							@endforeach
+						</div>
+					</div>
+					<!-- Boton para agregar el anime-->
+					<div class="col-1 align-self-center">
+						<div id="pending"> 
+							<img style="cursor:pointer;width:32px;" src="{{ asset('images/icon/add.png') }}" class="dropdown-toggle" data-toggle="dropdown"/>
+							<div class="dropdown-menu">
+								<a id="destroy" name="{{ $anime->anime }}" class="dropdown-item">quitar pendiente</a>
+								<a id="updateCompleted" name="{{ $anime->anime }}" class="dropdown-item">marcar terminada</a>
+							</div>
+						</div>
+					</div>
+				</div> 
+				@endforeach
+			</div>
+			<br>
+			<br>
+			{{ $animes->links() }}
 		</div>		
 	</div>
 </div>
