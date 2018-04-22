@@ -24,11 +24,6 @@ Route::post('updateEmission', 'VideoController@update');
 Route::get('/animes', 'AnimeController@index'); 
 
 
-//CustomController
-Route::get('/pendientes', 'CustomController@pendientes');
-Route::get('/terminadas', 'CustomController@terminadas');
-
-
 //ListController
 Route::get('/animes/{animeName}', 'ListController@index');
 

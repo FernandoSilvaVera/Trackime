@@ -20,16 +20,6 @@ class CustomController extends Controller
         //
     }
 
-	public function pendientes()
-	{
-		return $this->show("pendientes");
-	}
-
-	public function terminadas()
-	{
-		return $this->show("terminadas");
-	}
-
     /**
      * Show the form for creating a new resource.
      *
@@ -61,23 +51,7 @@ class CustomController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        if($id === "pendientes")
-			return view('animes.animes',[
-					"animes"	=> Custom::where('state', 'pendiente')->where('user', Auth::user()->name)->paginate(12),
-					"dates"		=> Date::all(),
-					"genres"	=> GenreAnime::all()->unique('genre')
-				]
-			);
-		else if($id === "terminadas")	
-			return view('animes.animes',[
-					"animes"	=> Custom::where('state', 'terminada')->where('user', Auth::user()->name)->paginate(12),
-					"dates"		=> Date::all(),
-					"genres"	=> GenreAnime::all()->unique('genre')
-				]
-			);
-    }
+
 
     /**
      * Show the form for editing the specified resource.

@@ -105,8 +105,6 @@
 									@if(Auth::user()->admin)
                                     <a class="dropdown-item" href="{{ url('/administrar') }}">{{ __('Administrar') }}</a>
 									@endif
-									<a class="dropdown-item" href="{{ url('/pendientes') }}">{{ __('Pendientes') }}</a>
-									<a class="dropdown-item" href="{{ url('/terminadas') }}">{{ __('Terminadas') }}</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
                                 </div>
