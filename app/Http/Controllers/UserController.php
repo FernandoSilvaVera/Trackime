@@ -20,10 +20,13 @@ class UserController extends Controller
 
 		if(is_null($infoUser))	
 			echo "pendiente crear vista no existe el usuario";
-		else if(is_null(Auth::user()))
+		else if(is_null(Auth::user()) or Auth::user()->name !== $user)
 			return $this->pending($user);
 		else
-			return $this->pending($user);
+			return view('user.user',[
+					'userName' => $infoUser
+				]
+			);
     }
 
     /**
