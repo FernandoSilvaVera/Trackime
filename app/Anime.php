@@ -27,4 +27,10 @@ class Anime extends Model
 	{
 		return $this->belongsToMany('Trackime\Character','animes','anime','anime','anime','anime');
 	}
+
+	public function chapter()
+	{
+		return count(DB::table('videos')->where('anime', $this->anime)->get());
+	}
+
 }

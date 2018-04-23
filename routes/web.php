@@ -11,6 +11,8 @@
 |
 */
 
+Route::get('/test', 'VideoController@download');
+
 //CommentController
 Route::post('addComment', 'CommentController@store');
 Route::post('getComment', 'CommentController@show');

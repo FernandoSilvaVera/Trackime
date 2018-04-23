@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Trackime\Utils\AnimeFLV;
 use Trackime\Video;
 use Trackime\Date;
-
+use Trackime\Anime;
 
 class VideoController extends Controller
 {
@@ -54,15 +54,12 @@ class VideoController extends Controller
 		}
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function download()
     {
-        //
+		$videos = Video::all();
+		foreach($videos as $video)
+			Video::where('anime', $video->anime)->where('chapter', $video->chapter)->update(['download' => AnimeFLV::download(["anime" => $video->web(), "chapter" => $video->chapter])]);
+		
     }
 
     /**

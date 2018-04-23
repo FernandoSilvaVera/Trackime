@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\DB;
 class Video extends Model
 {
 	public $timestamps		= false;
+	protected $primaryKey	= ["anime", "chapter"];
+	public $incrementing	= false;
 
 	public function web()
 	{

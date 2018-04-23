@@ -106,7 +106,7 @@ $(document).ready(function(){
 			'_token': $('meta[name=csrf-token]').attr('content'),
 			comment : comment,
 			chapter : chapter,
-			anime	: this.name
+			anime	: $('#name_anime').text()
 		}).done(function(user){
 			$('#comments'+chapter).append('<div class="media mt-4"><img class="d-flex mr-3" style="width:64px" src="'+url+ 'images/user/' + user["image"] + '.png' + '"/><div class="media-body"><h5 class="mt-0">'+ user["name"] + '</h5><p>'+comment+'</p></div></div>')
 		}).fail(function(){
