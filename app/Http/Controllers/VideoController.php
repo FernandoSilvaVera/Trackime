@@ -48,6 +48,7 @@ class VideoController extends Controller
 				$video->anime	= $request->input('anime');
 				$video->chapter = $i; 
 				$video->video	= AnimeFLV::videoRapiVideo($request->input('animeFLV'), $i);
+				$video->download = AnimeFLV::download(["anime" => $request->input('animeFLV'), "chapter" => $i]);
 				$video->date = date("Y/m/d h:i:s");
 				$video->admin = Auth::user()->name;
 			$video->save();
