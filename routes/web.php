@@ -21,6 +21,8 @@ Route::post('getComment', 'CommentController@show');
 //VideoController
 Route::get('/video/{anime}/{chapter}', 'VideoController@index');
 Route::post('updateEmission', 'VideoController@update');
+Route::post('downloadChapter', 'VideoController@downloadChapter');
+
 
 //AnimeController
 Route::get('/animes', 'AnimeController@index'); 

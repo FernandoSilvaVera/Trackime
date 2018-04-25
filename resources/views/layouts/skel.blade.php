@@ -77,9 +77,9 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-						{{-- <li><a class="nav-link" href="{{ url('/emision') }}">{{ __('Emision') }}</a></li> --}}
+						<li><a class="nav-link" href="{{ url('/emision') }}">{{ __('Emision') }}</a></li>
 						{{-- <li><a class="nav-link" href="{{ url('/personajes') }}">{{ __('Personajes') }}</a></li> --}}
-						<li><a class="nav-link" href="{{ url('/aleatorio') }}">{{ __('Aleatorio') }}</a></li>
+						{{--<li><a class="nav-link" href="{{ url('/aleatorio') }}">{{ __('Aleatorio') }}</a></li> --}}
 					</ul>
 
                     <!-- Right Side Of Navbar -->
@@ -139,9 +139,7 @@
 				</div>
 			</div>
 			<span class='mt-3' style='color:#aaaaaa'><b>Los videos mostrados en esta página no se encuentran en nuestros servidores</b></span>
-
-			<div>Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
-			<br class='mb-2'>
+			<div class="mb-2">Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
 			<a href="https://www.github.com/ShuviDola/Trackime" target='_blank'><img src="{{ asset('images/other/github.png')}}" alt=""></a>
 		</div>
 	</footer>

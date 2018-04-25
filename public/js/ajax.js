@@ -114,4 +114,16 @@ $(document).ready(function(){
 		})
 	})
 
+	$(document).on('click', '.download-anime', function(){
+		$.post(url + 'downloadChapter',{
+			'_token' : $('meta[name=csrf-token]').attr('content'),
+			animeFLV : $(this).parent().attr('id'),
+			chapter  : this.name
+		}).done(function(link){
+			window.location = link;
+		}).fail(function(){
+			alert("No se puede descargar este capítulo")
+		})
+	})
+	
 })

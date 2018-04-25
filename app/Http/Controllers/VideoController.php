@@ -55,12 +55,9 @@ class VideoController extends Controller
 		}
     }
 
-    public function download()
+    public function downloadChapter(Request $request)
     {
-		$videos = Video::all();
-		foreach($videos as $video)
-			Video::where('anime', $video->anime)->where('chapter', $video->chapter)->update(['download' => AnimeFLV::download(["anime" => $video->web(), "chapter" => $video->chapter])]);
-		
+		return AnimeFLV::download(["anime" => $request->animeFLV, "chapter" => $request->chapter]);
     }
 
     /**

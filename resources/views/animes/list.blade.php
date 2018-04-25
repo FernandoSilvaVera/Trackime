@@ -38,12 +38,9 @@
 													@endif
 												</div>
 												<div class="container mt-5">
-													@if($video[$chapter-1]->download)
-													<div class="text-right mb-3">
-														<a href="{{ $video[$chapter-1]->download }}"><img src="{{ asset('images/icon/download.png') }}" style="width:32px;cursor:pointer" alt=""></a>
+													<div class="text-right mb-3" id="{{ $video[$chapter-1]->web() }}">
+														<img src="{{ asset('images/icon/download.png') }}" name="{{ $video[$chapter-1]->chapter }}" class='download-anime' style="width:32px;cursor:pointer" alt="">
 													</div>
-													@endif
-
 													@guest
 													@else
 													<div class="form-group mb-5">
