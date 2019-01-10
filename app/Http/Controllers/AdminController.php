@@ -47,11 +47,14 @@ class AdminController extends Controller
      */
     public function storeAnime(Request $request)
     {
+		$request->anime = str_replace('-', ' ', $request->animeFLV);
+		$request->season = 1;
+		$request->chapters = 1;
 		AnimeController::store($request);
-		GenreAnimeController::store($request->input('myAnimeList'), $request->input('anime'));	
+		GenreAnimeController::store($request->myAnimeList, $request->anime);
 		VideoController::store($request);
 		DateController::store($request);
-		file_put_contents('images/'.$request->input('animeFLV').'.jpg', $file = file_get_contents($request->input('image')));
+		file_put_contents('images/'.$request->animeFLV.'.jpg', $file = file_get_contents($request->image));
 
 		return redirect('/administrar');
     }

@@ -43,12 +43,13 @@ class VideoController extends Controller
     public static function store(Request $request)
     {
 		$videos = new Video;
-		for($i=1; $i<=$request->input('chapters'); $i++){
+		$chapter = '1';
+		while($v = AnimeFLV::videoRapiVideo($request->animeFLV, $chapter)){
 			$video = new Video;
-				$video->anime	= $request->input('anime');
-				$video->chapter = $i; 
-				$video->video	= AnimeFLV::videoRapiVideo($request->input('animeFLV'), $i);
-				$video->download = AnimeFLV::download(["anime" => $request->input('animeFLV'), "chapter" => $i]);
+				$video->anime	= $request->anime;
+				$video->chapter = $chapter++;
+				$video->video	= $v;
+				$video->download = AnimeFLV::download(["anime" => $request->animeFLV, "chapter" => $chapter]);
 				$video->date = date("Y/m/d h:i:s");
 				$video->admin = Auth::user()->name;
 			$video->save();

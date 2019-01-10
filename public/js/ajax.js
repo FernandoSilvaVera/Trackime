@@ -1,4 +1,4 @@
-var url = 'http://' + $(location).attr('host') + '/Trackime/public/';
+var url = 'http://' + $(location).attr('host') + '/';
 
 function is_list(){
     return document.location.pathname.includes("animes");

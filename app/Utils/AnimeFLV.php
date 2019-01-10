@@ -16,7 +16,7 @@ class ZippyShare {
 		}catch(\Exception $e){
 			return false;
 		}
-		
+
 		try{
 			$temp	= explode ($id, $codeHTML);
 			$temp2	= explode ('%', $temp[4]);
@@ -25,9 +25,9 @@ class ZippyShare {
 			return false;
 		}
 		$secret = (int)$random % 51245 + (int)$random % 913;
-		
+
 		return "https://www$ip.zippyshare.com/d/$id/$secret/download";
-		
+
 	}
 
 }
@@ -35,10 +35,9 @@ class ZippyShare {
 class AnimeFLV {
 
 	public static function videoRapiVideo($anime, $capitulo)
-	{	
+	{
 		$uri = "https://animeflv.net/ver/48459/$anime-$capitulo";
 		$codeHTML = null;
-
 		try{
 		foreach(file($uri) as $line)
 			$codeHTML .= htmlspecialchars($line);
@@ -46,18 +45,18 @@ class AnimeFLV {
 			return false;
 		}
 
-		$arrayUtil = explode ("https://www.rapidvideo.com/e/", $codeHTML);
-
-		return isset($arrayUtil[1]) ? explode ('&', $arrayUtil[1])[0] : false;
+		$arrayUtil = explode ("server=rv&amp;value=", $codeHTML);
+		$test = explode ("&quot;", $arrayUtil[1]);
+		return isset($arrayUtil[1]) ? explode ('&quot;', $arrayUtil[1])[0] : false;
 
 	}
 
 	public static function download($anime){
-		
+
 		$chapters = [];
-	
+
 		$uri = "https://animeflv.net/ver/48459/$anime[anime]-$anime[chapter]";
-		
+
 		$codeHTML = null;
 		try{
 		foreach(file($uri) as $line)
@@ -65,7 +64,7 @@ class AnimeFLV {
 		}catch(\Exception $e){
 			return false;
 		}
-		
+
 		try{
 			$arrayUtil	= explode ("http://ouo.io/s/y0d65LCP?s=http", $codeHTML);
 			$auxIP		= explode ("www", $arrayUtil[1]);
@@ -81,5 +80,4 @@ class AnimeFLV {
 	}
 
 }
-
 ?>

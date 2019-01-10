@@ -43,12 +43,12 @@ class AnimeController extends Controller
     public static function store(Request $request)
     {
 		$anime = new Anime;
-			$anime->anime		= $request->input('anime');
-			$anime->season		= $request->input('season');
-			$anime->web			= $request->input('animeFLV');
-			$anime->chapters	= $request->input('chapters');
-			$anime->animeFLV	= $request->input('animeFLV');
-			$anime->myAnimeList	= $request->input('myAnimeList');
+			$anime->anime		= $request->anime;
+			$anime->season		= $request->season;
+			$anime->web			= $request->animeFLV;
+			$anime->chapters	= $request->chapters;
+			$anime->animeFLV	= $request->animeFLV;
+			$anime->myAnimeList	= $request->myAnimeList;
 		$anime->save();
     }
 
@@ -83,7 +83,7 @@ class AnimeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
     }
 
     /**

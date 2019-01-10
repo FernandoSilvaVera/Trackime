@@ -36,9 +36,9 @@ class DateController extends Controller
      */
     public static function store(Request $request)
     {
-		$info = MyAnimeList::information($request->input('myAnimeList'));
+		$info = MyAnimeList::information($request->myAnimeList);
 		$date = new Date;
-			$date->anime = $request->input('anime');
+			$date->anime = $request->anime;
 			$date->day_new_chapter = 'pending';
 			$date->start = 'pending';
 			$date->end	 = 'pending';

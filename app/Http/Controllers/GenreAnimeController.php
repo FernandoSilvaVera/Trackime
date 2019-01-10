@@ -4,7 +4,7 @@ namespace Trackime\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Trackime\GenreAnime;
-use Trackime\Utils\MyAnimeList;
+
 
 class GenreAnimeController extends Controller
 {
@@ -36,20 +36,15 @@ class GenreAnimeController extends Controller
      */
     public static function store($id, $anime)
 	{
-		foreach(MyAnimeList::information($id)['genres'] as $gen){
+		$myAnimeList = new MyAnimeListController;
+		$genres = $myAnimeList->information($id)['genres'];
+
+		foreach($genres as $gen){
 			$genre = new GenreAnime;
 				$genre->anime = $anime;
 				$genre->genre = $gen;
 			$genre->save();
 		}
-
-/*
-		foreach($request->input('genre') as $gen){
-			$genre = new GenreAnime;
-				$genre->anime = $request->input('anime');
-				$genre->genre = $gen;
-			$genre->save();
-		}*/
     }
 
     /**
