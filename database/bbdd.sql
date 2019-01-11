@@ -7,7 +7,7 @@ CREATE TABLE `animes` (
   `chapters` smallint(6) NOT NULL,
   `web` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `animeFLV` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `myAnimeList` mediumint(9) DEFAULT NULL,
+  `myAnimeList` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`anime`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 

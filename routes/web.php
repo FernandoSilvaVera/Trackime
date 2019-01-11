@@ -38,6 +38,8 @@ Route::get('/personajes/{characterName}', 'CharacterController@show');
 //EmissionController
 Route::get('/emision', 'EmissionController@index');
 
+//TopController
+Route::get('/tops/{genre}', 'TopController@index');
 
 //SearchController
 Route::get('/busqueda', 'SearchController@index');
