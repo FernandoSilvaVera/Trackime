@@ -4,6 +4,7 @@ namespace Trackime\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Trackime\Tops;
+use Trackime\Anime;
 use Illuminate\Support\Facades\Auth;
 
 class TopController extends Controller
@@ -16,8 +17,9 @@ class TopController extends Controller
     public function index($genre)
     {
         return view('animes.tops',[
-				'animes'	=> Tops::where('user', Auth::user()->name)->where('genre', $genre)->paginate(12),
-				'genres'	=> Tops::all()->unique('genre')
+				'userAnimes'	=> Tops::where('user', Auth::user()->name)->where('genre', $genre)->paginate(12),
+				'animes'		=> Anime::all(),
+				'genres'		=> Tops::all()->unique('genre')
 			]
 		);
     }
@@ -40,7 +42,13 @@ class TopController extends Controller
      */
     public function store(Request $request)
     {
-        //
+		foreach( $request->animes as $anime){
+			$top = new Tops;
+				$top->user	= Auth::user()->name;
+				$top->genre = $request->name;
+				$top->anime = $anime;
+			$top->save();
+		}
     }
 
     /**

@@ -98,6 +98,20 @@ $(document).ready(function(){
 		})
 	})
 
+	$(document).on('click', '.new-top', function(){
+		var name = $('#top').val()
+		var animes = $('#animes').val()
+		$.post(url + 'createTop',{
+			'_token': $('meta[name=csrf-token]').attr('content'),
+			name: name,	
+			animes: animes
+		}).done(function(){
+			alert("nice")
+		}).fail(function(){
+			alert(animes)
+		})
+	})
+
 	//Agregar el comentario en la bbdd
 	$(document).on('click', '.comment', function(){
 		var comment = $('#commentary' + this.name).val()

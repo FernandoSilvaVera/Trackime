@@ -40,6 +40,7 @@ Route::get('/emision', 'EmissionController@index');
 
 //TopController
 Route::get('/tops/{genre}', 'TopController@index');
+Route::post('/createTop', 'TopController@store'); 
 
 //SearchController
 Route::get('/busqueda', 'SearchController@index');
