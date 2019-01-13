@@ -14,10 +14,11 @@ class TopController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($genre)
+    public function index($genre = 'isekai')
     {
         return view('animes.tops',[
 				'userAnimes'	=> Tops::where('user', Auth::user()->name)->where('genre', $genre)->paginate(12),
+				'genreActually'	=> $genre,
 				'animes'		=> Anime::all(),
 				'genres'		=> Tops::all()->unique('genre')
 			]
