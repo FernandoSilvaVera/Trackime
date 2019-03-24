@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
 use Trackime\Utils\MyAnimeList;
 use Illuminate\Http\Request;
-use Trackime\Utils\AnimeFLV;
+use Trackime\Utils\AnimeID;
 use Trackime\Video;
 use Trackime\Date;
 use Trackime\Anime;
@@ -18,6 +18,20 @@ class VideoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+	public function ver(Request $request){
+		$chapter = $request->input('capitulo');
+		$anime = $request->input('anime');
+
+		$video = Video::where('anime', $anime)->where('chapter', $chapter)->first();
+
+		return view('animes.video',[
+			"chapter" => $video->chapter,
+			"anime" => $video->anime,
+			"video" => $video->video
+			]
+		);  
+	}
 
     public function index($anime, $chapter)
     {
@@ -44,12 +58,12 @@ class VideoController extends Controller
     {
 		$videos = new Video;
 		$chapter = '1';
-		while($v = AnimeFLV::videoRapiVideo($request->animeFLV, $chapter)){
+		while($v = AnimeID::videoRapiVideo($request->animeFLV, $chapter)){
 			$video = new Video;
 				$video->anime	= $request->anime;
 				$video->chapter = $chapter++;
 				$video->video	= $v;
-				$video->download = AnimeFLV::download(["anime" => $request->animeFLV, "chapter" => $chapter]);
+				$video->download = null;
 				$video->date = date("Y/m/d h:i:s");
 				$video->admin = Auth::user()->name;
 			$video->save();
@@ -58,7 +72,7 @@ class VideoController extends Controller
 
     public function downloadChapter(Request $request)
     {
-		return AnimeFLV::download(["anime" => $request->animeFLV, "chapter" => $request->chapter]);
+
     }
 
     /**
@@ -82,17 +96,17 @@ class VideoController extends Controller
     public function update()
     {
 		$emission = Date::where('state', 'currently')->get();
-		foreach($emission as $anime)
-			if(AnimeFLV::videoRapiVideo($anime->animeFLV(), $anime->chapter()+1)){
+		foreach($emission as $anime){
+			if(AnimeID::videoRapiVideo($anime->animeFLV(), $anime->chapter()+1)){
 				$video = new Video;
 					$video->anime	= $anime->anime;
 					$video->chapter = $anime->chapter()+1; 
-					$video->video	= AnimeFLV::videoRapiVideo($anime->AnimeFLV(), $anime->chapter()+1);
+					$video->video	= null;
 					$video->date	= date("Y/m/d h:i:s");
 					$video->admin	= Auth::user()->name;
 				$video->save();
 			}
-		
+		}
 		return redirect('/administrar');
 
     }

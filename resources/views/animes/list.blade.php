@@ -14,54 +14,8 @@
 					<tbody>
 						@for($chapter=count($video); $chapter>0; $chapter--)
 							<tr style="cursor:pointer;">
-								<td onclick="generateChapter({{ $video[$chapter-1] }})" data-toggle="modal" data-target="#{{ $chapter }}">{{ $anime->anime }}</td>
-								<td onclick="generateChapter({{ $video[$chapter-1] }})" data-toggle="modal" data-target="#{{ $chapter }}">{{ $chapter }}</td>
-								<div class="modal fade" id="{{ $chapter }}">
-									<div class="modal-dialog modal-lg">
-										<div class="modal-content">
-
-											<div class="modal-header">
-												<h3 class="modal-title">{{ $anime->anime . __(' - Capitulo - ') . $chapter }}</h3>
-												<button type="button" class="close" data-dismiss="modal">&times;</button>
-											</div>
-
-											<div class="modal-body">
-												<div id="video{{ $chapter}}" class="embed-responsive embed-responsive-16by9 mb-2">
-													@if($video[$chapter-1]->video !== 'pending')
-
-													{{--
-													<video controls="controls" type="video/mp4" preload="none">
-														<source src="{{url('/video/') . '/' . $video[$chapter-1]->anime . '/' . $video[$chapter-1]->chapter}}"  autostart="false">
-													</video>--}}
-													@else
-														<h3>Video no disponible</h3>
-													@endif
-												</div>
-												<div class="container mt-5">
-													<div class="text-right mb-3" id="{{ $video[$chapter-1]->web() }}">
-														<img src="{{ asset('images/icon/download.png') }}" name="{{ $video[$chapter-1]->chapter }}" class='download-anime' style="width:32px;cursor:pointer" alt="">
-													</div>
-													@guest
-													@else
-													<div class="form-group mb-5">
-														<label for="exampleTextarea">Escribe un comentario</label>
-														<textarea class="form-control" id="commentary{{$chapter}}" maxlength="255" rows="3"></textarea>
-														<br>
-														<button type="submit" name='{{ $chapter }}' class="btn btn-primary float-right comment">Comentar</button>
-													</div>
-													@endguest
-													<div id='comments{{$chapter}}' class="mt-5">
-
-													</div>
-												</div>
-											</div>
-											<div class="modal-footer">
-												<button type="button" class="btn btn-secondary" data-dismiss="modal">Salir</button>
-											</div>
-										</div>
-									</div>
-								</div>
-
+								<td><a href="{{ url('/ver' . '?anime=' . $anime->anime . '&capitulo=' . $chapter) }}" style="color:black;">{{ $anime->anime }}</a></td>
+								<td><a href="{{ url('/ver' . '?anime=' . $anime->anime . '&capitulo=' . $chapter) }}" style="color:black;">{{ $chapter }}</a></td>
 							</tr>
 						@endfor
 					</tbody>
@@ -110,38 +64,10 @@
 							</div>
 						</div>
 				@endif
-
 			 </div>
 			@endguest
 		</div>
     </div>
-</div>
-
-<div class="container mt-5">
-	<h4 class="text-center">Personajes</h4>
-	<div class="row">
-	@foreach($anime->character as $character)
-        <div class="col-md-3 col-6">
-			<div class="card mb-5">
-				<a href="{{ url('/personajes/') . '/' . $character->name }}">
-					<img class="card-img-top" src="https://static.zerochan.net/Izumi.Sagiri.full.2140480.jpg">
-				</a>
-				<div class="card-footer text-center" style="background-color:#ffffff">
-					{{$character->name}}<br>
-					<div class="text-left">
-					@foreach($anime->genre as $genre)
-						<span class="badge badge-dark">{{ $genre['genre'] }}</span>
-					@endforeach
-					</div>
-				</div>
-			</div>
-		</div>
-	@endforeach
-	</div>
-</div>
-
-<div class="container mt-5">
-	<h4 class="text-center">Series Relacionadas</h4>
 </div>
 
 @endsection

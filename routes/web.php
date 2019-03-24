@@ -17,6 +17,7 @@ Route::post('getComment', 'CommentController@show');
 
 
 //VideoController
+Route::get('/ver', 'VideoController@ver');
 Route::get('/video/{anime}/{chapter}', 'VideoController@index');
 Route::post('updateEmission', 'VideoController@update');
 Route::post('downloadChapter', 'VideoController@downloadChapter');
@@ -54,6 +55,7 @@ Route::get('/filtro/personaje', 'FilterController@character');
 
 //AdminController
 Route::get('/administrar', 'AdminController@index');
+Route::get('/bbdd', 'AdminController@bbdd');
 Route::post('saveAnime', 'AdminController@storeAnime');
 
 

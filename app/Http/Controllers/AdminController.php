@@ -5,6 +5,7 @@ namespace Trackime\Http\Controllers;
 use Illuminate\Http\Request;
 use Trackime\Genre;
 use Trackime\Anime;
+use Trackime\Video;
 
 class AdminController extends Controller
 {
@@ -27,6 +28,15 @@ class AdminController extends Controller
 				"animes" => Anime::all()
 			]
 		);
+	}
+
+	public function bbdd(){
+
+		return view('user.admin.bbdd' ,[
+				"animes" => Video::all()
+			]
+		);
+
 	}
 
     /**

@@ -6,7 +6,7 @@
 		@foreach($animes as $anime)
         <div class="col-lg-4 col-6 mb-5">
 			<div class="card">
-				<a href="{{ url('/animes/') . '/' . $anime->anime }}">
+				<a href="{{ url('/ver' . '?anime=' . $anime->anime . '&capitulo=' . $anime->chapter) }}">
 					<img class="card-img-top" src="{{ asset('images/' . $anime->image()  ) }}.jpg">
 				</a>
 			</div>
@@ -15,6 +15,5 @@
         </div>
 		@endforeach
     </div>
-
 </div>
 @endsection

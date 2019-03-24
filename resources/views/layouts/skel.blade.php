@@ -105,6 +105,7 @@
                                     <a class="dropdown-item" href="{{ url('/usuario') . '/' . Auth::user()->name }} ">{{ __('Perfil') }}</a>
 									@if(Auth::user()->admin)
                                     <a class="dropdown-item" href="{{ url('/administrar') }}">{{ __('Administrar') }}</a>
+                                    <a class="dropdown-item" href="{{ url('/bbdd') }}">{{ __('Base de datos') }}</a>
 									@endif
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
@@ -122,28 +123,5 @@
         </div>
 
 	</div>
-
-	<footer class="footer" style="background-color:white;">
-		<div class="container text-center">
-			<div class="row">
-				<div class="col-3">
-					<p><b><a href="{{ url('/animes' )}}">{{ __('Animes')}}</a></b></p>
-				</div>
-				<div class="col-3">
-					<p><b><a href="{{ url('/emision' )}}">{{ __('Emision')}}</a></b></p>
-				</div>
-				<div class="col-3">
-					<p><b><a href="{{ url('/personajes' )}}">{{ __('Personajes')}}</a></b></p>
-				</div>
-				<div class="col-3">
-					<p><b><a href="{{ url('/aleatorio') }}">{{ __('Aleatorio')}}</a></b></p>
-				</div>
-			</div>
-			<span class='mt-3' style='color:#aaaaaa'><b>Los videos mostrados en esta página no se encuentran en nuestros servidores</b></span>
-			<div class="mb-2">Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
-			<a href="https://www.github.com/ShuviDola/Trackime" target='_blank'><img src="{{ asset('images/other/github.png')}}" alt=""></a>
-		</div>
-	</footer>
-
 </body>
 </html>
