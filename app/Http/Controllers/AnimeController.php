@@ -6,6 +6,8 @@ use Trackime\Anime;
 use Trackime\Date;
 use Trackime\GenreAnime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class AnimeController extends Controller
 {
@@ -92,8 +94,11 @@ class AnimeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($anime)
     {
-        //
+		if(!Auth::user()->admin)
+			return back();
+		Anime::where('anime', $anime)->delete();      
+		return Redirect('/');
     }
 }

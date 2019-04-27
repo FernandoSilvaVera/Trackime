@@ -19,12 +19,15 @@ Route::post('getComment', 'CommentController@show');
 //VideoController
 Route::get('/ver', 'VideoController@ver');
 Route::get('/video/{anime}/{chapter}', 'VideoController@index');
+Route::get('/deleteChapter/{anime}/{chapter}', 'VideoController@destroy');
 Route::post('updateEmission', 'VideoController@update');
 Route::post('downloadChapter', 'VideoController@downloadChapter');
 
 
+
 //AnimeController
 Route::get('/animes', 'AnimeController@index'); 
+Route::get('/deleteAnime/{anime}', 'AnimeController@destroy'); 
 
 
 //ListController

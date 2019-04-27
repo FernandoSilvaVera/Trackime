@@ -117,8 +117,11 @@ class VideoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($anime, $chapter)
     {
-        //
+		if(!Auth::user()->admin)
+			return back();
+		Video::where('anime', $anime)->where('chapter', $chapter)->delete();      
+		return Redirect('/');
     }
 }

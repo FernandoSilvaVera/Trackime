@@ -19,6 +19,13 @@
 			</div>
 		</div>
     </div>
+	@if(Auth::user() and Auth::user()->admin)
+		<a href="{{ url('/deleteAnime/') . '/' . $anime }}" class="btn btn-dark"> Eliminar Anime </a>
+		<a href="{{ url('/deleteChapter/') . '/' . $anime . '/' . $chapter}}" class="btn btn-dark"> Eliminar Capitulo </a>
+		<a href="{{ url('/delete/') . '/' . $anime }}" class="btn btn-dark"> Editar </a>
+	@endif
+
+
 </div>
 
 @endsection
