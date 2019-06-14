@@ -1,0 +1,983 @@
+let SessionLoad = 1
+if &cp | set nocp | endif
+let s:cpo_save=&cpo
+set cpo&vim
+imap <S-Tab> <Plug>snipMateBack
+inoremap <silent> <Plug>snipMateShow =snipMate#ShowAvailableSnips()
+inoremap <silent> <Plug>snipMateBack =snipMate#BackwardsSnippet()
+inoremap <silent> <Plug>snipMateTrigger =snipMate#TriggerSnippet(1)
+inoremap <silent> <Plug>snipMateNextOrTrigger =snipMate#TriggerSnippet()
+inoremap <Plug>(emmet-anchorize-summary) =emmet#util#closePopup()=emmet#anchorizeURL(1)
+inoremap <Plug>(emmet-anchorize-url) =emmet#util#closePopup()=emmet#anchorizeURL(0)
+inoremap <Plug>(emmet-remove-tag) =emmet#util#closePopup()=emmet#removeTag()
+inoremap <Plug>(emmet-split-join-tag) :call emmet#splitJoinTag()
+inoremap <Plug>(emmet-toggle-comment) =emmet#util#closePopup()=emmet#toggleComment()
+inoremap <Plug>(emmet-image-size) =emmet#util#closePopup()=emmet#imageSize()
+inoremap <Plug>(emmet-move-prev-item) :call emmet#moveNextPrevItem(1)
+inoremap <Plug>(emmet-move-next-item) :call emmet#moveNextPrevItem(0)
+inoremap <Plug>(emmet-move-prev) :call emmet#moveNextPrev(1)
+inoremap <Plug>(emmet-move-next) :call emmet#moveNextPrev(0)
+inoremap <Plug>(emmet-balance-tag-outword) :call emmet#balanceTag(-1)
+inoremap <Plug>(emmet-balance-tag-inward) :call emmet#balanceTag(1)
+inoremap <Plug>(emmet-update-tag) =emmet#util#closePopup()=emmet#updateTag()
+inoremap <Plug>(emmet-expand-word) =emmet#util#closePopup()=emmet#expandAbbr(1,"")
+inoremap <Plug>(emmet-expand-abbr) =emmet#util#closePopup()=emmet#expandAbbr(0,"")
+inoremap <silent> <expr> <Plug>delimitMateS-BS delimitMate#WithinEmptyPair() ? "\<Del>" : "\<S-BS>"
+inoremap <silent> <Plug>delimitMateBS =delimitMate#BS()
+xmap 	 <Plug>snipMateVisual
+smap 	 <Plug>snipMateNextOrTrigger
+nnoremap <silent>  :CtrlP
+vmap c <Plug>(emmet-code-pretty)
+vmap m <Plug>(emmet-merge-lines)
+nmap A <Plug>(emmet-anchorize-summary)
+nmap a <Plug>(emmet-anchorize-url)
+nmap k <Plug>(emmet-remove-tag)
+nmap j <Plug>(emmet-split-join-tag)
+nmap / <Plug>(emmet-toggle-comment)
+nmap i <Plug>(emmet-image-size)
+nmap N <Plug>(emmet-move-prev)
+nmap n <Plug>(emmet-move-next)
+vmap D <Plug>(emmet-balance-tag-outword)
+nmap D <Plug>(emmet-balance-tag-outword)
+vmap d <Plug>(emmet-balance-tag-inward)
+nmap d <Plug>(emmet-balance-tag-inward)
+nmap u <Plug>(emmet-update-tag)
+nmap ; <Plug>(emmet-expand-word)
+vmap , <Plug>(emmet-expand-abbr)
+nmap , <Plug>(emmet-expand-abbr)
+vmap gx <Plug>NetrwBrowseXVis
+nmap gx <Plug>NetrwBrowseX
+smap <S-Tab> <Plug>snipMateBack
+vnoremap <silent> <Plug>NetrwBrowseXVis :call netrw#BrowseXVis()
+nnoremap <silent> <Plug>NetrwBrowseX :call netrw#BrowseX(expand((exists("g:netrw_gx")? g:netrw_gx : '<cfile>')),netrw#CheckIfRemote())
+snoremap <silent> <Plug>snipMateBack a=snipMate#BackwardsSnippet()
+snoremap <silent> <Plug>snipMateNextOrTrigger a=snipMate#TriggerSnippet()
+nnoremap <silent> <Plug>GitGutterPreviewHunk :GitGutterPreviewHunk
+nnoremap <silent> <Plug>GitGutterUndoHunk :GitGutterUndoHunk
+nnoremap <silent> <Plug>GitGutterStageHunk :GitGutterStageHunk
+nnoremap <silent> <expr> <Plug>GitGutterPrevHunk &diff ? '[c' : ":\execute v:count1 . 'GitGutterPrevHunk'\"
+nnoremap <silent> <expr> <Plug>GitGutterNextHunk &diff ? ']c' : ":\execute v:count1 . 'GitGutterNextHunk'\"
+xnoremap <silent> <Plug>GitGutterTextObjectOuterVisual :call gitgutter#hunk#text_object(0)
+xnoremap <silent> <Plug>GitGutterTextObjectInnerVisual :call gitgutter#hunk#text_object(1)
+onoremap <silent> <Plug>GitGutterTextObjectOuterPending :call gitgutter#hunk#text_object(0)
+onoremap <silent> <Plug>GitGutterTextObjectInnerPending :call gitgutter#hunk#text_object(1)
+vnoremap <Plug>(emmet-code-pretty) :call emmet#codePretty()
+vnoremap <Plug>(emmet-merge-lines) :call emmet#mergeLines()
+nnoremap <Plug>(emmet-anchorize-summary) :call emmet#anchorizeURL(1)
+nnoremap <Plug>(emmet-anchorize-url) :call emmet#anchorizeURL(0)
+nnoremap <Plug>(emmet-remove-tag) :call emmet#removeTag()
+nnoremap <Plug>(emmet-split-join-tag) :call emmet#splitJoinTag()
+nnoremap <Plug>(emmet-toggle-comment) :call emmet#toggleComment()
+nnoremap <Plug>(emmet-image-size) :call emmet#imageSize()
+nnoremap <Plug>(emmet-move-prev-item) :call emmet#moveNextPrevItem(1)
+nnoremap <Plug>(emmet-move-next-item) :call emmet#moveNextPrevItem(0)
+nnoremap <Plug>(emmet-move-prev) :call emmet#moveNextPrev(1)
+nnoremap <Plug>(emmet-move-next) :call emmet#moveNextPrev(0)
+vnoremap <Plug>(emmet-balance-tag-outword) :call emmet#balanceTag(-1)
+nnoremap <Plug>(emmet-balance-tag-outword) :call emmet#balanceTag(-1)
+vnoremap <Plug>(emmet-balance-tag-inward) :call emmet#balanceTag(1)
+nnoremap <Plug>(emmet-balance-tag-inward) :call emmet#balanceTag(1)
+nnoremap <Plug>(emmet-update-tag) :call emmet#updateTag()
+nnoremap <Plug>(emmet-expand-word) :call emmet#expandAbbr(1,"")
+vnoremap <Plug>(emmet-expand-abbr) :call emmet#expandAbbr(2,"")
+nnoremap <Plug>(emmet-expand-abbr) :call emmet#expandAbbr(3,"")
+map <F8> :TagbarToggle
+map <F7> :NERDTreeToggle
+map <F4> :echo gitbranch#name()
+map <F3> :call gitblame#echo()
+map <F2> :GitGutterLineHighlightsToggle
+imap 	 <Plug>snipMateNextOrTrigger
+imap 	 <Plug>snipMateShow
+imap A <Plug>(emmet-anchorize-summary)
+imap a <Plug>(emmet-anchorize-url)
+imap k <Plug>(emmet-remove-tag)
+imap j <Plug>(emmet-split-join-tag)
+imap / <Plug>(emmet-toggle-comment)
+imap i <Plug>(emmet-image-size)
+imap N <Plug>(emmet-move-prev)
+imap n <Plug>(emmet-move-next)
+imap D <Plug>(emmet-balance-tag-outword)
+imap d <Plug>(emmet-balance-tag-inward)
+imap u <Plug>(emmet-update-tag)
+imap ; <Plug>(emmet-expand-word)
+imap , <Plug>(emmet-expand-abbr)
+let &cpo=s:cpo_save
+unlet s:cpo_save
+set autochdir
+set autoindent
+set background=dark
+set backspace=indent,eol,start
+set fileencodings=ucs-bom,utf-8,default,latin1
+set helplang=es
+set hlsearch
+set incsearch
+set laststatus=2
+set printoptions=paper:a4
+set ruler
+set runtimepath=~/.vim,~/.vim/bundle/AutoComplPop,~/.vim/bundle/delimitMate,~/.vim/bundle/emmet-vim,~/.vim/bundle/syntastic,~/.vim/bundle/nerdtree,~/.vim/bundle/ctrlp.vim,~/.vim/bundle/tagbar,~/.vim/bundle/vim-gitgutter,~/.vim/bundle/git-blame.vim,~/.vim/bundle/vim-gitbranch,~/.vim/bundle/lightline.vim,~/.vim/bundle/tlib_vim,~/.vim/bundle/vim-addon-mw-utils,~/.vim/bundle/vim-snipmate,~/.vim/bundle/Vundle.vim,/var/lib/vim/addons,/usr/share/vim/vimfiles,/usr/share/vim/vim80,/usr/share/vim/vimfiles/after,/var/lib/vim/addons/after,~/.vim/after,~/.vim/bundle/Vundle.vim,~/.vim/bundle/AutoComplPop/after,~/.vim/bundle/delimitMate/after,~/.vim/bundle/emmet-vim/after,~/.vim/bundle/syntastic/after,~/.vim/bundle/nerdtree/after,~/.vim/bundle/ctrlp.vim/after,~/.vim/bundle/tagbar/after,~/.vim/bundle/vim-gitgutter/after,~/.vim/bundle/git-blame.vim/after,~/.vim/bundle/vim-gitbranch/after,~/.vim/bundle/lightline.vim/after,~/.vim/bundle/tlib_vim/after,~/.vim/bundle/vim-addon-mw-utils/after,~/.vim/bundle/vim-snipmate/after,~/.vim/bundle/Vundle.vim/after
+set shiftwidth=4
+set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
+set noswapfile
+set tabline=%!lightline#tabline()
+set tabstop=4
+set title
+set window=51
+let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
+let v:this_session=expand("<sfile>:p")
+silent only
+cd ~/github/trackime/resources/views/animes
+if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
+  let s:wipebuf = bufnr('%')
+endif
+set shortmess=aoO
+badd +0 ~/github/trackime/routes/web.php
+badd +0 ~/github/trackime/resources/views/layouts/skel.blade.php
+badd +0 ~/github/trackime/resources/views/animes/video.blade.php
+badd +0 ~/github/trackime/resources/views/animes/animes.blade.php
+badd +0 ~/github/trackime/app/Http/Controllers/VideoController.php
+argglobal
+silent! argdel *
+$argadd ~/github/trackime/routes/web.php
+set stal=2
+edit ~/github/trackime/routes/web.php
+set splitbelow splitright
+set nosplitbelow
+set nosplitright
+wincmd t
+set winminheight=1 winheight=1 winminwidth=1 winwidth=1
+argglobal
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
+nmap <buffer> [c <Plug>GitGutterPrevHunk
+onoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
+nnoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
+nmap <buffer> \hp <Plug>GitGutterPreviewHunk
+nmap <buffer> \hu <Plug>GitGutterUndoHunk
+nmap <buffer> \hs <Plug>GitGutterStageHunk
+nmap <buffer> ]c <Plug>GitGutterNextHunk
+onoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
+nnoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
+xmap <buffer> ac <Plug>GitGutterTextObjectOuterVisual
+omap <buffer> ac <Plug>GitGutterTextObjectOuterPending
+xmap <buffer> ic <Plug>GitGutterTextObjectInnerVisual
+omap <buffer> ic <Plug>GitGutterTextObjectInnerPending
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> < <Plug>delimitMate<
+imap <buffer> > <Plug>delimitMate>
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal backupcopy=
+setlocal balloonexpr=
+setlocal nobinary
+setlocal nobreakindent
+setlocal breakindentopt=
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=s:<!--,m:\ \ \ \ ,e:-->
+setlocal commentstring=/*%s*/
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+set cursorline
+setlocal cursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal noexpandtab
+if &filetype != 'php'
+setlocal filetype=php
+endif
+setlocal fixendofline
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=tcq
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal formatprg=
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=-1
+setlocal include=\\(require\\|include\\)\\(_once\\)\\?
+setlocal includeexpr=
+setlocal indentexpr=
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal lispwords=
+setlocal nolist
+setlocal makeencoding=
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:],<:>
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=bin,octal,hex
+set number
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=phpcomplete#CompletePHP
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal signcolumn=auto
+setlocal nosmartindent
+setlocal softtabstop=0
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=%{lightline#link()}%#LightlineLeft_active_0#%(\ %{lightline#mode()}\ %)%{(&paste)?\"|\":\"\"}%(\ %{&paste?\"PASTE\":\"\"}\ %)%#LightlineLeft_active_0_1#%#LightlineLeft_active_1#%(\ %R\ %)%{(&readonly)&&(1||(&modified||!&modifiable))?\"|\":\"\"}%(\ %t\ %)%{(&modified||!&modifiable)?\"|\":\"\"}%(\ %M\ %)%#LightlineLeft_active_1_2#%#LightlineMiddle_active#%=%#LightlineRight_active_2_3#%#LightlineRight_active_2#%(\ %{&ff}\ %)%{1||1?\"|\":\"\"}%(\ %{&fenc!=#\"\"?&fenc:&enc}\ %)%{1?\"|\":\"\"}%(\ %{&ft!=#\"\"?&ft:\"no\ ft\"}\ %)%#LightlineRight_active_1_2#%#LightlineRight_active_1#%(\ %3p%%\ %)%#LightlineRight_active_0_1#%#LightlineRight_active_0#%(\ %3l:%-2v\ %)
+setlocal suffixesadd=
+setlocal noswapfile
+setlocal synmaxcol=3000
+if &syntax != 'php'
+setlocal syntax=php
+endif
+setlocal tabstop=4
+setlocal tagcase=
+setlocal tags=
+setlocal terminalscroll=10000
+setlocal termkey=
+setlocal termsize=
+setlocal termwinkey=
+setlocal termwinscroll=10000
+setlocal termwinsize=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal noundofile
+setlocal undolevels=-123456
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+let s:l = 1 - ((0 * winheight(0) + 24) / 49)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+1
+normal! 0
+tabedit ~/github/trackime/resources/views/layouts/skel.blade.php
+set splitbelow splitright
+set nosplitbelow
+set nosplitright
+wincmd t
+set winminheight=1 winheight=1 winminwidth=1 winwidth=1
+argglobal
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
+nmap <buffer> [c <Plug>GitGutterPrevHunk
+onoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
+nnoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
+nmap <buffer> \hp <Plug>GitGutterPreviewHunk
+nmap <buffer> \hu <Plug>GitGutterUndoHunk
+nmap <buffer> \hs <Plug>GitGutterStageHunk
+nmap <buffer> ]c <Plug>GitGutterNextHunk
+onoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
+nnoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
+xmap <buffer> ac <Plug>GitGutterTextObjectOuterVisual
+omap <buffer> ac <Plug>GitGutterTextObjectOuterPending
+xmap <buffer> ic <Plug>GitGutterTextObjectInnerVisual
+omap <buffer> ic <Plug>GitGutterTextObjectInnerPending
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> < <Plug>delimitMate<
+imap <buffer> > <Plug>delimitMate>
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal backupcopy=
+setlocal balloonexpr=
+setlocal nobinary
+setlocal nobreakindent
+setlocal breakindentopt=
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=s:<!--,m:\ \ \ \ ,e:-->
+setlocal commentstring=/*%s*/
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+set cursorline
+setlocal cursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal noexpandtab
+if &filetype != 'php'
+setlocal filetype=php
+endif
+setlocal fixendofline
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=tcq
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal formatprg=
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=-1
+setlocal include=\\(require\\|include\\)\\(_once\\)\\?
+setlocal includeexpr=
+setlocal indentexpr=
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal lispwords=
+setlocal nolist
+setlocal makeencoding=
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:],<:>
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=bin,octal,hex
+set number
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=phpcomplete#CompletePHP
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal signcolumn=auto
+setlocal nosmartindent
+setlocal softtabstop=0
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=%{lightline#link()}%#LightlineLeft_active_0#%(\ %{lightline#mode()}\ %)%{(&paste)?\"|\":\"\"}%(\ %{&paste?\"PASTE\":\"\"}\ %)%#LightlineLeft_active_0_1#%#LightlineLeft_active_1#%(\ %R\ %)%{(&readonly)&&(1||(&modified||!&modifiable))?\"|\":\"\"}%(\ %t\ %)%{(&modified||!&modifiable)?\"|\":\"\"}%(\ %M\ %)%#LightlineLeft_active_1_2#%#LightlineMiddle_active#%=%#LightlineRight_active_2_3#%#LightlineRight_active_2#%(\ %{&ff}\ %)%{1||1?\"|\":\"\"}%(\ %{&fenc!=#\"\"?&fenc:&enc}\ %)%{1?\"|\":\"\"}%(\ %{&ft!=#\"\"?&ft:\"no\ ft\"}\ %)%#LightlineRight_active_1_2#%#LightlineRight_active_1#%(\ %3p%%\ %)%#LightlineRight_active_0_1#%#LightlineRight_active_0#%(\ %3l:%-2v\ %)
+setlocal suffixesadd=
+setlocal noswapfile
+setlocal synmaxcol=3000
+if &syntax != 'php'
+setlocal syntax=php
+endif
+setlocal tabstop=4
+setlocal tagcase=
+setlocal tags=
+setlocal terminalscroll=10000
+setlocal termkey=
+setlocal termsize=
+setlocal termwinkey=
+setlocal termwinscroll=10000
+setlocal termwinsize=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal noundofile
+setlocal undolevels=-123456
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+let s:l = 48 - ((30 * winheight(0) + 24) / 49)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+48
+normal! 017|
+tabedit ~/github/trackime/app/Http/Controllers/VideoController.php
+set splitbelow splitright
+wincmd _ | wincmd |
+split
+1wincmd k
+wincmd w
+set nosplitbelow
+set nosplitright
+wincmd t
+set winminheight=1 winheight=1 winminwidth=1 winwidth=1
+exe '1resize ' . ((&lines * 24 + 26) / 52)
+exe '2resize ' . ((&lines * 24 + 26) / 52)
+argglobal
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
+nmap <buffer> [c <Plug>GitGutterPrevHunk
+onoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
+nnoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
+nmap <buffer> \hp <Plug>GitGutterPreviewHunk
+nmap <buffer> \hu <Plug>GitGutterUndoHunk
+nmap <buffer> \hs <Plug>GitGutterStageHunk
+nmap <buffer> ]c <Plug>GitGutterNextHunk
+onoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
+nnoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
+xmap <buffer> ac <Plug>GitGutterTextObjectOuterVisual
+omap <buffer> ac <Plug>GitGutterTextObjectOuterPending
+xmap <buffer> ic <Plug>GitGutterTextObjectInnerVisual
+omap <buffer> ic <Plug>GitGutterTextObjectInnerPending
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> < <Plug>delimitMate<
+imap <buffer> > <Plug>delimitMate>
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal backupcopy=
+setlocal balloonexpr=
+setlocal nobinary
+setlocal nobreakindent
+setlocal breakindentopt=
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=s:<!--,m:\ \ \ \ ,e:-->
+setlocal commentstring=/*%s*/
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+set cursorline
+setlocal cursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal noexpandtab
+if &filetype != 'php'
+setlocal filetype=php
+endif
+setlocal fixendofline
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=tcq
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal formatprg=
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=-1
+setlocal include=\\(require\\|include\\)\\(_once\\)\\?
+setlocal includeexpr=
+setlocal indentexpr=
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal lispwords=
+setlocal nolist
+setlocal makeencoding=
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:],<:>
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=bin,octal,hex
+set number
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=phpcomplete#CompletePHP
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal signcolumn=auto
+setlocal nosmartindent
+setlocal softtabstop=0
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=%{lightline#link()}%#LightlineLeft_inactive_0#%(\ %t\ %)%#LightlineLeft_inactive_0_1#%#LightlineMiddle_inactive#%=%#LightlineRight_inactive_1_2#%#LightlineRight_inactive_1#%(\ %3p%%\ %)%#LightlineRight_inactive_0_1#%#LightlineRight_inactive_0#%(\ %3l:%-2v\ %)
+setlocal suffixesadd=
+setlocal noswapfile
+setlocal synmaxcol=3000
+if &syntax != 'php'
+setlocal syntax=php
+endif
+setlocal tabstop=4
+setlocal tagcase=
+setlocal tags=
+setlocal terminalscroll=10000
+setlocal termkey=
+setlocal termsize=
+setlocal termwinkey=
+setlocal termwinscroll=10000
+setlocal termwinsize=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal noundofile
+setlocal undolevels=-123456
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+let s:l = 27 - ((11 * winheight(0) + 12) / 24)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+27
+normal! 090|
+wincmd w
+argglobal
+if bufexists('~/github/trackime/resources/views/animes/video.blade.php') | buffer ~/github/trackime/resources/views/animes/video.blade.php | else | edit ~/github/trackime/resources/views/animes/video.blade.php | endif
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
+nmap <buffer> [c <Plug>GitGutterPrevHunk
+onoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
+nnoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
+nmap <buffer> \hp <Plug>GitGutterPreviewHunk
+nmap <buffer> \hu <Plug>GitGutterUndoHunk
+nmap <buffer> \hs <Plug>GitGutterStageHunk
+nmap <buffer> ]c <Plug>GitGutterNextHunk
+onoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
+nnoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
+xmap <buffer> ac <Plug>GitGutterTextObjectOuterVisual
+omap <buffer> ac <Plug>GitGutterTextObjectOuterPending
+xmap <buffer> ic <Plug>GitGutterTextObjectInnerVisual
+omap <buffer> ic <Plug>GitGutterTextObjectInnerPending
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> < <Plug>delimitMate<
+imap <buffer> > <Plug>delimitMate>
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal backupcopy=
+setlocal balloonexpr=
+setlocal nobinary
+setlocal nobreakindent
+setlocal breakindentopt=
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=s:<!--,m:\ \ \ \ ,e:-->
+setlocal commentstring=/*%s*/
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+set cursorline
+setlocal cursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal noexpandtab
+if &filetype != 'php'
+setlocal filetype=php
+endif
+setlocal fixendofline
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=tcq
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal formatprg=
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=-1
+setlocal include=\\(require\\|include\\)\\(_once\\)\\?
+setlocal includeexpr=
+setlocal indentexpr=
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal lispwords=
+setlocal nolist
+setlocal makeencoding=
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:],<:>
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=bin,octal,hex
+set number
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=phpcomplete#CompletePHP
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal signcolumn=auto
+setlocal nosmartindent
+setlocal softtabstop=0
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=%{lightline#link()}%#LightlineLeft_active_0#%(\ %{lightline#mode()}\ %)%{(&paste)?\"|\":\"\"}%(\ %{&paste?\"PASTE\":\"\"}\ %)%#LightlineLeft_active_0_1#%#LightlineLeft_active_1#%(\ %R\ %)%{(&readonly)&&(1||(&modified||!&modifiable))?\"|\":\"\"}%(\ %t\ %)%{(&modified||!&modifiable)?\"|\":\"\"}%(\ %M\ %)%#LightlineLeft_active_1_2#%#LightlineMiddle_active#%=%#LightlineRight_active_2_3#%#LightlineRight_active_2#%(\ %{&ff}\ %)%{1||1?\"|\":\"\"}%(\ %{&fenc!=#\"\"?&fenc:&enc}\ %)%{1?\"|\":\"\"}%(\ %{&ft!=#\"\"?&ft:\"no\ ft\"}\ %)%#LightlineRight_active_1_2#%#LightlineRight_active_1#%(\ %3p%%\ %)%#LightlineRight_active_0_1#%#LightlineRight_active_0#%(\ %3l:%-2v\ %)
+setlocal suffixesadd=
+setlocal noswapfile
+setlocal synmaxcol=3000
+if &syntax != 'php'
+setlocal syntax=php
+endif
+setlocal tabstop=4
+setlocal tagcase=
+setlocal tags=
+setlocal terminalscroll=10000
+setlocal termkey=
+setlocal termsize=
+setlocal termwinkey=
+setlocal termwinscroll=10000
+setlocal termwinsize=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal noundofile
+setlocal undolevels=-123456
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+let s:l = 33 - ((11 * winheight(0) + 12) / 24)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+33
+normal! 052|
+wincmd w
+2wincmd w
+exe '1resize ' . ((&lines * 24 + 26) / 52)
+exe '2resize ' . ((&lines * 24 + 26) / 52)
+tabedit ~/github/trackime/resources/views/animes/animes.blade.php
+set splitbelow splitright
+set nosplitbelow
+set nosplitright
+wincmd t
+set winminheight=1 winheight=1 winminwidth=1 winwidth=1
+argglobal
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
+nmap <buffer> [c <Plug>GitGutterPrevHunk
+onoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
+nnoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
+nmap <buffer> \hp <Plug>GitGutterPreviewHunk
+nmap <buffer> \hu <Plug>GitGutterUndoHunk
+nmap <buffer> \hs <Plug>GitGutterStageHunk
+nmap <buffer> ]c <Plug>GitGutterNextHunk
+onoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
+nnoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
+xmap <buffer> ac <Plug>GitGutterTextObjectOuterVisual
+omap <buffer> ac <Plug>GitGutterTextObjectOuterPending
+xmap <buffer> ic <Plug>GitGutterTextObjectInnerVisual
+omap <buffer> ic <Plug>GitGutterTextObjectInnerPending
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> < <Plug>delimitMate<
+imap <buffer> > <Plug>delimitMate>
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal backupcopy=
+setlocal balloonexpr=
+setlocal nobinary
+setlocal nobreakindent
+setlocal breakindentopt=
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=s:<!--,m:\ \ \ \ ,e:-->
+setlocal commentstring=/*%s*/
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+set cursorline
+setlocal cursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal noexpandtab
+if &filetype != 'php'
+setlocal filetype=php
+endif
+setlocal fixendofline
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=tcq
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal formatprg=
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=-1
+setlocal include=\\(require\\|include\\)\\(_once\\)\\?
+setlocal includeexpr=
+setlocal indentexpr=
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal lispwords=
+setlocal nolist
+setlocal makeencoding=
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:],<:>
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=bin,octal,hex
+set number
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=phpcomplete#CompletePHP
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal signcolumn=auto
+setlocal nosmartindent
+setlocal softtabstop=0
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=%{lightline#link()}%#LightlineLeft_active_0#%(\ %{lightline#mode()}\ %)%{(&paste)?\"|\":\"\"}%(\ %{&paste?\"PASTE\":\"\"}\ %)%#LightlineLeft_active_0_1#%#LightlineLeft_active_1#%(\ %R\ %)%{(&readonly)&&(1||(&modified||!&modifiable))?\"|\":\"\"}%(\ %t\ %)%{(&modified||!&modifiable)?\"|\":\"\"}%(\ %M\ %)%#LightlineLeft_active_1_2#%#LightlineMiddle_active#%=%#LightlineRight_active_2_3#%#LightlineRight_active_2#%(\ %{&ff}\ %)%{1||1?\"|\":\"\"}%(\ %{&fenc!=#\"\"?&fenc:&enc}\ %)%{1?\"|\":\"\"}%(\ %{&ft!=#\"\"?&ft:\"no\ ft\"}\ %)%#LightlineRight_active_1_2#%#LightlineRight_active_1#%(\ %3p%%\ %)%#LightlineRight_active_0_1#%#LightlineRight_active_0#%(\ %3l:%-2v\ %)
+setlocal suffixesadd=
+setlocal noswapfile
+setlocal synmaxcol=3000
+if &syntax != 'php'
+setlocal syntax=php
+endif
+setlocal tabstop=4
+setlocal tagcase=
+setlocal tags=
+setlocal terminalscroll=10000
+setlocal termkey=
+setlocal termsize=
+setlocal termwinkey=
+setlocal termwinscroll=10000
+setlocal termwinsize=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal noundofile
+setlocal undolevels=-123456
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+let s:l = 8 - ((7 * winheight(0) + 24) / 49)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+8
+normal! 017|
+tabnext 3
+set stal=1
+if exists('s:wipebuf') && s:wipebuf != bufnr('%')
+  silent exe 'bwipe ' . s:wipebuf
+endif
+unlet! s:wipebuf
+set winheight=1 winwidth=20 shortmess=filnxtToO
+set winminheight=1 winminwidth=1
+let s:sx = expand("<sfile>:p:r")."x.vim"
+if file_readable(s:sx)
+  exe "source " . fnameescape(s:sx)
+endif
+let &so = s:so_save | let &siso = s:siso_save
+doautoall SessionLoadPost
+unlet SessionLoad
+" vim: set ft=vim :
