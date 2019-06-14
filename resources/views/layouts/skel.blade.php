@@ -78,7 +78,9 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
 						<li><a class="nav-link" href="{{ url('/emision') }}">{{ __('Emision') }}</a></li>
-						<li><a class="nav-link" href="{{ url('/tops') }}">{{ __('Tops') }}</a></li>
+                        @auth
+							<li><a class="nav-link" href="{{ url('/tops') }}">{{ __('Tops') }}</a></li>
+                        @endguest
 						{{-- <li><a class="nav-link" href="{{ url('/personajes') }}">{{ __('Personajes') }}</a></li> --}}
 						{{--<li><a class="nav-link" href="{{ url('/aleatorio') }}">{{ __('Aleatorio') }}</a></li> --}}
 					</ul>
