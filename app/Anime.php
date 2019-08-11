@@ -18,9 +18,9 @@ class Anime extends Model
 		return $this->belongsToMany('Trackime\GenreAnime','animes','anime','anime','anime','anime');
 	}
 
-	public static function image($anime)
+	public function image()
 	{
-		return DB::table('animes')->where('anime', $anime)->first()->web;
+		return DB::table('animes')->where('anime', $this->anime)->first()->web;
 	}
 
 	public function character()
