@@ -42,7 +42,10 @@ class CustomController extends Controller
 		$custom->user	= Auth::user()->name;
 		$custom->anime 	= $request->anime;
 		$custom->state 	= $request->state;
-		$custom->save();
+		return [
+			  "status" => $custom->save()
+			, "data" => $custom
+		];
 	}
 
     /**

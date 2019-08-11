@@ -21,34 +21,56 @@
     </div>
 
 	<div class="row text-center">
-
 		@if ($anterior)
 		<a href=" {{ url('/ver') . '?' . 'anime=' . $anterior->anime . '&capitulo=' . $anterior->chapter}}" class="col-4" style="cursor:pointer;">
-				<img style="width:32px;" src="{{ asset('images/icon/anterior.png') }}"/>
+			<img style="width:32px;" src="{{ asset('images/icon/anterior.png') }}"/>
 		</a>
 		@else
 		<div class="col-4"></div>
 		@endif
 
 		<a href="  {{  url('/animes') . '/' . $anime }}  " class="col-4" style="cursor:pointer;">
-				<img style="width:32px;" src="{{ asset('images/icon/capitulos.svg') }}"/>
+			<img style="width:32px;" src="{{ asset('images/icon/capitulos.svg') }}"/>
 		</a>
 		@if ($siguiente)
 		<a href=" {{ url('/ver') . '?' . 'anime=' . $siguiente->anime . '&capitulo=' . $siguiente->chapter}}" class="col-4" style="cursor:pointer;">
 			<img style="width:32px;" src="{{ asset('images/icon/siguiente.png') }}"/>
-		</div>
+		</a>
 		@else
 			<div class="col-4"></div>
 		@endif
 	</div>
 
 
-	@if(Auth::user() and Auth::user()->admin)
-		<a href="{{ url('/deleteAnime/') . '/' . $anime }}" class="btn btn-dark"> Eliminar Anime </a>
-		<a href="{{ url('/deleteChapter/') . '/' . $anime . '/' . $chapter}}" class="btn btn-dark"> Eliminar Capitulo </a>
-		<a href="{{ url('/delete/') . '/' . $anime }}" class="btn btn-dark"> Editar </a>
-	@endif
-
+	<div class="row text-center">
+		@if(Auth::user() and Auth::user()->admin)
+			@if ($anterior)
+			<a href=" {{ url('/ver') . '?' . 'anime=' . $anterior->anime . '&capitulo=' . $anterior->chapter}}" class="col-4" style="cursor:pointer;">
+				Anterior
+			</a>
+			@else
+				<div class="col-4"></div>
+			@endif
+			<a href="  {{  url('/animes') . '/' . $anime }}  " class="col-4" style="cursor:pointer;">
+				Capítulos
+			</a>
+			@if ($siguiente)
+			<a href=" {{ url('/ver') . '?' . 'anime=' . $siguiente->anime . '&capitulo=' . $siguiente->chapter}}" class="col-4" style="cursor:pointer;">
+				Siguiente
+			</a>
+			@else
+				<div class="col-4"></div>
+			@endif
+		@endif
+	</div>
+		
+	<div class="row text-center mt-5">
+		@if(Auth::user() and Auth::user()->admin)
+			<a class="col-4" href="{{ url('/deleteAnime/') . '/' . $anime }}" class="btn btn-dark"> Eliminar Anime </a>
+			<a class="col-4" href="{{ url('/deleteChapter/') . '/' . $anime . '/' . $chapter}}" class="btn btn-dark"> Eliminar Capitulo </a>
+			<a class="col-4" href="{{ url('/delete/') . '/' . $anime }}" class="btn btn-dark"> Editar </a>
+		@endif
+	</div>
 
 </div>
 

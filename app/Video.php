@@ -20,4 +20,9 @@ class Video extends Model
 	{
 		return DB::table('animes')->where('anime', $this->anime)->first()->web;
 	}
+
+	public function genre()
+	{
+		return $this->hasMany('Trackime\GenreAnime','anime','anime','anime','anime','anime');
+	}
 }

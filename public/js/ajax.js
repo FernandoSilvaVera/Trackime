@@ -4,30 +4,47 @@ function is_list(){
     return document.location.pathname.includes("animes");
 }
 
+function php(type, url, data, success, error){
+	$.ajax({
+		type: type,
+		url: url,
+		data: data,
+		success: success,
+		error: error
+	})
+}
+
+function agregarserie(state, anime, success){
+	var data = {
+		state: state,
+		anime: anime,
+		_token: $('meta[name=csrf-token]').attr('content')
+	}
+	var error = function(resp){
+		console.log("resp")
+	}
+	php("post", "/agregarserie", data, success, error)
+}
+
 $(document).ready(function(){
 	//Pone la serie como pendiente
 	$(document).on('click','#newPending', function(){
 		var anime = this.name
-		$.post(url + 'agregarSerie',{
-			'_token': $('meta[name=csrf-token]').attr('content'),
-			anime:	anime,
-			state:	"pendiente"
-		}).done(function(){
-			$('#add').remove()
-			$('#options').append('<div id="pending"><button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">Pendiente</button><div class="dropdown-menu"><a id="destroy" name="'+anime+'"class="dropdown-item">quitar pendiente</a><a id="updateCompleted" name="'+anime+'"class="dropdown-item">marcar terminada</a></div></div>')
+		agregarserie("pendiente", anime, function(resp){
+			if(resp.status){
+				$('#add').remove()
+				$('#options').append('<div id="pending"><button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">Pendiente</button><div class="dropdown-menu"><a id="destroy" name="'+anime+'"class="dropdown-item">quitar pendiente</a><a id="updateCompleted" name="'+anime+'"class="dropdown-item">marcar terminada</a></div></div>')
+			}
 		})
 	})
-
 	//Pone la serie como terminada
 	$(document).on('click', '#newCompleted', function(){
 		var anime = this.name
-		$.post(url + 'agregarSerie',{
-			'_token': $('meta[name=csrf-token]').attr('content'),
-			anime:	anime,
-			state:	"terminada"
-		}).done(function(){
-			$('#add').remove()
-			$('#options').append('<div id="completed"><button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">Terminada</button><div class="dropdown-menu"><a id="destroy" name="'+anime+'"class="dropdown-item">quitar terminada</a><a id="updatePending" name="'+anime+'" class="dropdown-item">marcar pendiente</a></div></div>')
+		agregarserie("terminada", anime, function(resp){
+			if(resp.status){
+				$('#add').remove()
+				$('#options').append('<div id="completed"><button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">Terminada</button><div class="dropdown-menu"><a id="destroy" name="'+anime+'"class="dropdown-item">quitar terminada</a><a id="updatePending" name="'+anime+'" class="dropdown-item">marcar pendiente</a></div></div>')
+			}
 		})
 	})
 
