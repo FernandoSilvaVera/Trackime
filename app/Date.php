@@ -14,9 +14,9 @@ class date extends Model
 		return $this->belongsToMany('Trackime\GenreAnime','animes','anime','anime','anime','anime');
 	}
 
-	public function image($data)
+	public function image()
 	{
-		return DB::table('animes')->where('anime', $data)->first()->web;
+		return DB::table('animes')->where('anime', $this->anime)->first()->web;
 	}
 
 	public function animes()
