@@ -15,6 +15,6 @@ class Tops extends Model
 
 	public function image($anime)
 	{
-		return Anime::image($anime);
+		return DB::table('animes')->where('anime', $this->anime)->first()->web;
 	}
 }

@@ -18,48 +18,49 @@ class FilterController extends Controller
      */
     public function anime(Request $request)
     {
-		$conexion = DB::table('genre_animes')
+		$paginate = '1000';
+		$conexion = (new GenreAnime)
 				->select(['animes.anime','animes.web'])->distinct()
 				->join('animes','genre_animes.anime','=','animes.anime')
 				->join('dates','dates.anime','=','animes.anime');
 	
 		if(is_null($request->input('genre')) and is_null($request->input('year')) and is_null($request->input('season')))
-			$animes = $conexion->get();
+			$animes = $conexion->paginate($paginate);
 		else if(is_null($request->input('genre')) and is_null($request->input('year')))
 			$animes = $conexion
 					->whereIn('dates.season', $request->input('season'))
-					->get();
+					->paginate($paginate);
 		else if(is_null($request->input('genre')) and is_null($request->input('season')))
 			$animes = $conexion
 					->whereIn('dates.year', $request->input('year'))
-					->get();
+					->paginate($paginate);
 		else if(is_null($request->input('year')) and is_null($request->input('season')))
 			$animes = $conexion
 					->whereIn('genre_animes.genre', $request->input('genre'))
-					->get();
+					->paginate($paginate);
 		else if(is_null($request->input('year')))
 			$animes = $conexion
 					->whereIn('genre_animes.genre', $request->input('genre'))
 					->whereIn('dates.season', $request->input('season'))
-					->get();
+					->paginate($paginate);
 		else if(is_null($request->input('season')))
 			$animes = $conexion
 					->whereIn('genre_animes.genre', $request->input('genre'))
 					->whereIn('dates.year', $request->input('year'))
-					->get();
+					->paginate($paginate);
 		else if(is_null($request->input('genre')))
 			$animes = $conexion
 					->whereIn('dates.season', $request->input('season'))
 					->whereIn('dates.year', $request->input('year'))
-					->get();
+					->paginate($paginate);
 		else
 			$animes = $conexion
 					->whereIn('genre_animes.genre', $request->input('genre'))
 					->whereIn('dates.year', $request->input('year'))
 					->whereIn('dates.season', $request->input('season'))
-					->get();
+					->paginate($paginate);
 
-		return view('animes.filter',[
+		return view('animes.animes',[
 				'animes'	=> $animes,
 				"dates"		=> Date::orderBy('year','desc')->get(),
 				"genres"	=> GenreAnime::all()->unique('genre')
