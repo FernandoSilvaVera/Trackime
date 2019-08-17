@@ -44,7 +44,7 @@ class CustomController extends Controller
 	}
 
 	public function create($anime, $loged){
-		if(!$custom = Custom::where('user', Auth::user()->name)->where('anime', $anime)->first()){
+		if(!$loged || !$custom = Custom::where('user', Auth::user()->name)->where('anime', $anime)->first()){
 			return $this->default();
 		}
 		switch($custom->state){

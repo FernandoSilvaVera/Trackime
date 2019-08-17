@@ -60,7 +60,7 @@ class UserController extends Controller
     public function pending($user)
     {
 		return view ('user.pending',[
-					'animes'	=> Custom::where('user', $user)->where('state', 'pendiente')->paginate(12),
+					'animes'	=> Custom::where('user', $user)->where('state', Custom::ADD_PENDING)->paginate(12),
 					'userName'	=> User::where('name', $user)->first()
 			]
 		);
@@ -69,7 +69,7 @@ class UserController extends Controller
     public function finished($user)
     {
 		return view ('user.finished',[
-					'animes'	=> Custom::where('user', $user)->where('state', 'terminada')->paginate(12),
+					'animes'	=> Custom::where('user', $user)->where('state', Custom::ADD_FINISHED)->paginate(12),
 					'userName'	=> User::where('name', $user)->first()
 			]
 		);
