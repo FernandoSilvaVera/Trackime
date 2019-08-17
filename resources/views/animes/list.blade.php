@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container">
+<div class="container" id ="animes">
 
 	<h3 class='mb-3 text-center' id="name_anime">{{ $anime->anime }}</h3>
 
@@ -33,37 +33,15 @@
 				<span class="badge badge-dark">{{ $genre->genre}}</span>
 			@endforeach
 			<p class="text-justify mt-1">Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-
 			<!-- Marcar como pendiente/terminada-->
 			@guest
 			@else
 			 <div id='options' class="text-right" style='cursor:pointer'>
-	
-				@if(is_null($custom))
-						<div id="add">
-							<button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">Agregar</button>
-							<div class="dropdown-menu">
-								<a id="newPending" name="{{ $anime->anime }}" class="dropdown-item">marcar pendiente</a>
-								<a id="newCompleted" name="{{ $anime->anime }}" class="dropdown-item">marcar terminada</a>
-							</div>
-						</div>
-				@elseif($custom->state === 'pendiente')
-						<div id="pending">
-							<button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">Pendiente</button>
-							<div class="dropdown-menu">
-								<a id="destroy" name="{{ $anime->anime }}"class="dropdown-item">quitar pendiente</a>
-								<a id="updateCompleted" name="{{ $anime->anime }}" class="dropdown-item">marcar terminada</a>
-							</div>
-						</div>
-				@elseif($custom->state === 'terminada')
-						<div id="completed">
-							<button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">Terminada</button>
-							<div class="dropdown-menu">
-								<a id="destroy" name="{{ $anime->anime }}"class="dropdown-item">quitar terminada</a>
-								<a id="updatePending" name="{{ $anime->anime }}"class="dropdown-item">marcar pendiente</a>
-							</div>
-						</div>
-				@endif
+				<add-anime-component
+					:initial_anime="'{{ $anime->anime }}'"
+					:initial_custom="{{ json_encode($custom) }}"
+					>
+				</add-anime-component>
 			 </div>
 			@endguest
 		</div>

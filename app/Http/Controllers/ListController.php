@@ -10,6 +10,33 @@ use Trackime\Custom;
 
 class ListController extends Controller
 {
+
+	private $view = "animes.list";
+
+	public function checkAnime($anime){
+		if(is_null(Anime::where('anime', $anime)->first()))
+			abort(404);
+		return;
+	}
+
+	public function getList($anime){
+		return Anime::where('anime', $anime)->first();
+	}
+	
+	public function getVideo($anime){
+		return Video::where('anime', $anime)->get();
+	}
+
+	public function list($anime, $loged)
+	{
+		return view($this->view, [
+				'anime'	  => $this->getList($anime),
+				'video'	  => $this->getVideo($anime),
+				'custom'  => (new CustomController)->create($anime, $loged)
+		]
+		);
+	}
+
     /**
      * Display a listing of the resource.
      *
@@ -17,23 +44,8 @@ class ListController extends Controller
      */
     public function index($anime)
     {
-		if(is_null(Anime::where('anime', $anime)->first()))
-			abort(404);
-		else
-			if(Auth::user())
-				return view('animes.list', [
-						'anime'	  => Anime::where('anime', $anime)->first(),
-						'video'	  => Video::where('anime', $anime)->get(),
-						'custom'  => Custom::where('user', Auth::user()->name)->where('anime', $anime)->first()
-					]
-				);
-			else
-				return view('animes.list', [
-						'anime'	  => Anime::where('anime', $anime)->first(),
-						'video'	  => Video::where('anime', $anime)->get(),
-						'custom'  => null
-					]
-				);
+		$this->checkAnime($anime);
+		return $this->list($anime, Auth::user());
     }
 
     /**

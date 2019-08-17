@@ -10,6 +10,14 @@ class custom extends Model
     public $timestamps = false;
 	protected $table = "custom";
 
+	const PENDING = "Pendiente";
+	const FINISHED = "Terminada";
+	const DEFAULT = "Agregar";
+
+	const ADD_PENDING = 1;
+	const ADD_FINISHED = 2;
+	const DELETE_ANIME = null;
+
 	public function genre()
 	{
 		return $this->belongsToMany('Trackime\GenreAnime','animes','anime','anime','anime','anime');

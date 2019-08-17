@@ -63,6 +63,7 @@ Route::post('saveAnime', 'AdminController@storeAnime');
 
 
 //CustomController
+Route::post('/newStatusAnime', 'CustomController@newStatus'); 
 Route::post('/agregarserie', 'CustomController@store'); 
 Route::post('/destroyAnime', 'CustomController@destroy'); 
 Route::post('/updateAnime', 'CustomController@update'); 
