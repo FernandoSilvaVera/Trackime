@@ -12,7 +12,7 @@ class custom extends Model
 
 	const PENDING = "Pendiente";
 	const FINISHED = "Terminada";
-	const DEFAULT = "Agregar";
+	const DEFAULT = "Marcar";
 
 	const ADD_PENDING = 1;
 	const ADD_FINISHED = 2;

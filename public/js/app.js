@@ -49384,18 +49384,20 @@ var render = function() {
       "div",
       { staticClass: "dropdown-menu" },
       _vm._l(_vm.otherStatus, function(status) {
-        return _c(
-          "a",
-          {
-            staticClass: "dropdown-item",
-            on: {
-              click: function($event) {
-                return _vm.addStatus(status.status)
-              }
-            }
-          },
-          [_vm._v(_vm._s(status.trad))]
-        )
+        return typeof status === "object"
+          ? _c(
+              "a",
+              {
+                staticClass: "dropdown-item",
+                on: {
+                  click: function($event) {
+                    return _vm.addStatus(status.status)
+                  }
+                }
+              },
+              [_vm._v(_vm._s(status.trad))]
+            )
+          : _vm._e()
       }),
       0
     )

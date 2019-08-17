@@ -2,7 +2,7 @@
 	<div>
 		<button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">{{ mainStatus }}</button>
 		<div class="dropdown-menu">
-			<a v-for="status in otherStatus" @click="addStatus(status.status)" class="dropdown-item">{{ status.trad }}</a>
+			<a v-if="typeof status === 'object'" v-for="status in otherStatus" @click="addStatus(status.status)" class="dropdown-item">{{ status.trad }}</a>
 		</div>
 	</div>
 </template>
