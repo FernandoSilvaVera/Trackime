@@ -49209,6 +49209,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		},
 		needChapter: function needChapter() {
 			return !!this.anime.chapter;
+		},
+		searchGenre: function searchGenre(genre) {
+			var url = "/filtro?genre=" + genre;
+			axios.get(url, { a: 5 }).then(function (response) {
+				return console.log(response);
+			});
 		}
 	}
 });
@@ -49221,7 +49227,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "col-lg-4 col-md-6 col-xs-12  mb-5" }, [
+  return _c("div", { staticClass: "col-lg-4 col-md-6 col-xs-12 mb-5" }, [
     _c("div", { staticClass: "card mb-1" }, [
       _c("a", { attrs: { href: _vm.url() } }, [
         _c("img", {
@@ -49241,9 +49247,18 @@ var render = function() {
       "div",
       { staticClass: "text-center" },
       _vm._l(_vm.genres, function(genre) {
-        return _c("span", { staticClass: "badge badge-dark m-1" }, [
-          _vm._v(_vm._s(genre.genre))
-        ])
+        return _c(
+          "span",
+          {
+            staticClass: "badge badge-dark m-1",
+            on: {
+              click: function($event) {
+                return _vm.searchGenre(genre.genre)
+              }
+            }
+          },
+          [_vm._v(_vm._s(genre.genre))]
+        )
       }),
       0
     )

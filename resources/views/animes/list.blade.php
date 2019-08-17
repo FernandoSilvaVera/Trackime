@@ -26,7 +26,6 @@
 		<!-- Parte derecha de la pagina-->
 
         <div class="col-6 text-center">
-
 			<img class="card-img-top col-md-8 mb-1" src="{{ asset('images/' . $anime['web']) }}.jpg">
 			<br>
 			@foreach($anime->genre as $genre)

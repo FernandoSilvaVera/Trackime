@@ -1,5 +1,5 @@
 <template>
-	<div class="col-lg-4 col-md-6 col-xs-12  mb-5">
+	<div class="col-lg-4 col-md-6 col-xs-12 mb-5">
 		<div class="card mb-1">
 			<a :href="url()">
 				<img class="card-img-top" :src="image_src()">
@@ -8,7 +8,7 @@
 		<span><b>{{anime.anime}}</b></span>
 		<span v-if="needChapter()"><b>capitulo {{anime.chapter}}</b></span>
 		<div class="text-center">
-			<span class="badge badge-dark m-1" v-for="genre of genres">{{ genre.genre }}</span>
+			<span @click="searchGenre(genre.genre)" class="badge badge-dark m-1" v-for="genre of genres">{{ genre.genre }}</span>
 		</div>
 	</div>
 </template>
@@ -36,6 +36,12 @@
 			},
 			needChapter(){
 				return !!this.anime.chapter
+			},
+			searchGenre(genre){
+				var url = "/filtro?genre=" + genre
+				axios.get(url, {a:5}).then(
+					response => console.log(response)
+				)
 			}
 		}
     }

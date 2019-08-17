@@ -52,6 +52,7 @@ Route::get('/busqueda', 'SearchController@index');
 
 
 //FilterController
+Route::get('/filtro', 'FilterController@genre');
 Route::get('/filtro/anime', 'FilterController@anime');
 Route::get('/filtro/personaje', 'FilterController@character');
 

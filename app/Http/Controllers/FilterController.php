@@ -11,184 +11,59 @@ use Trackime\GenreAnime;
 
 class FilterController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function anime(Request $request)
-    {
-		$paginate = '1000';
-		$conexion = (new GenreAnime)
-				->select(['animes.anime','animes.web'])->distinct()
-				->join('animes','genre_animes.anime','=','animes.anime')
-				->join('dates','dates.anime','=','animes.anime');
-	
-		if(is_null($request->input('genre')) and is_null($request->input('year')) and is_null($request->input('season')))
-			$animes = $conexion->paginate($paginate);
-		else if(is_null($request->input('genre')) and is_null($request->input('year')))
-			$animes = $conexion
-					->whereIn('dates.season', $request->input('season'))
-					->paginate($paginate);
-		else if(is_null($request->input('genre')) and is_null($request->input('season')))
-			$animes = $conexion
-					->whereIn('dates.year', $request->input('year'))
-					->paginate($paginate);
-		else if(is_null($request->input('year')) and is_null($request->input('season')))
-			$animes = $conexion
-					->whereIn('genre_animes.genre', $request->input('genre'))
-					->paginate($paginate);
-		else if(is_null($request->input('year')))
-			$animes = $conexion
-					->whereIn('genre_animes.genre', $request->input('genre'))
-					->whereIn('dates.season', $request->input('season'))
-					->paginate($paginate);
-		else if(is_null($request->input('season')))
-			$animes = $conexion
-					->whereIn('genre_animes.genre', $request->input('genre'))
-					->whereIn('dates.year', $request->input('year'))
-					->paginate($paginate);
-		else if(is_null($request->input('genre')))
-			$animes = $conexion
-					->whereIn('dates.season', $request->input('season'))
-					->whereIn('dates.year', $request->input('year'))
-					->paginate($paginate);
-		else
-			$animes = $conexion
-					->whereIn('genre_animes.genre', $request->input('genre'))
-					->whereIn('dates.year', $request->input('year'))
-					->whereIn('dates.season', $request->input('season'))
-					->paginate($paginate);
+	const VIEW = "animes.animes";
+	const FILTERS = ['genre', 'year', 'season'];
+	private $bbdd = null;
 
-		return view('animes.animes',[
-				'animes'	=> $animes,
-				"dates"		=> Date::orderBy('year','desc')->get(),
-				"genres"	=> GenreAnime::all()->unique('genre')
-			]
-		);
-    }
-
-	public function character(Request $request)
-	{
-		$conexion = DB::table('characters')->select(['name'])->distinct();
-		$loli = is_null($request->input('loli')) ? "" : "si";
-		
-		if(is_null($request->input('personality')) and is_null($request->input('hair')) and is_null($request->input('sex')))
-			$characters = $conexion	
-						->where('loli','like', '%'.$loli.'%')
-						->get();
-		else if(is_null($request->input('personality')) and is_null($request->input('hair')))
-			$characters = $conexion	
-						->where('loli','like', '%'.$loli.'%')
-						->whereIn('sex', $request->input('sex'))
-						->get();
-		else if(is_null($request->input('personality')) and is_null($request->input('sex')))
-			$characters = $conexion	
-						->where('loli','like', '%'.$loli.'%')
-						->whereIn('hair', $request->input('hair'))
-						->get();
-		else if(is_null($request->input('hair')) and is_null($request->input('sex')))
-			$characters = $conexion	
-						->where('loli','like', '%'.$loli.'%')
-						->whereIn('personality', $request->input('personality'))
-						->get();
-		else if(is_null($request->input('hair')))
-			$characters = $conexion	
-						->where('loli','like', '%'.$loli.'%')
-						->whereIn('personality', $request->input('personality'))
-						->whereIn('sex', $request->input('sex'))
-						->get();
-		else if(is_null($request->input('sex')))
-			$characters = $conexion	
-						->where('loli','like', '%'.$loli.'%')
-						->whereIn('personality', $request->input('personality'))
-						->whereIn('hair', $request->input('hair'))
-						->get();
-		else if(is_null($request->input('personality')))
-			$characters = $conexion	
-						->where('loli','like', '%'.$loli.'%')
-						->whereIn('sex', $request->input('sex'))
-						->whereIn('hair', $request->input('hair'))
-						->get();
-		else
-			$characters = $conexion	
-						->where('loli','like', '%'.$loli.'%')
-						->whereIn('personality', $request->input('personality'))
-						->whereIn('sex', $request->input('sex'))
-						->whereIn('hair', $request->input('hair'))
-						->get();
-
-		return view('characters.filter',[
-				'characters'	=> $characters,
-				'hairs'			=> Character::all()->unique('hair'),
-				'personalities'	=> Character::all()->unique('personality')
-			]
-		);
+	private function bbdd(){
+		$this->bbdd = GenreAnime::select(['animes.anime', 'animes.web'])->distinct();
+		$this->joinAnimes();
+		$this->joinDates();
 	}
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+	private function joinAnimes(){
+		$this->bbdd->join('animes', 'genre_animes.anime', '=','animes.anime');
+	}
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+	private function joinDates(){
+		$this->bbdd->join('dates','dates.anime','=','animes.anime');
+	}
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+	private function season($data){
+		$this->bbdd->whereIn('dates.season', $data);
+	}
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+	private function year($data){
+		$this->bbdd->whereIn('dates.year', $data);
+	}
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+	private function genre($data){
+		$this->bbdd->whereIn('genre_animes.genre', $data);
+	}
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+	private function add($filters, $data){
+		if($filters->has($data)){
+			$this->$data($filters->input($data));
+		}
+	}
+
+	private function setFilters($filters){
+		foreach(self::FILTERS as $data){
+			if($filters->has($data)){
+				$this->$data($filters->input($data));
+			}
+		}
+	}
+
+	public function anime(Request $r)
+	{
+		$this->bbdd();
+		$this->setFilters($r);
+		return view(self::VIEW,[
+				'animes'	=> $this->bbdd->paginate('1000'),
+				"dates"		=> Date::orderBy('year','desc')->get(),
+				"genres"	=> GenreAnime::all()->unique('genre')
+		]);
+	}
+
 }
