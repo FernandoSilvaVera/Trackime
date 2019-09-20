@@ -8,7 +8,9 @@
 		<span><b>{{anime.anime}}</b></span>
 		<span v-if="needChapter()"><b>capitulo {{anime.chapter}}</b></span>
 		<div class="text-center">
-			<span @click="searchGenre(genre.genre)" class="badge badge-dark m-1" v-for="genre of genres">{{ genre.genre }}</span>
+			<span class="badge badge-dark m-1" v-for="genre of genres">
+				<a :href="searchGenre(genre.genre)">{{ genre.genre}}</a>
+			</span>
 		</div>
 	</div>
 </template>
@@ -29,7 +31,7 @@
 			},
 			url(){
 				if(this.anime.chapter){
-					return "/ver?anime=" + this.anime.anime + "&capitulo=" + this.anime.chapter
+					return "/watch?anime=" + this.anime.anime + "&capitulo=" + this.anime.chapter
 				}else{
 					return "/animes/" + this.anime.anime
 				}
@@ -38,10 +40,7 @@
 				return !!this.anime.chapter
 			},
 			searchGenre(genre){
-				var url = "/filtro?genre=" + genre
-				axios.get(url, {a:5}).then(
-					response => console.log(response)
-				)
+				return "/filtro/anime?genre=" + genre
 			}
 		}
     }

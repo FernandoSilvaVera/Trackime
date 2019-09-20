@@ -17,7 +17,7 @@ Route::post('getComment', 'CommentController@show');
 
 
 //VideoController
-Route::get('/ver', 'VideoController@ver');
+Route::get('/watch', 'VideoController@watch');
 Route::get('/video/{anime}/{chapter}', 'VideoController@index');
 Route::get('/deleteChapter/{anime}/{chapter}', 'VideoController@destroy');
 Route::post('updateEmission', 'VideoController@update');

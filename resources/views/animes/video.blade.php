@@ -22,7 +22,7 @@
 
 	<div class="row text-center">
 		@if ($anterior)
-		<a href=" {{ url('/ver') . '?' . 'anime=' . $anterior->anime . '&capitulo=' . $anterior->chapter}}" class="col-4" style="cursor:pointer;">
+		<a href=" {{ url('/watch') . '?' . 'anime=' . $anterior->anime . '&capitulo=' . $anterior->chapter}}" class="col-4" style="cursor:pointer;">
 			<img style="width:32px;" src="{{ asset('images/icon/anterior.png') }}"/>
 		</a>
 		@else
@@ -33,7 +33,7 @@
 			<img style="width:32px;" src="{{ asset('images/icon/capitulos.svg') }}"/>
 		</a>
 		@if ($siguiente)
-		<a href=" {{ url('/ver') . '?' . 'anime=' . $siguiente->anime . '&capitulo=' . $siguiente->chapter}}" class="col-4" style="cursor:pointer;">
+		<a href=" {{ url('/watch') . '?' . 'anime=' . $siguiente->anime . '&capitulo=' . $siguiente->chapter}}" class="col-4" style="cursor:pointer;">
 			<img style="width:32px;" src="{{ asset('images/icon/siguiente.png') }}"/>
 		</a>
 		@else
@@ -45,7 +45,7 @@
 	<div class="row text-center">
 		@if(Auth::user() and Auth::user()->admin)
 			@if ($anterior)
-			<a href=" {{ url('/ver') . '?' . 'anime=' . $anterior->anime . '&capitulo=' . $anterior->chapter}}" class="col-4" style="cursor:pointer;">
+			<a href=" {{ url('/watch') . '?' . 'anime=' . $anterior->anime . '&capitulo=' . $anterior->chapter}}" class="col-4" style="cursor:pointer;">
 				Anterior
 			</a>
 			@else
@@ -55,7 +55,7 @@
 				Capítulos
 			</a>
 			@if ($siguiente)
-			<a href=" {{ url('/ver') . '?' . 'anime=' . $siguiente->anime . '&capitulo=' . $siguiente->chapter}}" class="col-4" style="cursor:pointer;">
+			<a href=" {{ url('/watch') . '?' . 'anime=' . $siguiente->anime . '&capitulo=' . $siguiente->chapter}}" class="col-4" style="cursor:pointer;">
 				Siguiente
 			</a>
 			@else

@@ -49187,6 +49187,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	props: ['anime', 'image', 'genres'],
@@ -49202,7 +49204,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		},
 		url: function url() {
 			if (this.anime.chapter) {
-				return "/ver?anime=" + this.anime.anime + "&capitulo=" + this.anime.chapter;
+				return "/watch?anime=" + this.anime.anime + "&capitulo=" + this.anime.chapter;
 			} else {
 				return "/animes/" + this.anime.anime;
 			}
@@ -49211,10 +49213,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			return !!this.anime.chapter;
 		},
 		searchGenre: function searchGenre(genre) {
-			var url = "/filtro?genre=" + genre;
-			axios.get(url, { a: 5 }).then(function (response) {
-				return console.log(response);
-			});
+			return "/filtro/anime?genre=" + genre;
 		}
 	}
 });
@@ -49247,18 +49246,11 @@ var render = function() {
       "div",
       { staticClass: "text-center" },
       _vm._l(_vm.genres, function(genre) {
-        return _c(
-          "span",
-          {
-            staticClass: "badge badge-dark m-1",
-            on: {
-              click: function($event) {
-                return _vm.searchGenre(genre.genre)
-              }
-            }
-          },
-          [_vm._v(_vm._s(genre.genre))]
-        )
+        return _c("span", { staticClass: "badge badge-dark m-1" }, [
+          _c("a", { attrs: { href: _vm.searchGenre(genre.genre) } }, [
+            _vm._v(_vm._s(genre.genre))
+          ])
+        ])
       }),
       0
     )
