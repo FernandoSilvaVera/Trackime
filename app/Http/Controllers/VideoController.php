@@ -19,20 +19,18 @@ class VideoController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-	public function ver(Request $request){
+	public function watch(Request $request){
 		$chapter = $request->input('capitulo');
 		$anime = $request->input('anime');
 
 		$video = Video::where('anime', $anime)->where('chapter', $chapter)->first();
-		$siguiente = Video::where('anime', $anime)->where('chapter', $chapter+1)->first();
-		$anterior = Video::where('anime', $anime)->where('chapter', $chapter-1)->first();
 
 		return view('animes.video',[
 			"chapter" => $video->chapter
 			, "anime" => $video->anime
 			, "video" => $video->video
-			, "siguiente" => $siguiente
-			, "anterior" => $anterior
+			, "siguiente" => Video::where('anime', $anime)->where('chapter', $chapter+1)->first()
+			, "anterior" =>  Video::where('anime', $anime)->where('chapter', $chapter-1)->first()
 			]
 		);  
 	}
