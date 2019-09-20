@@ -50,7 +50,7 @@ class FilterController extends Controller
 	private function setFilters($filters){
 		foreach(self::FILTERS as $data){
 			if($filters->has($data)){
-				$this->$data($filters->input($data));
+				$this->$data([$filters->input($data)]);
 			}
 		}
 	}
