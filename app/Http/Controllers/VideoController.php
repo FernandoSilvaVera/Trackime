@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Trackime\Utils\MyAnimeList;
 use Illuminate\Http\Request;
 use Trackime\Utils\AnimeID;
+use Trackime\Utils\AnimeFLV;
 use Trackime\Video;
 use Trackime\Date;
 use Trackime\Anime;
@@ -59,16 +60,21 @@ class VideoController extends Controller
     public static function store(Request $request)
     {
 		$videos = new Video;
-		$chapter = '1';
-		while($v = AnimeID::videoRapiVideo($request->animeFLV, $chapter)){
-			$video = new Video;
+		$chapter = '4';
+		$animeFLV = new AnimeFLV($request->code, $request->animeFLV);
+		$resp = $animeFLV->streamiumFullChapter();
+
+		foreach($resp as $chapter => $hash){
+			if(isset($hash['hash'])){
+				$video = new Video;
 				$video->anime	= $request->anime;
-				$video->chapter = $chapter++;
-				$video->video	= $v;
+				$video->chapter = $chapter;
+				$video->video	= $hash["hash"];
 				$video->download = null;
 				$video->date = date("Y/m/d h:i:s");
 				$video->admin = Auth::user()->name;
-			$video->save();
+				$video->save();
+			}
 		}
     }
 

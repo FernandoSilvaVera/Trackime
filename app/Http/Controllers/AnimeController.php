@@ -45,13 +45,13 @@ class AnimeController extends Controller
     public static function store(Request $request)
     {
 		$anime = new Anime;
-			$anime->anime		= $request->anime;
-			$anime->season		= $request->season;
-			$anime->web			= $request->animeFLV;
-			$anime->chapters	= $request->chapters;
-			$anime->animeFLV	= $request->animeFLV;
-			$anime->myAnimeList	= $request->myAnimeList;
-		$anime->save();
+		$anime->anime		= $request->anime;
+		$anime->season		= $request->season;
+		$anime->web			= $request->animeFLV;
+		$anime->chapters	= $request->chapters;
+		$anime->animeFLV	= $request->animeFLV;
+		$anime->myAnimeList	= $request->myAnimeList;
+		return $anime->save();
     }
 
     /**
@@ -94,11 +94,16 @@ class AnimeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($anime)
+    public function destroy($anime, $redirect=true)
     {
 		if(!Auth::user()->admin)
 			return back();
 		Anime::where('anime', $anime)->delete();      
-		return Redirect('/');
+		return $this->redirect($redirect);
     }
+
+	protected function redirect($need){
+		return $need ? Redirect('/') : null;
+	}
+
 }

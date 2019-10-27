@@ -60,7 +60,7 @@ Route::get('/filtro/personaje', 'FilterController@character');
 //AdminController
 Route::get('/administrar', 'AdminController@index');
 Route::get('/bbdd', 'AdminController@bbdd');
-Route::post('saveAnime', 'AdminController@storeAnime');
+Route::post('/saveAnime', 'AdminController@storeAnime');
 
 
 //CustomController

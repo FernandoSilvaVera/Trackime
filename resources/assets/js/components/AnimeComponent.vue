@@ -21,9 +21,6 @@
 			'anime', 'image', 'genres'
 		],
         mounted() {
-            console.log('Component mounted.')
-			console.log(this.anime)
-			console.log(this.genres)
         },
 		methods:{
 			image_src(){

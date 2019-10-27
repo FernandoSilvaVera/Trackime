@@ -10,8 +10,8 @@
 		<div class="col-12" style="overflow:auto;">
 			<div id="video{{ $chapter}}" class="embed-responsive embed-responsive-16by9 mb-2">
 				<iframe 
-					src="https://www.rapidvideo.com/e/{{ $video }}" 
-					sandbox="allow-forms allow-pointer-lock allow-same-origin allow-top-navigation"
+					src="https://www.streamium.xyz/embed.php?hash={{ $video }}" 
+					sandbox="allow-forms allow-pointer-lock allow-same-origin allow-top-navigation allow-scripts"
 					allowfullscreen="" 
 					scrolling="no" 
 					frameborder="0">

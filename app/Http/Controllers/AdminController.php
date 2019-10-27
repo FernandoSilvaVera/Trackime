@@ -49,6 +49,15 @@ class AdminController extends Controller
         //
     }
 
+	private function cleanRequest(Request $request){
+		$anime = explode("/", $request->animeFLV);
+		$request->code = $anime[4];
+		$request->anime = str_replace("-", " ", $anime[5]);
+		$request->animeFLV = $anime[5];
+		$request->season = 1;
+		$request->chapters = 1;
+	}
+
     /**
      * Store a newly created resource in storage.
      *
@@ -57,14 +66,18 @@ class AdminController extends Controller
      */
     public function storeAnime(Request $request)
     {
-		$request->anime = str_replace('-', ' ', $request->animeFLV);
-		$request->season = 1;
-		$request->chapters = 1;
-		AnimeController::store($request);
-		GenreAnimeController::store($request->myAnimeList, $request->anime);
-		VideoController::store($request);
-		DateController::store($request);
-		file_put_contents('images/'.$request->animeFLV.'.jpg', $file = file_get_contents($request->image));
+		$this->cleanRequest($request);
+		try{
+			$saved = AnimeController::store($request);
+			GenreAnimeController::store($request->myAnimeList, $request->anime);
+			VideoController::store($request);
+			DateController::store($request);
+			file_put_contents('images/'.$request->animeFLV.'.jpg', $file = file_get_contents($request->image));
+		}catch(\Exception $e){
+			if(isset($saved)){
+				(new AnimeController)->destroy($request->anime, false);
+			}
+		}
 
 		return redirect('/administrar');
     }
