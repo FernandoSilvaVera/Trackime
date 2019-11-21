@@ -31,7 +31,7 @@ class ListController extends Controller
 	{
 		return view($this->view, [
 				'anime'	  => $this->getList($anime),
-				'video'	  => $this->getVideo($anime),
+				'chapters'	  => $this->getVideo($anime)->toJson(),
 				'custom'  => (new CustomController)->create($anime, $loged)
 		]
 		);
