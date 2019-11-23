@@ -49223,7 +49223,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "col-lg-4 col-md-6 col-xs-12 mb-5" }, [
+  return _c("div", [
     _c("div", { staticClass: "card mb-1" }, [
       _c("a", { attrs: { href: _vm.url() } }, [
         _c("img", {

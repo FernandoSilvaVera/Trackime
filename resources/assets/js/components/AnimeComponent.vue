@@ -1,5 +1,5 @@
 <template>
-	<div class="col-lg-4 col-md-6 col-xs-12 mb-5">
+	<div>
 		<div class="card mb-1">
 			<a :href="url()">
 				<img class="card-img-top" :src="image_src()">
@@ -42,4 +42,3 @@
 		}
     }
 </script>
-

@@ -17,13 +17,19 @@
 
 		<!-- Parte derecha de la pagina-->
 
-        <div class="col-6 text-center">
-			<img class="card-img-top col-md-8 mb-1" src="{{ asset('images/' . $anime['web']) }}.jpg">
-			<br>
-			@foreach($anime->genre as $genre)
-				<span class="badge badge-dark">{{ $genre->genre}}</span>
-			@endforeach
-			<p class="text-justify mt-1">Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+        <div class="col-6" align="center">
+				<div class="col-md-8 mb-1r">
+					<anime-component
+						:genres="{{ $anime->genre }}"
+						:anime="{{ $anime }}"
+						:image="'{{ $anime->image() }}'">
+					>
+					</anime-component>
+				</div>
+
+				<p class="text-justify mt-1">Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+
+
 			<!-- Marcar como pendiente/terminada-->
 			@guest
 			@else
