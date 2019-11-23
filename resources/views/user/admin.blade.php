@@ -13,12 +13,8 @@
 		<h3 class="mb-4">Add Anime</h3>
 			<form class='form-group row text-center' action="{{ url(('saveAnime')) }}" method="post">
 				@csrf
-				<div class="col-6 mb-4"><input required="required" class="form-control" type="text" placeholder="animeFLV" name='animeFLV'>
-					https://animeflv.net/anime/2479/ange-vierge <br> Nos quedamos con la parte final <br> ange-vierge
-				</div>
-				<div class="col-6 mb-4"><input required="required" class="form-control" type="number" min="1" placeholder="myanimelist id" name='myAnimeList'>
-					https://myanimelist.net/anime/32171/Ange_Vierge <br> Nos quedamos con los números <br> 32171
-				</div>
+				<div class="col-6 mb-4"><input required="required" class="form-control" type="text" placeholder="url animeFLV listado de capitulos" name='animeFLV'></div>
+				<div class="col-6 mb-4"><input required="required" class="form-control" type="text" placeholder="url myAnimeList" name='myAnimeList'></div>
 				<div class="col-6 mb-4"><input required="required" class="form-control" type="text" placeholder="960/540 <==> 480/270" name='image' ></div>
 				<div class="col-12 mb-4"> <button type="submit" class="btn btn-success">Save</button> </div>
 			</form>

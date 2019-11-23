@@ -60,7 +60,6 @@ class VideoController extends Controller
     public static function store(Request $request)
     {
 		$videos = new Video;
-		$chapter = '4';
 		$animeFLV = new AnimeFLV($request->code, $request->animeFLV);
 		$resp = $animeFLV->streamiumFullChapter();
 

@@ -56,6 +56,9 @@ class AdminController extends Controller
 		$request->animeFLV = $anime[5];
 		$request->season = 1;
 		$request->chapters = 1;
+
+		$myAnimeList = explode("/", $request->myAnimeList);
+		$request->myAnimeList = $myAnimeList[4];
 	}
 
     /**
