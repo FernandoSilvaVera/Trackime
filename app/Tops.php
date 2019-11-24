@@ -6,15 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Trackime\Anime;
 
-class Tops extends Model
+class Tops extends Anime
 {
 	public $timestamps		= false;
 	public $incrementing	= false;
 
 	protected $primaryKey	= ["user", "genre", "anime"];
-
-	public function image($anime)
-	{
-		return DB::table('animes')->where('anime', $this->anime)->first()->web;
-	}
 }

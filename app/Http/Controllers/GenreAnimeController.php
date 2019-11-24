@@ -43,7 +43,7 @@ class GenreAnimeController extends Controller
 			$genre = new GenreAnime;
 				$genre->anime = $anime;
 				$genre->genre = $gen;
-			$genre->save();
+				$genre->save();
 		}
     }
 

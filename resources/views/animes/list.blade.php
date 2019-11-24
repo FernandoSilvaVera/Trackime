@@ -22,7 +22,7 @@
 					<anime-component
 						:genres="{{ $anime->genre }}"
 						:anime="{{ $anime }}"
-						:image="'{{ $anime->image() }}'">
+						:image="'{{ $anime->web }}'">
 					>
 					</anime-component>
 				</div>

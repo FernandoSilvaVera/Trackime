@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Trackime\Tops;
 use Trackime\Anime;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class TopController extends Controller
 {
@@ -17,7 +18,7 @@ class TopController extends Controller
     public function index($genre = 'isekai')
     {
         return view('animes.tops',[
-				'userAnimes'	=> Tops::where('user', Auth::user()->name)->where('genre', $genre)->paginate(12),
+				'userAnimes'	=> DB::table('tops')->join('animes', 'animes.anime', '=', 'tops.anime')->where('user', Auth::user()->name)->where('genre', $genre)->paginate(12),
 				'genreActually'	=> $genre,
 				'animes'		=> Anime::all(),
 				'genres'		=> Tops::all()->unique('genre')

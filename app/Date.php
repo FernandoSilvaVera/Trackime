@@ -5,19 +5,9 @@ namespace Trackime;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class date extends Model
+class date extends Anime
 {
     public $timestamps = false;
-
-	public function genre()
-	{
-		return $this->belongsToMany('Trackime\GenreAnime','animes','anime','anime','anime','anime');
-	}
-
-	public function image()
-	{
-		return DB::table('animes')->where('anime', $this->anime)->first()->web;
-	}
 
 	public function animes()
 	{

@@ -25,7 +25,7 @@ class AdminController extends Controller
     public function index()
 	{
 		return view('user.admin',[
-				"animes" => Anime::all()
+
 			]
 		);
 	}
@@ -58,7 +58,7 @@ class AdminController extends Controller
 		$request->chapters = 1;
 
 		$myAnimeList = explode("/", $request->myAnimeList);
-		$request->myAnimeList = $myAnimeList[4];
+		$request->myAnimeList = 39940;//$myAnimeList[4];
 	}
 
     /**
@@ -79,10 +79,15 @@ class AdminController extends Controller
 		}catch(\Exception $e){
 			if(isset($saved)){
 				(new AnimeController)->destroy($request->anime, false);
+				print("<pre>");
+				print_r($e->getMessage());die;
+
 			}
 		}
-
-		return redirect('/administrar');
+		return view('user.admin',[
+				"anime" => Anime::where('anime', $request->anime)->first()
+			]
+		);
     }
 
     /**

@@ -5,7 +5,7 @@ namespace Trackime;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class custom extends Model
+class custom extends Anime
 {
     public $timestamps = false;
 	protected $table = "custom";
@@ -17,16 +17,6 @@ class custom extends Model
 	const ADD_PENDING = 1;
 	const ADD_FINISHED = 2;
 	const DELETE_ANIME = null;
-
-	public function genre()
-	{
-		return $this->belongsToMany('Trackime\GenreAnime','animes','anime','anime','anime','anime');
-	}
-
-	public function image($data)
-	{
-		return DB::table('animes')->where('anime', $data)->first()->web;
-	}
 
 	public function web()
 	{

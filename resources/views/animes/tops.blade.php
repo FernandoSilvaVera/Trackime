@@ -29,7 +29,7 @@
         <div class="col-lg-4 col-sm-6 col-10 mb-5">
 			<div class="card mb-1">
 				<a href="{{ url('/animes/') . '/' . $anime->anime }}">
-					<img class="card-img-top" src="{{ asset('images/' . $anime->image($anime->anime)  ) }}.jpg">
+					<img class="card-img-top" src="{{ asset('images/' . $anime->web  ) }}.jpg">
 				</a>
 			</div>
 			<span><b>{{ $anime->anime }}</b></span>

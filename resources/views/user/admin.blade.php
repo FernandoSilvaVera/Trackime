@@ -27,4 +27,18 @@
 		<h4><a style="color:black" href="https://myanimelist.net/" target="_blank">MyAnimeList</a></h4>
 	</div>
 
+	<br>
+	<br>
+
+	<div class="container text-center" id= "animes">
+		<h3 class="mb-4"><strong>Anime Agregado</strong</h3>
+			<div class="col-lg-4 col-md-6 col-xs-12 mb-5">
+				<anime-component 
+					:genres="{{ $anime->genre }}"
+					:anime="{{ $anime }}"
+					:image="'{{ $anime->web }}'">
+				</anime-component>
+			</div>
+	</div>
+
 @endsection
