@@ -1,12 +1,19 @@
-require('./bootstrap');
+require('./bootstrap')
 
-window.Vue = require('vue');
+window.Vue = require('vue')
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
-Vue.component('anime-component', require('./components/AnimeComponent.vue'));
-Vue.component('add-anime-component', require('./components/AddAnimeComponent.vue'));
-Vue.component('anime-chapter-list', require('./components/ChapterComponent.vue'));
+import anime from './components/AnimeComponent.vue'
+import addAnime from './components/AddAnimeComponent.vue'
+import animeChapterList from './components/ChapterComponent.vue'
 
-const app = new Vue({
-    el: '#animes'
-});
+new Vue({
+
+	el: "#animes",
+	components: {
+		'anime-component': anime,
+		'add-anime-component': addAnime,
+		'anime-chapter-list': animeChapterList
+	}
+
+
+})

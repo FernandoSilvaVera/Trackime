@@ -30,6 +30,7 @@
 	<br>
 	<br>
 
+	@if(isset($anime))
 	<div class="container text-center" id= "animes">
 		<h3 class="mb-4"><strong>Anime Agregado</strong</h3>
 			<div class="col-lg-4 col-md-6 col-xs-12 mb-5">
@@ -40,5 +41,6 @@
 				</anime-component>
 			</div>
 	</div>
+	@endif
 
 @endsection
