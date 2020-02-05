@@ -1,7 +1,7 @@
 @extends('layouts.skel')
 
 @section('content')
-<div class="container">	
+<div class="container" id="animes">	
 
 	<div class="row">
 		<div class="col-3 text-center" style='background-color:white'>
@@ -43,6 +43,11 @@
 						</div>
 					</div>
 					<!-- Boton para agregar el anime-->
+				<add-anime-component
+					:initial_anime="'{{ $anime->anime }}'"
+					:initial_custom="{{ json_encode($custom) }}"
+					>
+				</add-anime-component>
 					<div class="col-1 align-self-center">
 						<div id="pending"> 
 							<img style="cursor:pointer;width:32px;" src="{{ asset('images/icon/add.png') }}" class="dropdown-toggle" data-toggle="dropdown"/>

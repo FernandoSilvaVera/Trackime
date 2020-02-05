@@ -43,7 +43,7 @@ Route::get('/personajes/{characterName}', 'CharacterController@show');
 Route::get('/emision', 'EmissionController@index');
 
 //TopController
-Route::get('/tops/{genre}', 'TopController@index');
+Route::get('/tops/{genre}', 'TopController@show');
 Route::get('/tops/', 'TopController@index');
 Route::post('/createTop', 'TopController@store'); 
 

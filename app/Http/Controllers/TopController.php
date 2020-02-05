@@ -10,20 +10,28 @@ use Illuminate\Support\Facades\DB;
 
 class TopController extends Controller
 {
+
+	private $view = 'animes.tops';
+
+	private function defaultInfo($genre = null){
+
+		return[
+			'userAnimes'	=> DB::table('tops')->join('animes', 'animes.anime', '=', 'tops.anime')->where('user', Auth::user()->name)->where('genre', $genre)->paginate(12),
+			'genreActually'	=> $genre,
+			'animes'		=> Anime::all(),
+			'genres'		=> Tops::all()->unique('genre')->where('user', Auth::user()->name),
+		];
+	
+	}
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($genre = 'isekai')
+    public function index()
     {
-        return view('animes.tops',[
-				'userAnimes'	=> DB::table('tops')->join('animes', 'animes.anime', '=', 'tops.anime')->where('user', Auth::user()->name)->where('genre', $genre)->paginate(12),
-				'genreActually'	=> $genre,
-				'animes'		=> Anime::all(),
-				'genres'		=> Tops::all()->unique('genre')
-			]
-		);
+        return view($this->view, $this->defaultInfo());
     }
 
     /**
@@ -59,9 +67,9 @@ class TopController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($genre)
     {
-        //
+        return view($this->view, $this->defaultInfo($genre));
     }
 
     /**
