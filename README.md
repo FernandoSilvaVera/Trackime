@@ -7,7 +7,9 @@ Web application for anime fans with laravel 5.6
 ## Linux
 
 Clone the repository
+
 Run the script ./install
+
 Open .env and set 
 
 EXAMPLE
